@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/tablas.css')}}">
+{% endblock %}
 {% block body %}
 
 <div class="container" style="margin-top:15px; margin-bottom:250px;">
@@ -8,7 +10,7 @@
 <center>
     <h2>LISTADO DE CATEGORÍAS DE ACTIVOS</h2>
 
-    <table class='table' border=4>
+    <table>
         <thead>
             <tr>
                 <th>Código</th>
@@ -31,5 +33,5 @@
         </li>
     </ul>
 </div>
-    
+
 {% endblock %}

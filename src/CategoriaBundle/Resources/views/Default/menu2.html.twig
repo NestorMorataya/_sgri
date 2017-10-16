@@ -1,27 +1,24 @@
 {% extends 'vistas.html.twig' %}
-
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/panelVertical2.css')}}">
+{% endblock %}
 {% block body %}
     <h1>Activos</h1>
 <CENTER><H2>GESTIÓN DE CATEGORÍAS</H2></CENTER>
 <hr>
-
 <ul>
     <li>
-        <a href="{{ path('categoria_index') }}">Regresar</a>
+        <a href="{{ path('user_homepage') }}">Regresar</a>
     </li>
 </ul>
 <center>
-<div class="row">
-<ul>
-    <li>
+<div class="vertical-menu">
+<div class="page-header">
         <a href="{{ path('categoria_new') }}">Crear un nueva categoria</a>
-    </li>
-
-    <li>
+</div>
+<div class="page-header">
         <a href="{{ path('categoria_index') }}">Ver categoria</a>
-    </li>
-
-</ul>
 </div >
+</div>
 </center>
 {% endblock %}

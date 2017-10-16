@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/botones.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/css/tabla2.css')}}">
+{% endblock %}
 {% block body %}
 
 
@@ -8,7 +11,7 @@
 <center>
     <h2>CATEGORÍA</h2>
 
-    <table border=3>
+    <table>
         <tbody>
             <tr>
                 <th>Id</th>

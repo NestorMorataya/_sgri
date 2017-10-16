@@ -1,11 +1,13 @@
 {% extends 'vistas.html.twig' %}
-
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/panelVertical2.css')}}">
+{% endblock %}
 {% block body %}
 
 
 
     <h1>Activos</h1>
-    
+
 <CENTER><H2>GESTIÓN DE ACTIVOS</H2></CENTER>
 <hr>
 <br>
@@ -17,21 +19,20 @@
 </ul>
 hr>
 
-<center>
-<div class="row">
+
 <ul>
     <li>
-        <a href="{{ path('activo_new') }}">Ingresar activos</a>
+        <a href="{{ path('user_homepage') }}">Regresar</a>
     </li>
-
-
-    <li>
-        <a href="{{ path('activo_index') }}">Ver activos</a>
-    </li>
-
 </ul>
-
-</ul>
+<center>
+<div class="vertical-menu">
+<div class="page-header">
+<a href="{{ path('activo_new') }}">Crear un nuevo activo</a>
+</div>
+<div class="page-header">
+<a href="{{ path('activo_index') }}">Ver activo</a>
+</div>
 </div >
-</center>
+<center>
 {% endblock %}
