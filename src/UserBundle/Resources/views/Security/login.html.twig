@@ -1,0 +1,51 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+
+          
+          <div class="modal-body padtrbl" style="margin-top:100px; margin-bottom: 150px; margin-left:500px; margin-right:500px">
+
+            <div class="login-box-body">
+              <p class="login-box-msg">Iniciar Sesion</p>
+              <div class="form-group">
+
+ <form action="{{ path('login_check')}}" method="post" id="loginForm">
+                {% if error %}
+                <div class="text-danger">
+                  <p>
+                    <strong>
+                      {{ error.messageKey }}
+                    </strong>
+                  </p>
+                </div>
+                {% endif %}
+                 <div class="form-group has-feedback"> <!----- username -------------->
+                      <input class="form-control" placeholder="Nombre de usuario"  id="loginid" type="text" autocomplete="off" name="_username" value="{{ last_username}}" /> 
+                
+            <span style="display:none;font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span><!---Alredy exists  ! -->
+                      <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                  </div>
+                  <div class="form-group has-feedback"><!----- password -------------->
+                      <input class="form-control" placeholder="Contraseña" id="loginpsw" type="password" autocomplete="off" name="_password" />
+                      <input type="hidden" name="_target_path" value="user_homepage" />
+            <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw"></span><!---Alredy exists  ! -->
+                      <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-12">
+                          <div class="checkbox icheck">
+                              <label>
+                                <input type="checkbox" id="loginrem" > Recordarme
+                              </label>
+                          </div>
+                      </div>
+                      <div class="col-xs-12">
+                          <button type="submit" class="btn btn-green btn-block btn-flat">Ingresar</button>
+                      </div>
+                  </div>
+                </form>
+                </div>
+            </div>
+          </div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<hr>
+<hr>
+<center>
+    <h2>CATEGORÍA</h2>
+
+    <table border=3>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categoria.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ categoria.nombre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+<br>
+        {{ form_start(delete_form) }}
+                <input type="submit" value="Eliminar">
+        {{ form_end(delete_form) }}
+
+</center>
+    <ul>
+        <li>
+            <a href="{{ path('categoria_index') }}">Regresar</a>
+        </li>
+        <li>
+            <a href="{{ path('categoria_edit', { 'id': categoria.id }) }}">Editar</a>
+        </li>
+    </ul>
+
+{% endblock %}

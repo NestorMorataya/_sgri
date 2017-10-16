@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+<div class="container" style="margin-top:30px;">
+  <div class="row well">
+   <div class="col-md-6">
+       <div class="page-header">
+            <h2>Registro de Empresa</h2> 
+       </div>
+        
+
+    {{ form_start(form) }}
+       <div class="form-group">
+         {{ form_label(form.nombre)}}
+         {{ form_widget(form.nombre, {'attr':{'class':'form-control'}}) }}
+
+       </div>
+       <div class="form-group">
+         {{ form_label(form.objetivos)}}
+         {{ form_widget(form.objetivos, {'attr':{'class':'form-control'}}) }}
+       </div>
+       <div class="form-group">
+         {{ form_label(form.politicas)}}
+         {{ form_widget(form.politicas, {'attr':{'class':'form-control'}}) }}
+
+       </div>
+       <div class="form-group">
+         {{ form_label(form.alcances)}}
+         {{ form_widget(form.alcances, {'attr':{'class':'form-control'}}) }}
+
+       </div>
+       
+        <button type="submit" value="Guardar" class="btn"> Siguiente </button> 
+    {{ form_end(form) }}
+
+   </div>
+
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container" style="margin-top:100px; margin-bottom:280px">
+	<center><h2>GESTIÓN DE CATEGORÍAS</h2></center>
+<hr>
+
+<ul>
+    <li>
+        <a href="{{ path('user_homepage') }}">Regresar</a>
+    </li>
+</ul>
+<center>
+<div class="row">
+<ul>
+    <li>
+        <a href="{{ path('categoria_new') }}">Crear una nueva categoría</a>
+    </li>
+
+    <li>
+        <a href="{{ path('categoria_index') }}">Ver categorías</a>
+    </li>
+</ul>
+</div >
+</center>
+</div>
+
+{% endblock %}

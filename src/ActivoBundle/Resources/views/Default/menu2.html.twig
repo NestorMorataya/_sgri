@@ -1,0 +1,31 @@
+{% extends 'vistas.html.twig' %}
+
+{% block body %}
+    <h1>Activos</h1>
+<CENTER><H2>GESTIÓN DE CATEGORÍAS</H2></CENTER>
+<hr>
+
+<ul>
+    <li>
+        <a href="{{ path('user_homepage') }}">Regresar</a>
+    </li>
+</ul>
+<center>
+<div class="row">
+<ul>
+    <li>
+        <a href="{{ path('categoria_new') }}">Crear una nueva categoría</a>
+    </li>
+    <li>
+        <a href="{{ path('categoria_edit') }}">Editar categoría</a>
+    </li>
+    <li>
+        <a href="{{ path('categoria_delete') }}">Eliminar categoría</a>
+    </li>
+    <li>
+        <a href="{{ path('categoria_index') }}">Ver categorías</a>
+    </li>
+</ul>
+</div >
+</center>
+{% endblock %}

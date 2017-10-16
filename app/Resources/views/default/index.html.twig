@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sistema para la Gestion de la Seguridad de la Informacion</title>
+    <meta name="description" content="Sistema para la gestion de riesgos de la informacion multiempresa">
+    <meta name="keywords" content="Seguridad, Informacion, Activos, Empresa">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Candal|Alegreya+Sans">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/imagehover.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/style.css')}}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+  </head>
+   <body>
+   <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{ path('homepage') }}">SG<span>RI</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{ path('user_login')}}" data-target="#login" data-toggle="modal">Iniciar sesion</a></li>
+          <li class="btn-trial"><a href="{{ path('empresa_new') }}">Registrarme</a></li>
+        </ul>
+        </div>
+      </div>
+    </nav>
+    <!--/ Navigation bar-->
+    <!--Modal box-->
+
+    <!--Banner-->
+    <div class="banner">
+      <div class="bg-color">
+        <div class="container">
+          <div class="row">
+            <div class="banner-text text-center">
+              <div class="text-border">
+                <h2 class="text-dec">SGRI</h2>
+              </div>
+              <div class="intro-para text-center quote">
+                <p class="big-text">Sistema para la Gestion de Riesgos de la Informacion</p>
+                <p class="small-text">Sistema para el calculo del riesgo de los activos segun sus vulneravilidades y amenazas<br> Gestion de tareas a realizar en los controles.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Banner-->
+
+  <footer id="footer" class="footer">
+      <div class="container text-center">
+        ©2018 TOO115. All rights reserved
+      </div>
+    </footer>
+    <!--/ Footer-->
+        <script src="{{ asset('public/js/bootstrap.min.js')}}"></script>
+        <script src="{{ asset('public/js/jquery.easing.min.js')}}"></script>
+        <script src="{{ asset('public/js/jquery.min.js')}}"></script>
+        <script src="{{ asset('public/js/custom.js')}}"></script>
+
+  </body>
+</html>
