@@ -1,14 +1,17 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/botones.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/css/tabla2.css')}}">
+{% endblock %}
 {% block body %}
 <hr>
 <hr>
 <center>
     <h2>EDITAR ACTIVOS</h2>
 
-    <table border=2>
+    <table>
         <tbody>
-           
+
             <tr>
                 <th>Codigo</th>
                 <td>{{ activo.codigo }}</td>
@@ -56,6 +59,6 @@
         <li>
             <a href="{{ path('activo_edit', { 'id': activo.id }) }}">Editar</a>
         </li>
-    
+
     </ul>
 {% endblock %}
