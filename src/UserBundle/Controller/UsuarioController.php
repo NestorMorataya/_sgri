@@ -65,6 +65,12 @@ class UsuarioController extends Controller
             $encoded = $encoder->encodePassword($usuario,$password);
             $usuario->setPassword($encoded);
             $em = $this->getDoctrine()->getManager();
+
+            $emp = $em->getRepository('EmpresaBundle:Empresa')->findOneBy(array(),array('id' => 'DESC'));
+
+            //return new Response($emp->getId());
+            $usuario->setEmpresa($emp->getId());
+
             $em->persist($usuario);
             $em->flush();
 

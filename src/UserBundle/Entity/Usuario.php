@@ -87,6 +87,22 @@ class Usuario implements AdvancedUserInterface, \Serializable
      */
     private $updateAt;
 
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="empresa_id", type="integer", nullable=true)
+     */
+    private $empresaId;
+
+    public function setEmpresa($empresaId)
+    {
+        $this->empresaId = $empresaId;
+
+        return $this;
+    }
+
+
+
     public function __construct()
     {
         $this ->isActive = true;
