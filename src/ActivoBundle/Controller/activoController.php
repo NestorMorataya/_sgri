@@ -25,9 +25,10 @@ class activoController extends Controller
      */
     public function indexAction()
     {
+        $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
 
-        $activos = $em->getRepository('ActivoBundle:activo')->findAll();
+        $activos = $em->getRepository('ActivoBundle:activo')->findBy(array('empresaId' => $user->getEmpresa()));
 
         return $this->render('activo/index.html.twig', array(
             'activos' => $activos,
@@ -44,6 +45,7 @@ class activoController extends Controller
     {
         $activo = new Activo();
         $cat = new Categoria();
+        $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
         $cat = $em->getRepository('CategoriaBundle:categoria')->findAll();
 
@@ -55,6 +57,7 @@ class activoController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $categoria = $request->get('categoria');
             $activo->setCategoria($categoria);
+            $activo->setEmpresa($user->getEmpresa());
             $em = $this->getDoctrine()->getManager();
             $em->persist($activo);
             $em->flush();
