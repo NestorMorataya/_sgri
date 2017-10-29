@@ -1,3 +1,13 @@
+tarea:
+    resource: "@TareaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+control:
+    resource: "@ControlBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 
 amenaza_amenaza:
     resource: "@AmenazaBundle/Controller/AmenazaController.php"

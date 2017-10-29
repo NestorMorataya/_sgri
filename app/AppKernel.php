@@ -25,7 +25,8 @@ class AppKernel extends Kernel
             new VulnerabilidadCatBundle\VulnerabilidadCatBundle(),
             new AmenazaCatBundle\AmenazaCatBundle(),
             new AmenazaBundle\AmenazaBundle(),
-
+            new ControlBundle\ControlBundle(),
+            new TareaBundle\TareaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

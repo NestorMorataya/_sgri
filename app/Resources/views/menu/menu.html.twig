@@ -1,27 +1,33 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/panelVertical2.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/css/panelVertical2.css')}}">
 {% endblock %}
 
 {% block body %}
-    <h1>Activos</h1>
-<CENTER><H2>GESTIÓN DE ACTIVOS</H2></CENTER>
-<hr>
+  <h1>Activos</h1>
+  <CENTER>
+    <H2>GESTIÓN DE ACTIVOS</H2>
+  </CENTER>
+  <hr>
 
-<ul>
+  <ul>
     <li>
-        <a href="{{ path('user_homepage') }}">Regresar</a>
+      <a href="{{ path('user_homepage') }}">Regresar</a>
     </li>
-</ul>
-<center>
-<div class="vertical-menu">
-<div class="page-header">
-<a href="{{ path('activo_new') }}">Crear un nuevo activo</a>
-</div>
-<div class="page-header">
-<a href="{{ path('activo_index') }}">Ver activo</a>
-</div>
-</div >
-<center>
+  </ul>
+  <center>
+    <div class="vertical-menu">
 
-{% endblock %}
+      <div class="page-header">
+        <a href="{{ path('activo_new') }}">Crear </a>
+      </div>
+      <div class="page-header">
+        <a href="{{ path('activo_index') }}">Ver activo</a>
+      </div>
+      <div class="page-header">
+        <a href="{{ path('activo_index') }}">Asignar controles</a>
+      </div>
+    </div >
+    <center>
+
+    {% endblock %}
