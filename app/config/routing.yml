@@ -19,11 +19,11 @@ amenaza_cat_cat.amenaza:
 
 vulnerabilidad_cat:
     resource: "@VulnerabilidadCatBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /vulnerabilidad_cat
 
 vulnerabilidad:
     resource: "@VulnerabilidadBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /vulnerabilidad
 
 riesgo:
     resource: "@RiesgoBundle/Controller/RiesgoController.php"
@@ -33,11 +33,11 @@ riesgo:
 
 amenaza:
     resource: "@AmenazaBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /amenaza
 
 amenaza_cat:
     resource: "@AmenazaCatBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /cat_amenazas
 
 categoria:
     resource: "@CategoriaBundle/Controller/"
