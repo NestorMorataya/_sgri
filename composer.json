@@ -9,6 +9,10 @@
             "UserBundle\\":"src/UserBundle",
             "ActivoBundle\\":"src/ActivoBundle",
             "CategoriaBundle\\":"src/CategoriaBundle",
+
+            "RiesgoBundle\\":"src/RiesgoBundle",
+            "VulnerabilidadBundle\\":"src/VulnerabilidadBundle",
+            "VulnerabilidadCatBundle\\":"src/VulnerabilidadCatBundle",
              "AmenazaCatBundle\\":"src/AmenazaCatBundle",
              "AmenazaBundle\\":"src/AmenazaBundle"
         },

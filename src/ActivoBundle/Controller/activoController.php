@@ -25,12 +25,12 @@ class activoController extends Controller
      */
     public function indexAction()
     {
-        $user = $this->getUser();
+
+        $user = $this->getUser(); //Devuelve el usario que esta en sesion
         $em = $this->getDoctrine()->getManager();
 
 
-        $activos = $em->getRepository('ActivoBundle:activo')->findBy(array('empresaId' => $user->getEmpresa()));
-       
+        $activos = $em->getRepository('ActivoBundle:activo')->findBy(array('empresaId' => $user->getEmpresa())); //Filtramos los activos en base al empresa Id
 
         return $this->render('activo/index.html.twig', array(
             'activos' => $activos,
@@ -50,8 +50,6 @@ class activoController extends Controller
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
         $cat = $em->getRepository('CategoriaBundle:categoria')->findAll();
-
-        
 
         $form = $this->createForm('ActivoBundle\Form\activoType', $activo );
         $form->handleRequest($request);

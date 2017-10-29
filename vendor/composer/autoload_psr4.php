@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'VulnerabilidadCatBundle\\' => array($baseDir . '/src/VulnerabilidadCatBundle'),
+    'VulnerabilidadBundle\\' => array($baseDir . '/src/VulnerabilidadBundle'),
     'UserBundle\\' => array($baseDir . '/src/UserBundle'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Symfony\\Polyfill\\Util\\' => array($vendorDir . '/symfony/polyfill-util'),
@@ -27,6 +29,7 @@ return array(
     'Symfony\\Bridge\\Doctrine\\' => array($vendorDir . '/symfony/symfony/src/Symfony/Bridge/Doctrine'),
     'Sensio\\Bundle\\GeneratorBundle\\' => array($vendorDir . '/sensio/generator-bundle'),
     'Sensio\\Bundle\\FrameworkExtraBundle\\' => array($vendorDir . '/sensio/framework-extra-bundle'),
+    'RiesgoBundle\\' => array($baseDir . '/src/RiesgoBundle'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Incenteev\\ParameterHandler\\' => array($vendorDir . '/incenteev/composer-parameter-handler'),

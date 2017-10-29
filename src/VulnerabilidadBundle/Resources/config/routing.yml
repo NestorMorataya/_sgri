@@ -1,0 +1,3 @@
+vulnerabilidad_homepage:
+    path:     /
+    defaults: { _controller: VulnerabilidadBundle:Default:index }

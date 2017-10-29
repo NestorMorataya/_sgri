@@ -22,6 +22,11 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
     );
 
     public static $prefixLengthsPsr4 = array (
+        'V' => 
+        array (
+            'VulnerabilidadCatBundle\\' => 24,
+            'VulnerabilidadBundle\\' => 21,
+        ),
         'U' => 
         array (
             'UserBundle\\' => 11,
@@ -51,6 +56,10 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
             'Symfony\\Bridge\\Doctrine\\' => 24,
             'Sensio\\Bundle\\GeneratorBundle\\' => 30,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
+        ),
+        'R' => 
+        array (
+            'RiesgoBundle\\' => 13,
         ),
         'P' => 
         array (
@@ -88,6 +97,14 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
     );
 
     public static $prefixDirsPsr4 = array (
+        'VulnerabilidadCatBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/VulnerabilidadCatBundle',
+        ),
+        'VulnerabilidadBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/VulnerabilidadBundle',
+        ),
         'UserBundle\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/UserBundle',
@@ -171,6 +188,10 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
         'Sensio\\Bundle\\FrameworkExtraBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/sensio/framework-extra-bundle',
+        ),
+        'RiesgoBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/RiesgoBundle',
         ),
         'Psr\\Log\\' => 
         array (
