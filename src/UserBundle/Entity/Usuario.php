@@ -101,6 +101,11 @@ class Usuario implements AdvancedUserInterface, \Serializable
         return $this;
     }
 
+    public function getEmpresa()
+    {
+        return $this->empresaId;
+    }
+
 
 
     public function __construct()
