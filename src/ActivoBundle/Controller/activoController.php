@@ -28,7 +28,9 @@ class activoController extends Controller
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
 
+
         $activos = $em->getRepository('ActivoBundle:activo')->findBy(array('empresaId' => $user->getEmpresa()));
+       
 
         return $this->render('activo/index.html.twig', array(
             'activos' => $activos,

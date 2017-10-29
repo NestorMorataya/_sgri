@@ -6,6 +6,8 @@ imports:
     - { resource: "@UserBundle/Resources/config/services.yml" }
     - { resource: "@ActivoBundle/Resources/config/services.yml" }
     - { resource: "@CategoriaBundle/Resources/config/services.yml" }
+    - { resource: "@AmenazaCatBundle/Resources/config/services.yml" }
+    - { resource: "@AmenazaBundle/Resources/config/services.yml" }
  
 
 

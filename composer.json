@@ -8,7 +8,9 @@
             "EmpresaBundle\\":"src/EmpresaBundle",
             "UserBundle\\":"src/UserBundle",
             "ActivoBundle\\":"src/ActivoBundle",
-            "CategoriaBundle\\":"src/CategoriaBundle"
+            "CategoriaBundle\\":"src/CategoriaBundle",
+             "AmenazaCatBundle\\":"src/AmenazaCatBundle",
+             "AmenazaBundle\\":"src/AmenazaBundle"
         },
         "classmap": [
             "app/AppKernel.php",

@@ -36,5 +36,7 @@ return array(
     'Doctrine\\Bundle\\DoctrineBundle\\' => array($vendorDir . '/doctrine/doctrine-bundle'),
     'CategoriaBundle\\' => array($baseDir . '/src/CategoriaBundle'),
     'AppBundle\\' => array($baseDir . '/src/AppBundle'),
+    'AmenazaCatBundle\\' => array($baseDir . '/src/AmenazaCatBundle'),
+    'AmenazaBundle\\' => array($baseDir . '/src/AmenazaBundle'),
     'ActivoBundle\\' => array($baseDir . '/src/ActivoBundle'),
 );
