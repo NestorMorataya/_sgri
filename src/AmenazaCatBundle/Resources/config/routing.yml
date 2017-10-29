@@ -1,0 +1,3 @@
+amenaza_cat_homepage:
+    path:     /
+    defaults: { _controller: AmenazaCatBundle:Default:index }

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/panelVertical2.css')}}">
+{% endblock %}
+
+{% block body %}
+    <h1>Activos</h1>
+<CENTER><H2>GESTIÓN DE RIESGO</H2></CENTER>
+<hr>
+
+<ul>
+    <li>
+        <a href="{{ path('user_homepage') }}">Regresar</a>
+    </li>
+</ul>
+<center>
+<div class="vertical-menu">
+<div class="page-header">
+<a href="">Nuevo analisis de riesgo</a>
+</div>
+<div class="page-header">
+<a href="">Editar analisis de riesgo</a>
+</div>
+<div class="page-header">
+<a href="">Ver analisis de riesgo</a>
+</div>
+</div >
+<center>
+
+{% endblock %}

@@ -22,6 +22,11 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
     );
 
     public static $prefixLengthsPsr4 = array (
+        'V' => 
+        array (
+            'VulnerabilidadCatBundle\\' => 24,
+            'VulnerabilidadBundle\\' => 21,
+        ),
         'U' => 
         array (
             'UserBundle\\' => 11,
@@ -52,6 +57,10 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
             'Sensio\\Bundle\\GeneratorBundle\\' => 30,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
         ),
+        'R' => 
+        array (
+            'RiesgoBundle\\' => 13,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -81,11 +90,21 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
         'A' => 
         array (
             'AppBundle\\' => 10,
+            'AmenazaCatBundle\\' => 17,
+            'AmenazaBundle\\' => 14,
             'ActivoBundle\\' => 13,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'VulnerabilidadCatBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/VulnerabilidadCatBundle',
+        ),
+        'VulnerabilidadBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/VulnerabilidadBundle',
+        ),
         'UserBundle\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/UserBundle',
@@ -170,6 +189,10 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
         array (
             0 => __DIR__ . '/..' . '/sensio/framework-extra-bundle',
         ),
+        'RiesgoBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/RiesgoBundle',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
@@ -205,6 +228,14 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
         'AppBundle\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/AppBundle',
+        ),
+        'AmenazaCatBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/AmenazaCatBundle',
+        ),
+        'AmenazaBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/AmenazaBundle',
         ),
         'ActivoBundle\\' => 
         array (

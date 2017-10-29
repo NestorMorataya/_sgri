@@ -1,3 +1,24 @@
+vulnerabilidad_cat:
+    resource: "@VulnerabilidadCatBundle/Resources/config/routing.yml"
+    prefix:   /
+
+vulnerabilidad:
+    resource: "@VulnerabilidadBundle/Resources/config/routing.yml"
+    prefix:   /
+
+riesgo:
+    resource: "@RiesgoBundle/Controller/RiesgoController.php"
+    type:     annotation
+    prefix: /riesgo
+
+amenaza:
+    resource: "@AmenazaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+amenaza_cat:
+    resource: "@AmenazaCatBundle/Resources/config/routing.yml"
+    prefix:   /
+
 categoria:
     resource: "@CategoriaBundle/Controller/"
     type:     annotation
@@ -39,6 +60,13 @@ menu_categoria:
 menu_activo:
     resource: "@ActivoBundle/Controller/activoController.php"
     type:     annotation
+
+
+menu_riesgo:
+    resource: "@RiesgoBundle/Controller/RiesgoController.php"
+    type:     annotation
+
+
 
 
 

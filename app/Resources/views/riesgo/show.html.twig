@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Riesgo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ riesgo.id }}</td>
+            </tr>
+            <tr>
+                <th>Disponibilidad</th>
+                <td>{{ riesgo.disponibilidad }}</td>
+            </tr>
+            <tr>
+                <th>Confidencialidad</th>
+                <td>{{ riesgo.confidencialidad }}</td>
+            </tr>
+            <tr>
+                <th>Integridad</th>
+                <td>{{ riesgo.integridad }}</td>
+            </tr>
+            <tr>
+                <th>Valoractivo</th>
+                <td>{{ riesgo.valorActivo }}</td>
+            </tr>
+            <tr>
+                <th>Degradacion</th>
+                <td>{{ riesgo.degradacion }}</td>
+            </tr>
+            <tr>
+                <th>Impacto</th>
+                <td>{{ riesgo.impacto }}</td>
+            </tr>
+            <tr>
+                <th>Probocurrencia</th>
+                <td>{{ riesgo.probOcurrencia }}</td>
+            </tr>
+            <tr>
+                <th>Estimacionriesgo</th>
+                <td>{{ riesgo.estimacionRiesgo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('riesgo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('riesgo_edit', { 'id': riesgo.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

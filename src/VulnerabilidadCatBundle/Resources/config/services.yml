@@ -1,0 +1,4 @@
+services:
+#    vulnerabilidad_cat.example:
+#        class: VulnerabilidadCatBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
