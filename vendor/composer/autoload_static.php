@@ -90,6 +90,8 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
         'A' => 
         array (
             'AppBundle\\' => 10,
+            'AmenazaCatBundle\\' => 17,
+            'AmenazaBundle\\' => 14,
             'ActivoBundle\\' => 13,
         ),
     );
@@ -226,6 +228,14 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
         'AppBundle\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/AppBundle',
+        ),
+        'AmenazaCatBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/AmenazaCatBundle',
+        ),
+        'AmenazaBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/AmenazaBundle',
         ),
         'ActivoBundle\\' => 
         array (

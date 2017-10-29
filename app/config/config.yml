@@ -5,13 +5,13 @@ imports:
     - { resource: "@EmpresaBundle/Resources/config/services.yml" }
     - { resource: "@UserBundle/Resources/config/services.yml" }
     - { resource: "@ActivoBundle/Resources/config/services.yml" }
-    - { resource: "@CategoriaBundle/Resources/config/services.yml" }
-
-
-    
+    - { resource: "@CategoriaBundle/Resources/config/services.yml" }   
     - { resource: "@RiesgoBundle/Resources/config/services.yml" }
     - { resource: "@VulnerabilidadBundle/Resources/config/services.yml" }
     - { resource: "@VulnerabilidadCatBundle/Resources/config/services.yml" }
+    - { resource: "@AmenazaCatBundle/Resources/config/services.yml" }
+    - { resource: "@AmenazaBundle/Resources/config/services.yml" }
+
  
 
 

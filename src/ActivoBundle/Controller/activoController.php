@@ -29,6 +29,7 @@ class activoController extends Controller
         $user = $this->getUser(); //Devuelve el usario que esta en sesion
         $em = $this->getDoctrine()->getManager();
 
+
         $activos = $em->getRepository('ActivoBundle:activo')->findBy(array('empresaId' => $user->getEmpresa())); //Filtramos los activos en base al empresa Id
 
         return $this->render('activo/index.html.twig', array(

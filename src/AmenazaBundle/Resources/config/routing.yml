@@ -1,0 +1,3 @@
+amenaza_homepage:
+    path:     /
+    defaults: { _controller: AmenazaBundle:Default:index }

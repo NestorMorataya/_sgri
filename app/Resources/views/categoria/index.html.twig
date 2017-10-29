@@ -45,10 +45,11 @@
 
 {% block javascripts %}
  <script
-  src="https://code.jquery.com/jquery.datatables.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>   
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+  src="{{ asset('public/DataTables/jquery-3.2.1.js') }}"
+  integrity=""
+  crossorigin="anonymous"></script> 
+
+<script type="text/javascript" src="{{ asset('public/DataTables/datatables.js') }}"></script>
 <script>
 $(document).ready(function() {
   $("#tabla").DataTable(
