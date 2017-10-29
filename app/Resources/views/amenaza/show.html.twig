@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Amenaza</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ amenaza.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ amenaza.nombre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('amenaza_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('amenaza_edit', { 'id': amenaza.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cat_amenazas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cat_Amenaza in cat_Amenazas %}
+            <tr>
+                <td><a href="{{ path('cat_amenaza_show', { 'id': cat_Amenaza.id }) }}">{{ cat_Amenaza.id }}</a></td>
+                <td>{{ cat_Amenaza.nombre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('cat_amenaza_show', { 'id': cat_Amenaza.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('cat_amenaza_edit', { 'id': cat_Amenaza.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cat_amenaza_new') }}">Create a new cat_Amenaza</a>
+        </li>
+    </ul>
+{% endblock %}
