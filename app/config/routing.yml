@@ -1,3 +1,12 @@
+
+amenaza_amenaza:
+    resource: "@AmenazaBundle/Controller/AmenazaController.php"
+    type:     annotation
+
+amenaza_cat_cat.amenaza:
+    resource: "@AmenazaCatBundle/Controller/Cat_AmenazaController.php"
+    type:     annotation
+
 vulnerabilidad_cat:
     resource: "@VulnerabilidadCatBundle/Resources/config/routing.yml"
     prefix:   /
@@ -10,6 +19,7 @@ riesgo:
     resource: "@RiesgoBundle/Controller/RiesgoController.php"
     type:     annotation
     prefix: /riesgo
+
 
 amenaza:
     resource: "@AmenazaBundle/Resources/config/routing.yml"
