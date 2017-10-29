@@ -1,0 +1,3 @@
+riesgo_homepage:
+    path:     /
+    defaults: { _controller: RiesgoBundle:Default:index }

@@ -20,6 +20,13 @@ class AppKernel extends Kernel
             new UserBundle\UserBundle(),
             new ActivoBundle\ActivoBundle(),
             new CategoriaBundle\CategoriaBundle(),
+
+
+
+            
+            new RiesgoBundle\RiesgoBundle(),
+            new VulnerabilidadBundle\VulnerabilidadBundle(),
+            new VulnerabilidadCatBundle\VulnerabilidadCatBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
