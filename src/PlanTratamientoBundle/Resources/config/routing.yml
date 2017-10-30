@@ -1,0 +1,3 @@
+plan_tratamiento_homepage:
+    path:     /
+    defaults: { _controller: PlanTratamientoBundle:Default:index }

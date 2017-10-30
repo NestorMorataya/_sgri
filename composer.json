@@ -13,8 +13,12 @@
             "RiesgoBundle\\":"src/RiesgoBundle",
             "VulnerabilidadBundle\\":"src/VulnerabilidadBundle",
             "VulnerabilidadCatBundle\\":"src/VulnerabilidadCatBundle",
-             "AmenazaCatBundle\\":"src/AmenazaCatBundle",
-             "AmenazaBundle\\":"src/AmenazaBundle"
+            "AmenazaCatBundle\\":"src/AmenazaCatBundle",
+            "AmenazaBundle\\":"src/AmenazaBundle",
+
+            "PlanTratamientoBundle\\":"src/PlanTratamientoBundle",
+            "CategoriaPlanBundle\\":"src/CategoriaPlanBundle"
+
         },
         "classmap": [
             "app/AppKernel.php",
