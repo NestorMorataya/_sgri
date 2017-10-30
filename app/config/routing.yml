@@ -1,7 +1,8 @@
 
-amenaza_amenaza:
+amenaza:
     resource: "@AmenazaBundle/Controller/AmenazaController.php"
     type:     annotation
+    prefix:     /amenaza
 
 amenaza_cat_cat.amenaza:
     resource: "@AmenazaCatBundle/Controller/Cat_AmenazaController.php"
@@ -19,11 +20,6 @@ riesgo:
     resource: "@RiesgoBundle/Controller/RiesgoController.php"
     type:     annotation
     prefix: /riesgo
-
-
-amenaza:
-    resource: "@AmenazaBundle/Resources/config/routing.yml"
-    prefix:   /amenaza
 
 amenaza_cat:
     resource: "@AmenazaCatBundle/Resources/config/routing.yml"
@@ -80,6 +76,17 @@ menu_riesgo:
 menu_control:
     resource: "@ControlBundle/Controller/ControlController.php"
     type:     annotation
+
+menu_amenaza:
+    resource: "@AmenazaBundle/Controller/AmenazaController.php"
+    type:     annotation
+
+menu_catamenaza:
+    resource: "@AmenazaCatBundle/Controller/Cat_AmenazaController.php"
+    type:     annotation
+
+
+
 
 menu_tarea:
     resource: "@TareaBundle/Controller/TareaController.php"

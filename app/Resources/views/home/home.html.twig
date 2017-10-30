@@ -8,26 +8,28 @@
 {% block body %}
 
 <div class="container" style="margin-top:30px; margin-bottom:210px" s>
-<div class="container text-center">
-<div class="page-header">
-<h2>Bienvenido {{ app.user.username }}</h2>
-</div>
-</div>
+   <div class="container text-center">
+   		<div class="page-header">
+   			<h2>Bienvenido {{ app.user.username }}</h2>
+   		</div>
+   </div>
 
-<div class="vertical-menu">
-<div class="page-header">
-<h3>Gestion</h3>
-</div>
+   <div class="vertical-menu">
+   		<div class="page-header">
+   			<h3>Gestion</h3>
+   		</div>
+	
+       <a href="{{ path('menu_activo') }}">Gestionar Activos</a>
+   
+   
+       <a href="{{ path('menu_categoria') }}">Gestionar Categorías Activos </a>
 
-<a href="{{ path('menu_activo') }}">Gestionar Activos</a>
+       <a href="{{ path('menu_amenaza') }}">Gestionar Amenazas</a>
 
-<a href="{{ path('menu_categoria') }}">Gestionar Categorías</a>
+      <a href="{{ path('menu_catamenaza') }}">Gestionar Categorias Amenazas</a>
 
-<a href="{{ path('menu_riesgo') }}">Analisis de Riesgo</a>
+      <a href="{{ path('menu_riesgo') }}">Analisis de Riesgo</a>
+   
 
-
-
-
-</div>
 </div>
 {% endblock %}

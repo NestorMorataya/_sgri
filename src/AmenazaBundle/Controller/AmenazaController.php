@@ -5,7 +5,9 @@ namespace AmenazaBundle\Controller;
 use AmenazaBundle\Entity\Amenaza;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Amenaza controller.
@@ -17,7 +19,7 @@ class AmenazaController extends Controller
     /**
      * Lists all amenaza entities.
      *
-     * @Route("/", name="amenaza_index")
+     * @Route("/index", name="amenaza_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -133,4 +135,17 @@ class AmenazaController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * Lists all categoria entities.
+     *
+     * @Route("/", name="menu_amenaza")
+     * @Method("GET")
+     */
+ public function menuAction()
+    {
+        return $this->render('menu/menuAmenaza.html.twig');
+        //return new Response("hola");
+    }
+
 }
