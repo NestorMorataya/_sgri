@@ -1,13 +1,3 @@
-tarea:
-    resource: "@TareaBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-control:
-    resource: "@ControlBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 
 amenaza_amenaza:
     resource: "@AmenazaBundle/Controller/AmenazaController.php"
@@ -87,8 +77,25 @@ menu_riesgo:
     type:     annotation
 
 
+menu_control:
+    resource: "@ControlBundle/Controller/ControlController.php"
+    type:     annotation
 
+menu_tarea:
+    resource: "@TareaBundle/Controller/TareaController.php"
+    type:     annotation
 
+tarea:
+    resource: "@TareaBundle/Controller/"
+    type:     annotation
+    prefix: /tarea
 
+control:
+    resource: "@ControlBundle/Controller/"
+    type:     annotation
+    prefix: /control
 
-
+menu_asignarcontrol:
+    resource: "@ControlBundle/Controller/ControlController.php"
+    type:     annotation
+    

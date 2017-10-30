@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/panelVertical2.css')}}">
+{% endblock %}
+
+{% block body %}
+    <h1>Activos</h1>
+<CENTER><H2>PLAN DE TRATAMIENTO</H2></CENTER>
+<hr>
+
+<ul>
+    <li>
+        <a href="{{ path('menu_activo') }}">Regresar</a>
+    </li>
+</ul>
+<center>
+<div class="vertical-menu">
+<div class="page-header">
+<a href="">Plan de tratamiento</a>
+</div>
+
+<div class="page-header">
+<a href="{{ path('menu_asignarcontrol') }}">Controles</a>
+</div>
+</div >
+<center>
+
+{% endblock %}

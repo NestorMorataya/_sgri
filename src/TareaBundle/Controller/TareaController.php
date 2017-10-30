@@ -5,7 +5,9 @@ namespace TareaBundle\Controller;
 use TareaBundle\Entity\Tarea;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Tarea controller.
@@ -17,7 +19,7 @@ class TareaController extends Controller
     /**
      * Lists all tarea entities.
      *
-     * @Route("/", name="tarea_index")
+     * @Route("/index", name="tarea_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -132,5 +134,17 @@ class TareaController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+
+    /**
+     * Lists all riesgo entities.
+     *
+     * @Route("/", name="menu_tarea")
+     * @Method("GET")
+     */
+ public function menuAction()
+    {
+        return $this->render('menu/menuTarea.html.twig');
     }
 }
