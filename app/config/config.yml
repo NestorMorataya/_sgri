@@ -11,6 +11,8 @@ imports:
     - { resource: "@VulnerabilidadCatBundle/Resources/config/services.yml" }
     - { resource: "@AmenazaCatBundle/Resources/config/services.yml" }
     - { resource: "@AmenazaBundle/Resources/config/services.yml" }
+    - { resource: "@ControlBundle/Resources/config/services.yml" }
+    - { resource: "@TareaBundle/Resources/config/services.yml" }
 
  
 

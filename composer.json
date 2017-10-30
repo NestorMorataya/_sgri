@@ -14,7 +14,10 @@
             "VulnerabilidadBundle\\":"src/VulnerabilidadBundle",
             "VulnerabilidadCatBundle\\":"src/VulnerabilidadCatBundle",
              "AmenazaCatBundle\\":"src/AmenazaCatBundle",
-             "AmenazaBundle\\":"src/AmenazaBundle"
+             "AmenazaBundle\\":"src/AmenazaBundle",
+
+             "ControlBundle\\":"src/ControlBundle",
+             "TareaBundle\\":"src/TareaBundle"
         },
         "classmap": [
             "app/AppKernel.php",
