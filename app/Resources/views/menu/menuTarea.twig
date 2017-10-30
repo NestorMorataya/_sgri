@@ -5,25 +5,23 @@
 
 {% block body %}
     <h1>Activos</h1>
-<CENTER><H2>ASIGNACIÓN DE CONTROLES</H2></CENTER>
+<CENTER><H2>TAREAS</H2></CENTER>
 <hr>
 
 <ul>
     <li>
-        <a href="{{ path('user_homepage') }}">Regresar</a>
+        <a href="{{ path('menu_control') }}">Regresar</a>
     </li>
 </ul>
 <center>
 <div class="vertical-menu">
 <div class="page-header">
-<a href="">Nuevo analisis de riesgo</a>
+<a href="{{ path('tarea_new') }}">Ingresar tareas</a>
 </div>
 <div class="page-header">
-<a href="">Editar analisis de riesgo</a>
+<a href="{{ path('tarea_index') }}">Ver tareas</a>
 </div>
-<div class="page-header">
-<a href="">Ver analisis de riesgo</a>
-</div>
+
 </div >
 <center>
 

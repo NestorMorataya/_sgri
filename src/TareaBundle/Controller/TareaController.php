@@ -145,6 +145,6 @@ class TareaController extends Controller
      */
  public function menuAction()
     {
-        return $this->render('menu/menuTarea.html.twig');
+        return $this->render('menu/menuTarea.twig');
     }
 }

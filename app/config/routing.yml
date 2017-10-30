@@ -98,4 +98,3 @@ control:
 menu_asignarcontrol:
     resource: "@ControlBundle/Controller/ControlController.php"
     type:     annotation
-    
