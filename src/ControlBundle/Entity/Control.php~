@@ -131,54 +131,5 @@ class Control
     {
         return $this->control;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tareas = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add tarea
-     *
-     * @param \TareaBundle\Entity\Tarea $tarea
-     *
-     * @return Control
-     */
-    public function addTarea(\TareaBundle\Entity\Tarea $tarea)
-    {
-        $this->tareas[] = $tarea;
-    
-        return $this;
-    }
-
-    /**
-     * Remove tarea
-     *
-     * @param \TareaBundle\Entity\Tarea $tarea
-     */
-    public function removeTarea(\TareaBundle\Entity\Tarea $tarea)
-    {
-        $this->tareas->removeElement($tarea);
-    }
-
-
-
-    /**
-     * Get tareas
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTareas()
-    {
-        return $this->tareas;
-    }
-
-     public function __toString(){
-        // to show the name of the Category in the select
-        return $this->control;
-        // to show the id of the Category in the select
-        // return $this->id;
-    }
 }
+

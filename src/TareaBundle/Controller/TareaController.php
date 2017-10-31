@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use ControlBundle\Entity\Control;
 
 /**
  * Tarea controller.
@@ -24,10 +25,8 @@ class TareaController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
+       $em = $this->getDoctrine()->getManager();
         $tareas = $em->getRepository('TareaBundle:Tarea')->findAll();
-
         return $this->render('tarea/index.html.twig', array(
             'tareas' => $tareas,
         ));
@@ -42,20 +41,28 @@ class TareaController extends Controller
     public function newAction(Request $request)
     {
         $tarea = new Tarea();
+        $cont = new Control();
+        $em = $this->getDoctrine()->getManager();
+        $cont = $em->getRepository('ControlBundle:Control')->findAll();
+
         $form = $this->createForm('TareaBundle\Form\TareaType', $tarea);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $control = $request->get('control');
+            $tarea->setControl($control);
+        
             $em = $this->getDoctrine()->getManager();
             $em->persist($tarea);
             $em->flush();
 
-            return $this->redirectToRoute('tarea_show', array('id' => $tarea->getId()));
+            return $this->redirectToRoute('menu_tarea');
         }
 
         return $this->render('tarea/new.html.twig', array(
             'tarea' => $tarea,
             'form' => $form->createView(),
+            'control' => $cont
         ));
     }
 
@@ -71,6 +78,7 @@ class TareaController extends Controller
 
         return $this->render('tarea/show.html.twig', array(
             'tarea' => $tarea,
+
             'delete_form' => $deleteForm->createView(),
         ));
     }

@@ -16,6 +16,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
+                <th>Control</th>
               
             </tr>
         </thead>
@@ -24,6 +25,8 @@
             <tr>
                 <td><a href="{{ path('tarea_show', { 'id': tarea.id }) }}">{{ tarea.id }}</a></td>
                 <td>{{ tarea.nombre }}</td>
+                <td>{{ tarea.control }}</td>
+
             </tr>
         {% endfor %}
            </tbody>
