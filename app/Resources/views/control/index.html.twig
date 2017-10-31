@@ -1,0 +1,86 @@
+{% extends 'controles.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/tablas.css')}}">
+{% endblock %}
+{% block body %}
+<div class="container" style="margin-top:15px; margin-bottom:180px;">
+<br>
+<div class="col-xs-12">
+<center>
+<hr>
+<h2>CATÁLOGO DE CONTROLES</h2>
+<hr>
+<div class="box-body table-responsive">
+    <table id='tabla' class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Dominio</th>
+                <th>Objetivo</th>
+                <th>Control</th>
+                 </div>
+            </tr>
+        </thead>
+        <tbody>
+        {% for control in controls %}
+            <tr>
+                <td><a href="{{ path('control_show', { 'id': control.id }) }}">{{ control.id }}</a></td>
+                <td>{{ control.dominio }}</td>
+                <td>{{ control.objetivo }}</td>
+                <td>{{ control.control }}</td>
+                
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</center>
+</div>
+ <ul>
+        <li>
+            <a href="{{ path('menu_control') }}">Regresar</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+{% block javascripts %}
+
+ <script
+  src="{{ asset('public/DataTables/jquery-3.2.1.js') }}"
+  integrity=""
+  crossorigin="anonymous"></script> 
+
+<script type="text/javascript" src="{{ asset('public/DataTables/datatables.js') }}"></script>
+
+<script>
+$(document).ready(function() {
+  $("#tabla").DataTable(
+  {
+    language: {
+    processing:     "Procesando...",
+    search:         "Buscar:",
+    lengthMenu:     "Mostrar _MENU_ registros",
+    info:           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    infoEmpty:      "Mostrando registros del 0 al 0 de un total de 0 registros",
+    infoFiltered:   "(filtrado de un total de _MAX_ registros)",
+    infoPostFix:    "",
+    loadingRecords: "Cargando...",
+    zeroRecords:    "No se encontraron resultados",
+    emptyTable:     "Ningún dato disponible en esta tabla",
+    paginate: {
+      first:      "Primero",
+      previous:   "Anterior",
+      next:       "Siguiente",
+      last:       "Último"
+    },
+    aria: {
+      sortAscending:  ": Activar para ordenar la columna de manera ascendente",
+      sortDescending: ": Activar para ordenar la columna de manera descendente"
+    }
+    }
+  } 
+  );
+});
+</script>
+
+{% endblock %}

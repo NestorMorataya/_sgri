@@ -13,6 +13,9 @@ imports:
     - { resource: "@AmenazaBundle/Resources/config/services.yml" }
     - { resource: "@PlanTratamientoBundle/Resources/config/services.yml" }
     - { resource: "@CategoriaPlanBundle/Resources/config/services.yml" }
+    - { resource: "@ControlBundle/Resources/config/services.yml" }
+    - { resource: "@TareaBundle/Resources/config/services.yml" }
+      
 
  
 

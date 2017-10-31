@@ -17,7 +17,7 @@ class Cat_AmenazaController extends Controller
     /**
      * Lists all cat_Amenaza entities.
      *
-     * @Route("/", name="cat_amenaza_index")
+     * @Route("/index", name="cat_amenaza_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -132,5 +132,17 @@ class Cat_AmenazaController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+     /**
+     * Lists all categoria entities.
+     *
+     * @Route("/", name="menu_catamenaza")
+     * @Method("GET")
+     */
+ public function menuAction()
+    {
+        return $this->render('menu/menuCatAmenaza.html.twig');
+        //return new Response("hola");
     }
 }

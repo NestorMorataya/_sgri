@@ -30,11 +30,9 @@
                  <td>{{amenaza.catAmenaza.nombre}}</td>
                 <td>
                     <ul>
+                        
                         <li>
-                            <a href="{{ path('amenaza_show', { 'id': amenaza.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('amenaza_edit', { 'id': amenaza.id }) }}">edit</a>
+                            <a href="{{ path('amenaza_edit', { 'id': amenaza.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
@@ -46,8 +44,13 @@
 </center>
 </div>
     <ul>
+
+    <li>
+            <a href="{{ path('amenaza_new') }}">Crar una nueva Amenaza</a>
+        </li>
+        <br>
         <li>
-            <a href="{{ path('amenaza_new') }}">Create a new amenaza</a>
+            <a href="{{ path('menu_amenaza') }}">Regresar</a>
         </li>
     </ul>
 </div>

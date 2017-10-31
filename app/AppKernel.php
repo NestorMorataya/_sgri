@@ -27,6 +27,9 @@ class AppKernel extends Kernel
             new AmenazaBundle\AmenazaBundle(),
             new PlanTratamientoBundle\PlanTratamientoBundle(),
             new CategoriaPlanBundle\CategoriaPlanBundle(),
+            new ControlBundle\ControlBundle(),
+            new TareaBundle\TareaBundle(),
+           
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -19,6 +19,11 @@
             "PlanTratamientoBundle\\":"src/PlanTratamientoBundle",
             "CategoriaPlanBundle\\":"src/CategoriaPlanBundle"
 
+             "AmenazaCatBundle\\":"src/AmenazaCatBundle",
+             "AmenazaBundle\\":"src/AmenazaBundle",
+
+             "ControlBundle\\":"src/ControlBundle",
+             "TareaBundle\\":"src/TareaBundle"
         },
         "classmap": [
             "app/AppKernel.php",

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/panelVertical.css')}}">    
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/panelVertical.css')}}">    
 {% endblock %}
 
 
@@ -19,14 +19,17 @@
    			<h3>Gestion</h3>
    		</div>
 	
-      <a href="{{ path('menu_activo') }}">Gestionar Activos</a>
+       <a href="{{ path('menu_activo') }}">Gestionar Activos</a>
    
    
-      <a href="{{ path('menu_categoria') }}">Gestionar Categorías</a>
+       <a href="{{ path('menu_categoria') }}">Gestionar Categorías Activos </a>
+
+       <a href="{{ path('menu_amenaza') }}">Gestionar Amenazas</a>
+
+      <a href="{{ path('menu_catamenaza') }}">Gestionar Categorias Amenazas</a>
 
       <a href="{{ path('menu_riesgo') }}">Analisis de Riesgo</a>
    
 
-   </div>
 </div>
 {% endblock %}
