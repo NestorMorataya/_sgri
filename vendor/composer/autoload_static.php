@@ -66,6 +66,7 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'PlanTratamientoBundle\\' => 22,
         ),
         'M' => 
         array (
@@ -91,6 +92,7 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
         'C' => 
         array (
             'ControlBundle\\' => 14,
+            'CategoriaPlanBundle\\' => 20,
             'CategoriaBundle\\' => 16,
         ),
         'A' => 
@@ -211,6 +213,10 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'PlanTratamientoBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/PlanTratamientoBundle',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -247,9 +253,15 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
         ),
+<<<<<<< HEAD
         'ControlBundle\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/ControlBundle',
+=======
+        'CategoriaPlanBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/CategoriaPlanBundle',
+>>>>>>> Plan_De_Tratamiento
         ),
         'CategoriaBundle\\' => 
         array (

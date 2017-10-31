@@ -1,0 +1,4 @@
+services:
+#    plan_tratamiento.example:
+#        class: PlanTratamientoBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
