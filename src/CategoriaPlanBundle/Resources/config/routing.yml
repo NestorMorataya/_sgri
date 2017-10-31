@@ -1,0 +1,3 @@
+categoria_plan_homepage:
+    path:     /
+    defaults: { _controller: CategoriaPlanBundle:Default:index }

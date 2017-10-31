@@ -18,6 +18,12 @@
 
              "ControlBundle\\":"src/ControlBundle",
              "TareaBundle\\":"src/TareaBundle"
+            "AmenazaCatBundle\\":"src/AmenazaCatBundle",
+            "AmenazaBundle\\":"src/AmenazaBundle",
+
+            "PlanTratamientoBundle\\":"src/PlanTratamientoBundle",
+            "CategoriaPlanBundle\\":"src/CategoriaPlanBundle"
+
         },
         "classmap": [
             "app/AppKernel.php",

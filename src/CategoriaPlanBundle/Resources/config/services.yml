@@ -1,0 +1,4 @@
+services:
+#    categoria_plan.example:
+#        class: CategoriaPlanBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
