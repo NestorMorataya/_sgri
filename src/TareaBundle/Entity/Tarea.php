@@ -30,10 +30,15 @@ class Tarea
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="ControlBundle\Entity\Control")
+     * @ORM\ManyToOne(targetEntity="PlanTratamientoBundle\Entity\Plan_Tratamiento")
      */
-    protected $control;
+    protected $planTratamiento;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="TareaBundle\Entity\Tarea", mappedBy="control")
+     */
+    private $tareas;
 
     /**
      * Get id
@@ -112,4 +117,93 @@ class Tarea
     }
 
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tareas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set controlId
+     *
+     * @param integer $controlId
+     *
+     * @return Tarea
+     */
+    public function setControlId($controlId)
+    {
+        $this->controlId = $controlId;
+    
+        return $this;
+    }
+
+    /**
+     * Get controlId
+     *
+     * @return integer
+     */
+    public function getControlId()
+    {
+        return $this->controlId;
+    }
+
+    /**
+     * Set planTratamiento
+     *
+     * @param \PlanTratamientoBundle\Entity\Plan_Tratamiento $planTratamiento
+     *
+     * @return Tarea
+     */
+    public function setPlanTratamiento(\PlanTratamientoBundle\Entity\Plan_Tratamiento $planTratamiento = null)
+    {
+        $this->planTratamiento = $planTratamiento;
+    
+        return $this;
+    }
+
+    /**
+     * Get planTratamiento
+     *
+     * @return \PlanTratamientoBundle\Entity\Plan_Tratamiento
+     */
+    public function getPlanTratamiento()
+    {
+        return $this->planTratamiento;
+    }
+
+    /**
+     * Add tarea
+     *
+     * @param \TareaBundle\Entity\Tarea $tarea
+     *
+     * @return Tarea
+     */
+    public function addTarea(\TareaBundle\Entity\Tarea $tarea)
+    {
+        $this->tareas[] = $tarea;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tarea
+     *
+     * @param \TareaBundle\Entity\Tarea $tarea
+     */
+    public function removeTarea(\TareaBundle\Entity\Tarea $tarea)
+    {
+        $this->tareas->removeElement($tarea);
+    }
+
+    /**
+     * Get tareas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTareas()
+    {
+        return $this->tareas;
+    }
 }

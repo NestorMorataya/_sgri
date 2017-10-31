@@ -17,16 +17,18 @@
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Control</th>
+                <th>Plan de tratamiento</th>
               
             </tr>
         </thead>
         <tbody>
         {% for tarea in tareas %}
             <tr>
-                <td><a href="{{ path('tarea_show', { 'id': tarea.id }) }}">{{ tarea.id }}</a></td>
+                <td><a href="{{ path('tarea_show', 
+                { 'id': tarea.id }) 
+                }}">{{ tarea.id }}</a></td>
                 <td>{{ tarea.nombre }}</td>
-                <td>{{ tarea.control }}</td>
-
+      
             </tr>
         {% endfor %}
            </tbody>
