@@ -253,15 +253,16 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
         ),
-<<<<<<< HEAD
+
         'ControlBundle\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/ControlBundle',
-=======
+            0 => __DIR__ . '/../..' . '/src/ControlBundle'
+        ),
+
         'CategoriaPlanBundle\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/CategoriaPlanBundle',
->>>>>>> Plan_De_Tratamiento
+
         ),
         'CategoriaBundle\\' => 
         array (
