@@ -105,3 +105,19 @@ control:
 menu_asignarcontrol:
     resource: "@ControlBundle/Controller/ControlController.php"
     type:     annotation
+
+plan_tratamiento_plan.tratamiento:
+    resource: "@PlanTratamientoBundle/Controller/Plan_TratamientoController.php"
+    type: annotation
+
+plan_tratamiento:
+    resource: "@PlanTratamientoBundle/Resources/config/routing.yml"
+    prefix: /plan_tratamiento
+
+categoria_plan_categoria.plan:
+    resource: "@CategoriaPlanBundle/Controller/Categoria_PlanController.php"
+    type: annotation
+
+categoria_plan:
+    resource: "@CategoriaPlanBundle/Resources/config/routing.yml"
+    prefix: /categoria_plan

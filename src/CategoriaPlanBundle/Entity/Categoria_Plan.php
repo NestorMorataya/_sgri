@@ -12,6 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Categoria_Plan
 {
+    /*
+    *Una categoria tiene un plan (One-To-One)
+    *"@ORM\OneToOne (targetEntity="PlanTratamientoBundle\Entity\Plan_Tratamiento")
+    *
+    */
+    protected $plan_tratamiento;
+
     /**
      * @var int
      *
@@ -60,5 +67,27 @@ class Categoria_Plan
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    /**
+    *Set plan_tratamiento
+    *
+    *@param \PlanTratamiento\Entity\Plan_Tratamiento $plan_tratamiento
+    *
+    *@return Categoria_Plan
+    */
+    public function setPlanTratamiento(\PlanTratamiento\Entity\Plan_Tratamiento $plan_tratamiento)
+    {
+        $this->plan_tratamiento=$plan_tratamiento;
+        return $this;
+    }
+
+    /**
+    *Get plan_tratamiento
+    *
+    *@return \PlanTratamiento\Entity\Plan_Tratamiento
+    */
+    public function getPlanTratamiento (){
+        return $this->plan_tratamiento;
     }
 }
