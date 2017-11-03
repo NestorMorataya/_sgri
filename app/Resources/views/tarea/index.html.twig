@@ -17,7 +17,6 @@
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Control</th>
-                <th>Plan de tratamiento</th>
               
             </tr>
         </thead>
@@ -28,6 +27,7 @@
                 { 'id': tarea.id }) 
                 }}">{{ tarea.id }}</a></td>
                 <td>{{ tarea.nombre }}</td>
+                 <td>{{ tarea.controles }}</td>
       
             </tr>
         {% endfor %}

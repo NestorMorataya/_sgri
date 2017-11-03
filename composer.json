@@ -17,12 +17,12 @@
              "AmenazaBundle\\":"src/AmenazaBundle",
 
              "ControlBundle\\":"src/ControlBundle",
-             "TareaBundle\\":"src/TareaBundle"
-            "AmenazaCatBundle\\":"src/AmenazaCatBundle",
-            "AmenazaBundle\\":"src/AmenazaBundle",
+             "TareaBundle\\":"src/TareaBundle",
 
             "PlanTratamientoBundle\\":"src/PlanTratamientoBundle",
-            "CategoriaPlanBundle\\":"src/CategoriaPlanBundle"
+            "CategoriaPlanBundle\\":"src/CategoriaPlanBundle",
+            "BdBundle\\":"src/BdBundle",
+            "ControlactivoBundle\\":"src/ControlactivoBundle"
 
         },
         "classmap": [
@@ -43,6 +43,7 @@
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "symfony/monolog-bundle": "^3.0.2",
+        "symfony/options-resolver": "^3.3",
         "symfony/swiftmailer-bundle": "~2.3,>=2.3.10",
         "symfony/symfony": "2.8.*",
         "twig/twig": "^1.0||^2.0"

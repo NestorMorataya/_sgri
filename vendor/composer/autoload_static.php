@@ -46,6 +46,7 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Apcu\\' => 22,
             'Symfony\\Component\\Security\\Acl\\' => 31,
+            'Symfony\\Component\\OptionsResolver\\' => 34,
             'Symfony\\Component\\' => 18,
             'Symfony\\Bundle\\SwiftmailerBundle\\' => 33,
             'Symfony\\Bundle\\MonologBundle\\' => 29,
@@ -91,9 +92,14 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
         ),
         'C' => 
         array (
+            'ControlactivoBundle\\' => 20,
             'ControlBundle\\' => 14,
             'CategoriaPlanBundle\\' => 20,
             'CategoriaBundle\\' => 16,
+        ),
+        'B' => 
+        array (
+            'BdBundle\\' => 9,
         ),
         'A' => 
         array (
@@ -156,6 +162,10 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
         'Symfony\\Component\\Security\\Acl\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/security-acl',
+        ),
+        'Symfony\\Component\\OptionsResolver\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/options-resolver',
         ),
         'Symfony\\Component\\' => 
         array (
@@ -253,20 +263,25 @@ class ComposerStaticInit50979c99cef91ca9bce7b93af5d4c25d
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
         ),
-
+        'ControlactivoBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/ControlactivoBundle',
+        ),
         'ControlBundle\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/ControlBundle'
+            0 => __DIR__ . '/../..' . '/src/ControlBundle',
         ),
-
         'CategoriaPlanBundle\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/CategoriaPlanBundle',
-
         ),
         'CategoriaBundle\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/CategoriaBundle',
+        ),
+        'BdBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/BdBundle',
         ),
         'AppBundle\\' => 
         array (

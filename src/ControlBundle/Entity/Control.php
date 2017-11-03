@@ -3,7 +3,7 @@
 namespace ControlBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Control
@@ -37,18 +37,17 @@ class Control
     private $objetivo;
 
     /**
-     * @var string
+     * @var strings
      *
      * @ORM\Column(name="control", type="string", length=50)
      */
     private $control;
 
 
-    /**
-     * @ORM\OneToMany(targetEntity="TareaBundle\Entity\Tarea", mappedBy="control")
-     */
-    private $tareas;
- 
+    public function __construct()
+    {
+        $this->tareas = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -131,13 +130,20 @@ class Control
     {
         return $this->control;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
+
+
+    function __toString()
     {
-        $this->tareas = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->control;
     }
+
+    /**
+     * @ORM\OneToMany(targetEntity="TareaBundle\Entity\Tarea", mappedBy="control")
+     */
+    protected $tareas;
+
+   
+    
 
     /**
      * Add tarea
@@ -163,8 +169,6 @@ class Control
         $this->tareas->removeElement($tarea);
     }
 
-
-
     /**
      * Get tareas
      *
@@ -173,12 +177,5 @@ class Control
     public function getTareas()
     {
         return $this->tareas;
-    }
-
-     public function __toString(){
-        // to show the name of the Category in the select
-        return $this->control;
-        // to show the id of the Category in the select
-        // return $this->id;
     }
 }

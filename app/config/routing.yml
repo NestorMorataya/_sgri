@@ -88,6 +88,15 @@ menu_catamenaza:
 
 
 
+
+
+
+
+
+
+
+
+
 menu_tarea:
     resource: "@TareaBundle/Controller/TareaController.php"
     type:     annotation
@@ -106,6 +115,20 @@ menu_asignarcontrol:
     resource: "@ControlBundle/Controller/ControlController.php"
     type:     annotation
 
+
+
+
+
+
+
+
+
+
+bd_test_home:
+    resource: "@BdBundle/Controller/"
+    type:     annotation
+    prefix: /test
+
 plan_tratamiento_plan.tratamiento:
     resource: "@PlanTratamientoBundle/Controller/Plan_TratamientoController.php"
     type: annotation
@@ -121,3 +144,15 @@ categoria_plan_categoria.plan:
 categoria_plan:
     resource: "@CategoriaPlanBundle/Resources/config/routing.yml"
     prefix: /categoria_plan
+
+controlactivo:
+    resource: "@ControlactivoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+bd:
+    resource: "@BdBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+

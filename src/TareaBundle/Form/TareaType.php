@@ -13,8 +13,7 @@ class TareaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre');
-        $builder->add('control');
+        $builder->add('nombre')->add('control');
     }
     
     /**
@@ -24,7 +23,6 @@ class TareaType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'TareaBundle\Entity\Tarea'
-            
         ));
     }
 

@@ -25,6 +25,8 @@ class ControlController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        //$query=$em->createQuery(
+
 
         $controls = $em->getRepository('ControlBundle:Control')->findAll();
 
@@ -58,7 +60,7 @@ class ControlController extends Controller
             'form' => $form->createView(),
             ));
     }
-
+ 
     /**
      * Finds and displays a control entity.
      *
