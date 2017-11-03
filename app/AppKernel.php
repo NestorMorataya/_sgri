@@ -30,6 +30,8 @@ class AppKernel extends Kernel
 
             new PlanTratamientoBundle\PlanTratamientoBundle(),
             new CategoriaPlanBundle\CategoriaPlanBundle(),
+            new BdBundle\BdBundle(),
+            new ControlactivoBundle\ControlactivoBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -15,6 +15,8 @@ imports:
     - { resource: "@TareaBundle/Resources/config/services.yml" }
     - { resource: "@PlanTratamientoBundle/Resources/config/services.yml" }
     - { resource: "@CategoriaPlanBundle/Resources/config/services.yml" }
+    - { resource: "@BdBundle/Resources/config/services.yml" }
+    - { resource: "@ControlactivoBundle/Resources/config/services.yml" }
 
 
  

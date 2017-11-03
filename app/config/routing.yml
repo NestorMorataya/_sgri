@@ -1,3 +1,13 @@
+controlactivo:
+    resource: "@ControlactivoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+bd:
+    resource: "@BdBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 
 amenaza:
     resource: "@AmenazaBundle/Controller/AmenazaController.php"
@@ -105,3 +115,9 @@ control:
 menu_asignarcontrol:
     resource: "@ControlBundle/Controller/ControlController.php"
     type:     annotation
+
+bd_test_home:
+    resource: "@BdBundle/Controller/"
+    type:     annotation
+    prefix: /test
+    

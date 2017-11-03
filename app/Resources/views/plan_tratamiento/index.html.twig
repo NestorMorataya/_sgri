@@ -8,7 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Descripcion</th>
-                <th>Actions</th>
+                <th>Tarea</th>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +16,7 @@
             <tr>
                 <td><a href="{{ path('plan_tratamiento_show', { 'id': plan_Tratamiento.id }) }}">{{ plan_Tratamiento.id }}</a></td>
                 <td>{{ plan_Tratamiento.descripcion }}</td>
+                 <td>{{ plan_Tratamiento.tarea }}</td>
                 <td>
                     <ul>
                         <li>
@@ -24,7 +25,7 @@
                         <li>
                             <a href="{{ path('plan_tratamiento_edit', { 'id': plan_Tratamiento.id }) }}">edit</a>
                         </li>
-                    </ul>
+                    </ul> 
                 </td>
             </tr>
         {% endfor %}

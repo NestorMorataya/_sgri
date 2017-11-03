@@ -62,40 +62,43 @@ class Plan_Tratamiento
         return $this->descripcion;
     }
 
-
-    /**
-     * @ORM\ManyToOne(targetEntity="TareaBundle\Entity\Tarea")
-     */
-    protected $tarea;
-
-    /**
-     * Set tarea
-     *
-     * @param \TareaBundle\Entity\Tarea $tarea
-     *
-     * @return Plan_Tratamiento
-     */
-    public function setTarea(\TareaBundle\Entity\Tarea $tarea = null)
-    {
-        $this->tarea = $tarea;
-    
-        return $this;
-    }
-
-    /**
-     * Get tarea
-     *
-     * @return \TareaBundle\Entity\Tarea
-     */
-    public function getTarea()
-    {
-        return $this->tarea;
-    }
-
+  
      public function __toString(){
         // to show the name of the Category in the select
         return $this->descripcion;
         // to show the id of the Category in the select
         // return $this->id;
+    }
+
+   /**
+     * @ORM\ManyToOne(targetEntity="TareaBundle\Entity\Tarea", inversedBy="Tarea")
+     * @ORM\JoinColumn(name="id_tarea", referencedColumnName="id", onDelete="CASCADE")
+     */
+    protected $Tareas;
+
+   
+
+    /**
+     * Set tareas
+     *
+     * @param \TareaBundle\Entity\Tarea $tareas
+     *
+     * @return Plan_Tratamiento
+     */
+    public function setTareas(\TareaBundle\Entity\Tarea $tareas = null)
+    {
+        $this->Tareas = $tareas;
+    
+        return $this;
+    }
+
+    /**
+     * Get tareas
+     *
+     * @return \TareaBundle\Entity\Tarea
+     */
+    public function getTareas()
+    {
+        return $this->Tareas;
     }
 }

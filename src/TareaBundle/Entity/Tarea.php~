@@ -28,18 +28,6 @@ class Tarea
      */
     private $nombre;
 
-
-    /**
-     * @ORM\ManyToOne(targetEntity="PlanTratamientoBundle\Entity\Plan_Tratamiento")
-     */
-    protected $planTratamiento;
-
-
-    /**
-     * @ORM\OneToMany(targetEntity="TareaBundle\Entity\Tarea", mappedBy="control")
-     */
-    private $tareas;
-
     /**
      * Get id
      *
@@ -74,47 +62,91 @@ class Tarea
         return $this->nombre;
     }
 
-    /**
-     * Set control
-     *
-     * @param \ControlBundle\Entity\Control $control
-     *
-     * @return Tarea
-     */
-    public function setControl(\ControlBundle\Entity\Control $control = null)
-    {
-        $this->control = $control;
-    
-        return $this;
-    }
 
     /**
-     * Get control
-     *
-     * @return \ControlBundle\Entity\Control
+     * @ORM\ManyToOne(targetEntity="ControlBundle\Entity\Control", inversedBy="Control")
+     * @ORM\JoinColumn(name="id_control", referencedColumnName="id", onDelete="CASCADE")
      */
-    public function getControl()
-    {
-        return $this->control;
-    }
+    protected $controles;
+
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="control_id", type="integer", nullable=true)
+     * @ORM\OneToMany(targetEntity="PlanTratamientoBundle\Entity\Plan_Tratamiento", mappedBy="control")
      */
-    private $controlId;
+    protected $plan_Tratamiento;
 
-    /**
-     * Generates the magic method
-     * 
-     */
+
      public function __toString(){
         // to show the name of the Category in the select
         return $this->nombre;
         // to show the id of the Category in the select
         // return $this->id;
     }
+   
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->plan_Tratamiento = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
+    /**
+     * Add planTratamiento
+     *
+     * @param \PlanTratamientoBundle\Entity\Plan_Tratamiento $planTratamiento
+     *
+     * @return Tarea
+     */
+    public function addPlanTratamiento(\PlanTratamientoBundle\Entity\Plan_Tratamiento $planTratamiento)
+    {
+        $this->plan_Tratamiento[] = $planTratamiento;
+    
+        return $this;
+    }
+
+    /**
+     * Remove planTratamiento
+     *
+     * @param \PlanTratamientoBundle\Entity\Plan_Tratamiento $planTratamiento
+     */
+    public function removePlanTratamiento(\PlanTratamientoBundle\Entity\Plan_Tratamiento $planTratamiento)
+    {
+        $this->plan_Tratamiento->removeElement($planTratamiento);
+    }
+
+    /**
+     * Get planTratamiento
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlanTratamiento()
+    {
+        return $this->plan_Tratamiento;
+    }
+
+    /**
+     * Set controles
+     *
+     * @param \ControlBundle\Entity\Control $controles
+     *
+     * @return Tarea
+     */
+    public function setControles(\ControlBundle\Entity\Control $controles = null)
+    {
+        $this->controles = $controles;
+    
+        return $this;
+    }
+
+    /**
+     * Get controles
+     *
+     * @return \ControlBundle\Entity\Control
+     */
+    public function getControles()
+    {
+        return $this->controles;
+    }
 }
