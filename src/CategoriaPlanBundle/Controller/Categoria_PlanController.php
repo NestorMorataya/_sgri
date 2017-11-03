@@ -17,7 +17,7 @@ class Categoria_PlanController extends Controller
     /**
      * Lists all categoria_Plan entities.
      *
-     * @Route("/", name="categoria_plan_index")
+     * @Route("/index", name="categoria_plan_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -132,5 +132,16 @@ class Categoria_PlanController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Lists all categoria entities.
+     *
+     * @Route("/control/menuPlan/menuCatPlan", name="menu_cat_plan")
+     * @Method("GET")
+     */
+ public function menuAction()
+    {
+        return $this->render('menu/menuCatPlan.html.twig');
     }
 }

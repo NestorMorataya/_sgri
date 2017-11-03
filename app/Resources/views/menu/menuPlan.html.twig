@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/panelVertical2.css')}}">
+{% endblock %}
+
+{% block body %}
+    <h1>Activos</h1>
+<CENTER><H2>PLAN DE TRATAMIENTO</H2></CENTER>
+<hr>
+
+<ul>
+    <li>
+        <a href="{{ path('menu_control') }}">Regresar</a>
+    </li>
+</ul>
+
+<center>
+  <div class="vertical-menu">
+    <div class="page-header">
+   		<a href="{{ path('plan_tratamiento_index') }}">Ver planes de tratamiento</a>	
+   	</div>
+	  <div class="page-header">
+    	<a href="{{ path('plan_tratamiento_new') }}">Ingresar plan</a>
+	  </div>
+    <div>
+      <a href="{{ path('menu_cat_plan') }}">Gestionar Categoria de plan</a>
+    </div>
+  </div>
+</center>
+{% endblock %}
+
+

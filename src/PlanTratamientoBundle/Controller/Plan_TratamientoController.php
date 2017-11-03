@@ -17,7 +17,7 @@ class Plan_TratamientoController extends Controller
     /**
      * Lists all plan_Tratamiento entities.
      *
-     * @Route("/", name="plan_tratamiento_index")
+     * @Route("/index", name="plan_tratamiento_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -132,5 +132,16 @@ class Plan_TratamientoController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Lists all plan entities.
+     *
+     * @Route("/control/menuPlan", name="menu_plan_tratamiento")
+     * @Method("GET")
+     */
+    public function menuAction()
+    {
+        return $this->render('menu/menuPlan.html.twig');
     }
 }

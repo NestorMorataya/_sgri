@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/panelVertical2.css')}}">
+{% endblock %}
+
+{% block body %}
+    <h1>Activos</h1>
+<CENTER><H2>CATEGORIA DE PLAN</H2></CENTER>
+<hr>
+
+<ul>
+    <li>
+        <a href="{{ path('menu_control') }}">Regresar</a>
+    </li>
+</ul>
+
+<center>
+  <div class="vertical-menu">
+    <div class="page-header">
+   		<a href="{{ path('categoria_plan_index') }}">Ver categorias de plan</a>	
+   	</div>
+	  <div class="page-header">
+    	<a href="{{ path('categoria_plan_new') }}">Ingresar categoria de plan</a>
+	  </div>
+  </div>
+</center>
+{% endblock %}
