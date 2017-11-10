@@ -1,0 +1,64 @@
+/*al pasar el mouse sobre la tabla dinamica*/
+tr:hover td{background:#E6E6E6;}
+
+/*toltip de PROBABILIDAD*/
+a.Ntooltip {
+position: relative; /* es la posición normal */
+text-decoration: none !important; /* forzar sin subrayado */
+color:#A4A4A4 !important; /* forzar color del texto de ayuda */
+font-weight:bold !important; /* forzar negritas */
+}
+
+a.Ntooltip:hover {
+z-index:999; /* va a estar por encima de todo */
+background-color:#CEF6CE; /* color de fondo al pasar el mouese en ayuda */
+}
+
+a.Ntooltip span {
+display: none; /* el elemento va a estar oculto */
+}
+
+a.Ntooltip:hover span {
+display: block; /* se fuerza a mostrar el bloque */
+position: absolute; /* se fuerza a que se ubique en un lugar de la pantalla */
+top:-5em; left:5em; /* donde va a estar la ventana emergente*/
+width:300px; /* el ancho por defecto que va a tener */
+padding:7px; /* la separación entre el contenido y los bordes */
+background-color:#D8D8D8 ; /* el color de fondo de la ventana emergente */
+color: black; /* el color de los textos de la evntana emergente */
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);/*sombra de ventana emergente*/
+border-width: 5px;
+font-size: 85%; /*tamano de la letra de la ventana emergente*/
+}
+
+/*toltip de DEGRADACION*/
+a.Ntooltip2 {
+position: relative; /* es la posición normal */
+text-decoration: none !important; /* forzar sin subrayado */
+
+
+color:#A4A4A4 !important; /* forzar color del texto de ayuda */
+font-weight:bold !important; /* forzar negritas */
+}
+
+a.Ntooltip2:hover {
+z-index:999; /* va a estar por encima de todo */
+background-color:#CEF6CE; /* color de fondo al pasar el mouese en ayuda */
+}
+
+a.Ntooltip2 span {
+display: none; /* el elemento va a estar oculto */
+}
+
+a.Ntooltip2:hover span {
+display: block; /* se fuerza a mostrar el bloque */
+position: absolute; /* se fuerza a que se ubique en un lugar de la pantalla */
+top:-5em; left:5em; /* donde va a estar la ventana emergente*/
+width:150px; /* el ancho por defecto que va a tener */
+padding:7px; /* la separación entre el contenido y los bordes */
+background-color:#D8D8D8 ; /* el color de fondo de la ventana emergente */
+color: black; /* el color de los textos de la evntana emergente */
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);/*sombra de ventana emergente*/
+border-width: 5px;
+font-size: 85%; /*tamano de la letra de la ventana emergente*/
+}

@@ -77,6 +77,68 @@ class Riesgo
      */
     private $estimacionRiesgo;
 
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="activo", type="integer", nullable=false)
+     */
+    private $activo;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="amenaza", type="integer", nullable=false)
+     */
+    private $amenaza;
+
+    /**
+     * Set activo
+     *
+     * @param integer $activo
+     * @return Riesgo
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+    
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return integer 
+     */
+    public function getActivo()
+    {
+        return $this->activo;
+    }
+
+    
+
+    /**
+     * Set amenaza
+     *
+     * @param integer $amenaza
+     * @return Riesgo
+     */
+    public function setAmenaza($amenaza)
+    {
+        $this->amenaza = $amenaza;
+    
+        return $this;
+    }
+
+    /**
+     * Get amenaza
+     *
+     * @return integer 
+     */
+    public function getAmenaza()
+    {
+        return $this->amenaza;
+    }
+
 
     /**
      * Get id

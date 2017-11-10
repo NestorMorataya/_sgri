@@ -1,4 +1,7 @@
-
+algo:
+    resource: "@RiesgoBundle/Controller/RiesgoController.php"
+    type: annotation
+    
 amenaza:
     resource: "@AmenazaBundle/Controller/AmenazaController.php"
     type:     annotation
