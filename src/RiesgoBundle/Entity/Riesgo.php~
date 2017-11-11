@@ -342,9 +342,4 @@ class Riesgo
     */
     protected $plan_tratamiento;
 
-    public function __toString() {
-        
-    return $this->activo;
-}
-
 }

@@ -1,35 +1,27 @@
-
 {% extends 'base.html.twig' %}
- 
 {% block body %}
- 
 <div class="container" style="margin-top:30px;">
-  <div class="row well">
-   <div class="col-md-6">
-       <div class="page-header">
-            <h2>NUEVO TAREA</h2> 
-       </div>
-    {{ form_start(form) }}
+    <div class="row well">
+       <div class="col-md-6">
+           <div class="page-header">
+            <h2>NUEVA TAREA</h2> 
+        </div>
+        {{ form_start(form) }}
         <div class="form-group">
-             {{ form_label(form.nombre)}}
-             {{ form_widget(form.nombre, {'attr':{'class':'form-control'}}) }}
-        </div>
-         <div class="form-group">
-             {{ form_label(form.control)}}
-             {{ form_widget(form.control, {'attr':{'class':'form-control'}}) }}
-        </div>
-          <div class="form-group">
-          <label>Control</label>
-          <select name='control'>
-            <option>Seleccione un control</option>
-            <option value="{{form.control}}">{{ form.control }}</option>
-          
-          </select>
-        </div>
+         {{ form_label(form.nombre)}}
+         {{ form_widget(form.nombre, {'attr':{'class':'form-control'}}) }}
+     </div>
+     <div class="form-group">
+        {{ form_label(form.controles)}}
+        {{ form_widget(form.controles) }}
+    </div>
 
-        
-       <button type="submit" class="btn">Guardar</button>
-       <a class="btn" href="{{ path('menu_tarea') }}">Regresar</a>
+    <div class="form-group">
+        {{ form_label(form.planes)}}
+        {{ form_widget(form.planes) }}
+    </div>
+    <button type="submit" class="btn">Guardar</button>
+    <a class="btn" href="{{ path('tarea_menu') }}">Regresar</a>
 
     {{ form_end(form) }}
 </div>

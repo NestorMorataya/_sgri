@@ -17,7 +17,7 @@ class Plan_TratamientoController extends Controller
     /**
      * Lists all plan_Tratamiento entities.
      *
-     * @Route("/index", name="plan_tratamiento_index")
+     * @Route("/", name="plan_tratamiento_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -134,6 +134,7 @@ class Plan_TratamientoController extends Controller
         ;
     }
 
+    
     /**
      * Lists all plan entities.
      *

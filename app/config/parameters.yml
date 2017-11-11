@@ -5,7 +5,7 @@ parameters:
     database_name: sgri
     database_user: postgres
 
-    database_password: administrador
+    database_password: 4321
     database_password: null
     database_password: 4321
     mailer_transport: smtp

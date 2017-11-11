@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Plan_Tratamiento
 {
+    
     /**
      * @var int
      *
@@ -70,11 +71,45 @@ class Plan_Tratamiento
         // return $this->id;
     }
 
-   /**
-     * @ORM\ManyToOne(targetEntity="TareaBundle\Entity\Tarea", inversedBy="Tarea")
-     * @ORM\JoinColumn(name="id_tarea", referencedColumnName="id", onDelete="CASCADE")
-     */
-    protected $Tareas;
+    /**
+    *Un plan tiene una categoria (One-To-One)
+    *@ORM\OneToOne (targetEntity="CategoriaPlanBundle\Entity\Categoria_Plan")
+    */
+    protected $categoria_plan;
+    /**
+    *Set categoria_plan
+    *
+    *@param \CategoriaPlanBundle\Entity\Categoria_Plan $categoria_plan
+    *
+    *@return Plan_Tratamiento
+    */
+    public function setCategoriaPlan(\CategoriaPlanBundle\Entity\Categoria_Plan $categoria_plan)
+    {
+        $this->categoria_plan=$categoria_plan;
+        
+        return $this;
+    }
 
-   
+    /**
+    *Get categoria_plan
+    *
+    *@return \CategoriaPlanBundle\Entity\Categoria_Plan
+    */
+    public function getCategoriaPlan()
+    {
+        return $this->categoria_plan;
+
+    }
+
+    /**
+    *Un plan tiene un riesgo (One-To-One)
+    *@ORM\OneToOne (targetEntity="RiesgoBundle\Entity\Riesgo")
+    */
+    protected $riesgo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="TareaBundle\Entity\Tarea", mappedBy="planes")
+     */
+    protected $tareas;
+
 }

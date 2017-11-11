@@ -1,3 +1,4 @@
+
 algo:
     resource: "@RiesgoBundle/Controller/RiesgoController.php"
     type: annotation
@@ -100,9 +101,10 @@ menu_catamenaza:
 
 
 
-menu_tarea:
+tarea_menu:
     resource: "@TareaBundle/Controller/TareaController.php"
     type:     annotation
+
 
 tarea:
     resource: "@TareaBundle/Controller/"
@@ -125,13 +127,6 @@ menu_asignarcontrol:
 
 
 
-
-
-bd_test_home:
-    resource: "@BdBundle/Controller/"
-    type:     annotation
-    prefix: /test
-
 plan_tratamiento_plan.tratamiento:
     resource: "@PlanTratamientoBundle/Controller/Plan_TratamientoController.php"
     type: annotation
@@ -147,15 +142,5 @@ categoria_plan_categoria.plan:
 categoria_plan:
     resource: "@CategoriaPlanBundle/Resources/config/routing.yml"
     prefix: /categoria_plan
-
-controlactivo:
-    resource: "@ControlactivoBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-bd:
-    resource: "@BdBundle/Controller/"
-    type:     annotation
-    prefix:   /
 
 

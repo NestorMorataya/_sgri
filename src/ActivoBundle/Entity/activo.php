@@ -290,11 +290,6 @@ class activo
         return $this->cantidad;
     }
 
-    /**
-     * @ORM\OneToMany(targetEntity="ControlactivoBundle\Entity\Controlactivo", mappedBy="activo")
-     */
-    protected $controlactivos;
-    
 
     /**
      * Set empresaId
@@ -322,45 +317,5 @@ class activo
 
     
     
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->controlactivos = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add controlactivo
-     *
-     * @param \ControlactivoBundle\Entity\Controlactivo $controlactivo
-     *
-     * @return activo
-     */
-    public function addControlactivo(\ControlactivoBundle\Entity\Controlactivo $controlactivo)
-    {
-        $this->controlactivos[] = $controlactivo;
-    
-        return $this;
-    }
-
-    /**
-     * Remove controlactivo
-     *
-     * @param \ControlactivoBundle\Entity\Controlactivo $controlactivo
-     */
-    public function removeControlactivo(\ControlactivoBundle\Entity\Controlactivo $controlactivo)
-    {
-        $this->controlactivos->removeElement($controlactivo);
-    }
-
-    /**
-     * Get controlactivos
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getControlactivos()
-    {
-        return $this->controlactivos;
-    }
+ 
 }

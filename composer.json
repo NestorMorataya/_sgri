@@ -20,9 +20,8 @@
              "TareaBundle\\":"src/TareaBundle",
 
             "PlanTratamientoBundle\\":"src/PlanTratamientoBundle",
-            "CategoriaPlanBundle\\":"src/CategoriaPlanBundle",
-            "BdBundle\\":"src/BdBundle",
-            "ControlactivoBundle\\":"src/ControlactivoBundle"
+            "CategoriaPlanBundle\\":"src/CategoriaPlanBundle"
+
 
         },
         "classmap": [

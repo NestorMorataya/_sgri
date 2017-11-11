@@ -62,69 +62,22 @@ class Tarea
         return $this->nombre;
     }
 
-
+    public function __toString() {
+    return $this->getNombre();
+    }
+    
     /**
-     * @ORM\ManyToOne(targetEntity="ControlBundle\Entity\Control", inversedBy="Control")
-     * @ORM\JoinColumn(name="id_control", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="ControlBundle\Entity\Control", inversedBy="tareas")
+     * @ORM\JoinColumn(name="id_control", referencedColumnName="id", onDelete="CASCADE") 
      */
     protected $controles;
 
 
     /**
-     * @ORM\OneToMany(targetEntity="PlanTratamientoBundle\Entity\Plan_Tratamiento", mappedBy="control")
+     * @ORM\ManyToOne(targetEntity="PlanTratamientoBundle\Entity\Plan_Tratamiento", inversedBy="tareas")
+     * @ORM\JoinColumn(name="id_plan", referencedColumnName="id", onDelete="CASCADE") 
      */
-    protected $plan_Tratamiento;
-
-
-     public function __toString(){
-        // to show the name of the Category in the select
-        return $this->nombre;
-        // to show the id of the Category in the select
-        // return $this->id;
-    }
-   
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->plan_Tratamiento = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-
-    /**
-     * Add planTratamiento
-     *
-     * @param \PlanTratamientoBundle\Entity\Plan_Tratamiento $planTratamiento
-     *
-     * @return Tarea
-     */
-    public function addPlanTratamiento(\PlanTratamientoBundle\Entity\Plan_Tratamiento $planTratamiento)
-    {
-        $this->plan_Tratamiento[] = $planTratamiento;
-    
-        return $this;
-    }
-
-    /**
-     * Remove planTratamiento
-     *
-     * @param \PlanTratamientoBundle\Entity\Plan_Tratamiento $planTratamiento
-     */
-    public function removePlanTratamiento(\PlanTratamientoBundle\Entity\Plan_Tratamiento $planTratamiento)
-    {
-        $this->plan_Tratamiento->removeElement($planTratamiento);
-    }
-
-    /**
-     * Get planTratamiento
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPlanTratamiento()
-    {
-        return $this->plan_Tratamiento;
-    }
+    protected $planes;
 
     /**
      * Set controles
@@ -148,5 +101,29 @@ class Tarea
     public function getControles()
     {
         return $this->controles;
+    }
+
+    /**
+     * Set planes
+     *
+     * @param \PlanTratamientoBundle\Entity\Plan_Tratamiento $planes
+     *
+     * @return Tarea
+     */
+    public function setPlanes(\PlanTratamientoBundle\Entity\Plan_Tratamiento $planes = null)
+    {
+        $this->planes = $planes;
+    
+        return $this;
+    }
+
+    /**
+     * Get planes
+     *
+     * @return \PlanTratamientoBundle\Entity\Plan_Tratamiento
+     */
+    public function getPlanes()
+    {
+        return $this->planes;
     }
 }

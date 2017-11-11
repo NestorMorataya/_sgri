@@ -63,45 +63,9 @@ class Plan_Tratamiento
         return $this->descripcion;
     }
 
-  
-     public function __toString(){
-        // to show the name of the Category in the select
-        return $this->descripcion;
-        // to show the id of the Category in the select
-        // return $this->id;
-    }
-
-   /**
-     * @ORM\ManyToOne(targetEntity="TareaBundle\Entity\Tarea", inversedBy="Tarea")
-     * @ORM\JoinColumn(name="id_tarea", referencedColumnName="id", onDelete="CASCADE")
-     */
-    protected $Tareas;
-
-   
-
-    /**
-     * Set tareas
-     *
-     * @param \TareaBundle\Entity\Tarea $tareas
-     *
-     * @return Plan_Tratamiento
-     */
-    public function setTareas(\TareaBundle\Entity\Tarea $tareas = null)
-    {
-        $this->Tareas = $tareas;
-    
-        return $this;
-    }
-
-    /**
-     * Get tareas
-     *
-     * @return \TareaBundle\Entity\Tarea
-     */
-    public function getTareas()
-    {
-        return $this->Tareas;
-    }
+    public function __toString() {
+    return $this->descripcion;
+}
 
     /**
     *Un plan tiene una categoria (One-To-One)
@@ -138,4 +102,75 @@ class Plan_Tratamiento
     *@ORM\OneToOne (targetEntity="RiesgoBundle\Entity\Riesgo")
     */
     protected $riesgo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="TareaBundle\Entity\Tarea", mappedBy="planes")
+     */
+    protected $tareas;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tareas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set riesgo
+     *
+     * @param \RiesgoBundle\Entity\Riesgo $riesgo
+     *
+     * @return Plan_Tratamiento
+     */
+    public function setRiesgo(\RiesgoBundle\Entity\Riesgo $riesgo = null)
+    {
+        $this->riesgo = $riesgo;
+    
+        return $this;
+    }
+
+    /**
+     * Get riesgo
+     *
+     * @return \RiesgoBundle\Entity\Riesgo
+     */
+    public function getRiesgo()
+    {
+        return $this->riesgo;
+    }
+
+    /**
+     * Add tarea
+     *
+     * @param \TareaBundle\Entity\Tarea $tarea
+     *
+     * @return Plan_Tratamiento
+     */
+    public function addTarea(\TareaBundle\Entity\Tarea $tarea)
+    {
+        $this->tareas[] = $tarea;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tarea
+     *
+     * @param \TareaBundle\Entity\Tarea $tarea
+     */
+    public function removeTarea(\TareaBundle\Entity\Tarea $tarea)
+    {
+        $this->tareas->removeElement($tarea);
+    }
+
+    /**
+     * Get tareas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTareas()
+    {
+        return $this->tareas;
+    }
 }
