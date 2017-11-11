@@ -43,6 +43,10 @@
                         <li>
                             <a href="{{ path('activo_show2', { 'id': activo.id }) }}">Analis Riesgo</a>
                         </li>
+                        <br>
+                         <li>
+                            <a href="{{ path('activo_ver_riesgo', { 'id': activo.id }) }}">Ver Analisis</a>
+                        </li>
                     </ul>
                 </td>
 
@@ -55,9 +59,7 @@
 </center>
 </div>
     <ul>
-        <li>
-            <a href="{{ path('activo_new') }}">Crear un nuevo Activo</a>
-        </li>
+        
         <br>
         <li>
             <a href="{{ path('menu_activo') }}">Regresar</a>

@@ -189,6 +189,39 @@ class RiesgoController extends Controller
         ));
     }
 
+/**
+     * Finds and displays a activo entity.
+     *
+     * @Route("/ver/{id}", name="activo_ver_riesgo")
+     * @Method("GET")
+     */
+    public function showRiesgoAct(activo $activo)
+    {
+        //$deleteForm = $this->createDeleteForm($activo);
+       // return new Response('Holi');
+        
+         $cat = new Cat_Amenaza();
+         $ame = new Amenaza();
+         
+       $em = $this->getDoctrine()->getManager();
+        $riesgos = $em->getRepository('RiesgoBundle:Riesgo')->findBy(array('activo' => $activo->getId()));
+
+        $cat = $em->getRepository('AmenazaCatBundle:Cat_Amenaza')->findAll();
+        $ame = $em->getRepository('AmenazaBundle:Amenaza')->findAll();
+
+
+// );
+//  $em->flush();
+          //$ame = $em->getRepository('AmenazaBundle:Amenaza')->findById($cat);
+         // $mascotas = $em->getRepository(‘AppBundle:Mascota’)->findByClienteId($cliente_id);
+
+         // $ame = $em->getRepository('AmenazaBundle:Amenaza')->findByCategoriaId($Id);
+        return $this->render('riesgo/verActivoRiesgo.html.twig', array(
+           'activo' => $activo, 'categoria' => $cat,'amenaza'=>$ame, 'riesgos' => $riesgos,
+           // 'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
 
 
     /**

@@ -1,21 +1,22 @@
 
- 	//Arreglos Globales
- 	var dispo=[];
+ //Arreglos Globales
+    var dispo=[];
     var conf=[];
     var inte=[];
     var valor=[];
     var ame=[];
+    var ameN=[];
     var prob=[];
     var degra=[];
     var impa=[];
     var ries=[];
 
 
- 	//Funcion que captura la informacion en los Textfield y Select
- 	function capturar(){
+    //Funcion que captura la informacion en los Textfield y Select
+    function capturar(){
 
         //alert('capturar');
- 		var dispSeleccionada = document.getElementsByName("dispSeleccionada")[0].value;
+        var dispSeleccionada = document.getElementsByName("dispSeleccionada")[0].value;
         var confSeleccionada= document.getElementsByName("confSeleccionada")[0].value;
         var intSeleccionada = document.getElementsByName("intSeleccionada")[0].value;
         var valorCalc = document.getElementsByName("valorCalc")[0].value;
@@ -34,20 +35,21 @@
         inte[inte.length]= intSeleccionada.trim();
         valor[valor.length]= valorCalc.trim();
        ame[ame.length]= amenazaSeleccionada.substring(1,2).trim();
+         ameN[ameN.length]= amenazaSeleccionada.substring(2,15).trim();
         prob[prob.length]= probabilidadSeleccionada.trim();
         degra[degra.length]= degradacionSeleccionada.trim();
         impa[impa.length]= impactoCalc.trim();
         ries[ries.length]= riesgoCalc.trim();
 
-		actualizarTabla();
+        actualizarTabla();
         //document.getElementById("select").value="0";
 
 
-	}
+    }
 
-	//Actualizando la tabla dinamica con la informacion en Array Globales		
- 	function actualizarTabla(){
- 		var num = 1;
+    //Actualizando la tabla dinamica con la informacion en Array Globales       
+    function actualizarTabla(){
+        var num = 1;
             //alert('actualizar');
             for (var i = 0; i < dispo.length ; i++) {
                 document.getElementById("fila"+i).style.display="table-row";
@@ -56,6 +58,7 @@
                 document.getElementById("int"+i).value = inte[i];
                 document.getElementById("valor"+i).value = valor[i];
                 document.getElementById("ame"+i).value = ame[i];
+                document.getElementById("ameN"+i).value = ameN[i];
                 document.getElementById("prob"+i).value = prob[i];
                 document.getElementById("degra"+i).value = degra[i];
                 document.getElementById("impac"+i).value = impa[i];
@@ -64,7 +67,7 @@
                 num++;
             }
             document.getElementById("contador").value = num-1;
- 	}
+    }
 
 
     function prueba(){

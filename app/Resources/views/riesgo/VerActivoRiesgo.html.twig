@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/css/styleExtra.css')}}">
+{% endblock %}
+
+{% block body %}
+<form  name="insertar" method="get" action="{{ path('guardar2')}}">
+<div class="container" style="margin-top:100px; margin-bottom:150px">
+<div class="row well">
+
+    <h2>Riesgos para el activo con codigo: {{ activo.id }}</h2>
+     <h4>Nombre: {{ activo.nombre }}</h4> 
+
+<input type="number" readonly="readonly" name="activo" id="activo" value="{{activo.id}}" style="display:none;">
+
+
+<div class="box-body table-responsive">
+    <table id='tabla' class="table table-hover">
+        <thead>
+            <tr>
+                <th> Id </th>
+                <th> Disponibilidad </th>
+                <th> Confidencialidad </th>
+                <th> Integridad </th>
+                <th> Valor Activo </th>
+                <th> Degradacion </th>
+                <th> Impacto </th>
+                <th> Probabilidad Ocurrencia </th>
+                <th> Riesgo </th>
+                <th> Activo Id </th>
+                <th> Amenaza  </th>
+                </div>
+            </tr>
+        </thead>
+
+         <tbody>
+        {% for riesgo in riesgos %}
+            <tr>
+                <td>{{ riesgo.id }}</td>
+                <td>{{ riesgo.disponibilidad }}</td>
+                <td>{{ riesgo.confidencialidad }}</td>
+                <td>{{ riesgo.integridad }}</td>
+                <td>{{ riesgo.valorActivo }}</td>
+                <td>{{ riesgo.degradacion }}</td>
+                <td>{{ riesgo.impacto }}</td>
+                <td>{{ riesgo.probOcurrencia }}</td>
+                <td>{{ riesgo.estimacionRiesgo }}</td>
+                <td>{{ riesgo.activo }}</td>
+
+                {% for ame in amenaza %}
+                  {% if ame.id == riesgo.amenaza %}
+                <td>{{ ame.nombre }}</td>
+                  {% endif %}
+                {% endfor %}
+
+            </tr>
+        {% endfor %}
+        </tbody>
+       
+
+
+    </table>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+
+
+{% endblock %}
+

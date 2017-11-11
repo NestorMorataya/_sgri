@@ -69,7 +69,7 @@
           <select class="textfield" name= "amenazaSeleccionada" id= "amenazaSeleccionada">
             <option selected="selected" value="default">Seleccione una amenaza</option>
           {% for ame in amenaza %}
-          <option value="{{ame.catAmenaza.id}}{{ame.id}}">{{ ame.nombre }}</option>
+          <option value="{{ame.catAmenaza.id}}{{ame.id}}{{ ame.nombre }}">{{ ame.nombre }}</option>
 
           {% endfor %}
           </select>
@@ -127,19 +127,20 @@
 		</tr>
 		</thead>
 		<tbody>
-		{% for i in 0..20 %}
-		<tr class="hover" style="display:none" id="fila{{i}}" name="fila{{i}}">
-			<td><input size="9" type="text" id="disp{{i}}" name="disp{{i}}" readonly="readonly"></input></td>
-			<td><input size="9" type="text" id="conf{{i}}" name="conf{{i}}" readonly="readonly"></td>
-			<td><input size="9" type="text" id="int{{i}}" name="int{{i}}" readonly="readonly"></td>
-			<td><input size="9" type="text" id="valor{{i}}" name="valor{{i}}" readonly="readonly"></td>
-			<td><input size="9" type="text" id="ame{{i}}" name="ame{{i}}" readonly="readonly"></td>
-			<td><input size="9" type="text" id="prob{{i}}" name="prob{{i}}" readonly="readonly"></td>
-			<td><input size="9" type="text" id="degra{{i}}" name="degra{{i}}" readonly="readonly"></td>
-			<td><input size="9" type="text" id="impac{{i}}" name="impac{{i}}" readonly="readonly"></td>
-			<td><input size="10" type="text" id="ries{{i}}" name="ries{{i}}" readonly="readonly"></td>
-		</tr>
-		{% endfor %}
+	 {% for i in 0..20 %}
+    <tr class="hover" style="display:none" id="fila{{i}}" name="fila{{i}}">
+      <td><input class="colorfondo" size="8" type="text" id="disp{{i}}" name="disp{{i}}" readonly="readonly"></td>
+      <td><input class="colorfondo" size="8" type="text" id="conf{{i}}" name="conf{{i}}" readonly="readonly"></td>
+      <td><input class="colorfondo" size="8" type="text" id="int{{i}}" name="int{{i}}" readonly="readonly"></td>
+      <td><input class="colorfondo" size="8" type="text" id="valor{{i}}" name="valor{{i}}" readonly="readonly"></td>
+      <td style="display:none"><input  size="8" type="text" id="ame{{i}}" name="ame{{i}}" readonly="readonly" ></td>
+      <td><input class="colorfondo" size="10" type="text" id="ameN{{i}}" name="ameN{{i}}" readonly="readonly"></td>
+      <td><input class="colorfondo" size="8" type="text" id="prob{{i}}" name="prob{{i}}" readonly="readonly"></td>
+      <td><input class="colorfondo"  size="8" type="text" id="degra{{i}}" name="degra{{i}}" readonly="readonly"></td>
+      <td><input class="colorfondo" size="8" type="text" id="impac{{i}}" name="impac{{i}}" readonly="readonly"></td>
+      <td><input class="colorfondo" size="10" type="text" id="ries{{i}}" name="ries{{i}}" readonly="readonly"></td>
+    </tr>
+    {% endfor %}
 		</tbody>
 	</table>
 
@@ -152,6 +153,12 @@
    
 </div>
 
+<style>
+  .colorfondo{
+    background-color: #F2F2F2;
+    border:0;
+  }
+</style>
 
 {% endblock %}
 
