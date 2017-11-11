@@ -14,6 +14,7 @@ class Plan_TratamientoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('descripcion');
+        $builder->add('categoria_plan');
     }
     
     /**

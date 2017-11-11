@@ -132,4 +132,10 @@ class Plan_Tratamiento
         return $this->categoria_plan;
 
     }
+
+    /**
+    *Un plan tiene un riesgo (One-To-One)
+    *@ORM\OneToOne (targetEntity="RiesgoBundle\Entity\Riesgo")
+    */
+    protected $riesgo;
 }

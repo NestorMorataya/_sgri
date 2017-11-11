@@ -70,24 +70,40 @@ class Categoria_Plan
     }
 
     /**
-    *Set plan_tratamiento
+    *Add plan_tratamiento
     *
-    *@param \PlanTratamiento\Entity\Plan_Tratamiento $plan_tratamiento
+    *@param \PlanTratamientoBundle\Entity\Plan_Tratamiento $plan_tratamiento
     *
     *@return Categoria_Plan
     */
-    public function setPlanTratamiento(\PlanTratamiento\Entity\Plan_Tratamiento $plan_tratamiento)
+    public function addPlanTratamiento(\PlanTratamientoBundle\Entity\Plan_Tratamiento $plan_tratamiento)
     {
-        $this->plan_tratamiento=$plan_tratamiento;
+        $this->plan_tratamiento[]=$plan_tratamiento;
         return $this;
+    }
+
+    /**
+     * Remove plan_tratamiento
+     *
+     * @param \PlanTratamientoBundle\Entity\Plan_Tratamiento $plan_tratamiento
+     */
+    public function removeAmenaza(\PlanTratamientoBundle\Entity\Plan_Tratamiento $plan_tratamiento)
+    {
+        $this->plan_tratamiento->removeElement($plan_tratamiento);
     }
 
     /**
     *Get plan_tratamiento
     *
-    *@return \PlanTratamiento\Entity\Plan_Tratamiento
+    *@return \PlanTratamientoBundle\Entity\Plan_Tratamiento
     */
     public function getPlanTratamiento (){
         return $this->plan_tratamiento;
     }
+
+    public function __toString(){
+        return $this->getNombre();
+    }
+
+
 }
