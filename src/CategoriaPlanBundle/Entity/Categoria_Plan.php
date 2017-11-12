@@ -70,29 +70,6 @@ class Categoria_Plan
     }
 
     /**
-    *Add plan_tratamiento
-    *
-    *@param \PlanTratamientoBundle\Entity\Plan_Tratamiento $plan_tratamiento
-    *
-    *@return Categoria_Plan
-    */
-    public function addPlanTratamiento(\PlanTratamientoBundle\Entity\Plan_Tratamiento $plan_tratamiento)
-    {
-        $this->plan_tratamiento[]=$plan_tratamiento;
-        return $this;
-    }
-
-    /**
-     * Remove plan_tratamiento
-     *
-     * @param \PlanTratamientoBundle\Entity\Plan_Tratamiento $plan_tratamiento
-     */
-    public function removeAmenaza(\PlanTratamientoBundle\Entity\Plan_Tratamiento $plan_tratamiento)
-    {
-        $this->plan_tratamiento->removeElement($plan_tratamiento);
-    }
-
-    /**
     *Get plan_tratamiento
     *
     *@return \PlanTratamientoBundle\Entity\Plan_Tratamiento
@@ -102,7 +79,20 @@ class Categoria_Plan
     }
 
     public function __toString(){
-        return $this->getNombre();
+        return $this->nombre;
+    }
+
+    /**
+    *Set plan_tratamiento
+    *
+    *@param \PlanTratamientoBundle\Entity\Plan_Tratamiento $plan_tratamiento
+    *
+    *@return Categoria_Plan
+    */
+    public function setPlanTratamiento(\PlanTratamientoBundle\Entity\Plan_Tratamiento $plan_tratamiento)
+    {
+        $this->plan_tratamiento=$plan_tratamiento;
+        return $this;
     }
 
 

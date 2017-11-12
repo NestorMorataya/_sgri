@@ -71,7 +71,7 @@ class Plan_Tratamiento
     *Un plan tiene una categoria (One-To-One)
     *@ORM\OneToOne (targetEntity="CategoriaPlanBundle\Entity\Categoria_Plan")
     */
-    protected $categoria_plan;
+    public $categoria_plan;
     /**
     *Set categoria_plan
     *

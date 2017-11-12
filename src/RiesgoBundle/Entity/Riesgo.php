@@ -344,7 +344,7 @@ class Riesgo
 
     public function __toString() {
         
-    return $this->activo;
-}
+        return $this->activo;
+    }
 
 }
