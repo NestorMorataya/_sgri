@@ -78,22 +78,17 @@ class RiesgoController extends Controller
      * @Route("/{id}/edit", name="riesgo_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Riesgo $riesgo)
+    public function editAction(Request $request)
     {
-        $deleteForm = $this->createDeleteForm($riesgo);
-        $editForm = $this->createForm('RiesgoBundle\Form\RiesgoType', $riesgo);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('riesgo_edit', array('id' => $riesgo->getId()));
-        }
+           
+        $rieid = $request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $riesgo = $em->getRepository('RiesgoBundle:Riesgo')->findOneBy(array('id'=> $rieid));
+        $cat = $em->getRepository('AmenazaCatBundle:Cat_Amenaza')->findAll();
+        $ame = $em->getRepository('AmenazaBundle:Amenaza')->findAll();
 
         return $this->render('riesgo/edit.html.twig', array(
-            'riesgo' => $riesgo,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'riesgo' => $riesgo, 'categoria' => $cat, 'amenaza' => $ame,
         ));
     }
 
@@ -277,5 +272,52 @@ class RiesgoController extends Controller
             $num++;
         }
          return $this->redirectToRoute('user_homepage');
+    }
+
+        /**
+     * Metodo para edicion de un registro de riesgo.
+     *
+     * @Route("/edicion/guardar", name="edicion_guardar")
+     * @Method("GET")
+     */
+    public function editarAction(Request $request){
+
+
+        $rieid = $request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $riesgo = $em->getRepository('RiesgoBundle:Riesgo')->findOneBy(array('id'=> $rieid));
+        $actid = $request->get('activo');
+        $dis = $request->get('dispSeleccionada');
+        $con = $request->get('confSeleccionada');
+        $int = $request->get('intSeleccionada');
+        $valA = $request->get('valorCalc');
+        $deg = $request->get('degradacionSeleccionada');
+        $prob = $request->get('probabilidadSeleccionada');
+        $imp = $request->get('impactoCalc');
+        $estR = $request->get('riesgoCalc');
+
+        $ame = $request->get('amenazaSeleccionada');
+
+        $ame = substr($ame, 1);
+
+        $riesgo->setDisponibilidad($dis);
+        $riesgo->setConfidencialidad($con);
+        $riesgo->setIntegridad($int);
+        $riesgo->setValorActivo($valA);
+        $riesgo->setDegradacion($deg);
+        $riesgo->setImpacto($imp);
+        $riesgo->setAmenaza($ame);
+        $riesgo->setProbOcurrencia($prob);
+        $riesgo->setEstimacionRiesgo($estR);
+
+
+        $em->persist($riesgo);
+        $em->flush();
+
+        //return new Response($rieid);
+
+        return $this->redirectToRoute('activo_ver_riesgo', array( 'id' => $actid ));
+
+
     }
 }

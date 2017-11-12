@@ -1,21 +1,182 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/css/styleExtra.css')}}">
+{% endblock %}
+
 {% block body %}
-    <h1>Riesgo edit</h1>
+<form  name="insertar" method="get" action="{{ path('edicion_guardar')}}">
+<div class="container" style="margin-top:100px; margin-bottom:150px">
+<div class="row well">
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    <h2>EDICION DE ANALISIS DE RIESGO: {{ riesgo.activo }}</h2>
 
-    <ul>
-        <li>
-            <a href="{{ path('riesgo_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+<input type="number" readonly="readonly" name="id" id="id" value="{{ riesgo.id }}" style="display:none;">
+<input type="number" readonly="readonly" name="activo" id="activo" value="{{ riesgo.activo }}" style="display:none;">
+
+
+
+<h4>Ingrese Dimensiones del Activo</h4>
+<br>
+
+<label>Disponibilidad</label>
+<select name="dispSeleccionada" id="dispSeleccionada" onChange="sumar()" selected=0>
+<option>{{ riesgo.disponibilidad }}</option>
+<option>0</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+</select>
+
+<label>Confidencialidad</label>
+<select name="confSeleccionada" id="confSeleccionada" onChange="sumar()">
+<option>{{ riesgo.confidencialidad }}</option>
+<option>0</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+</select>
+
+<label>Integridad</label>
+<select name="intSeleccionada" id="intSeleccionada" onChange="sumar()">
+<option>{{ riesgo.integridad }}</option>
+<option>0</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+</select>
+
+<label>Valor del Activo:</label>
+<input  type="text" name="valorCalc" id="valorCalc" size="20" readonly="readonly" value="{{ riesgo.valorActivo }}">
+<br><br>
+
+<h4>Analisis Amenazas:</h4>
+<br>
+
+<div class="form-group">
+          <label>Categoria de Amenazas</label>
+          <select name= "catameSeleccionada" required id= "catameSeleccionada" class="textfield" onchange="cambioUbicacion()">
+            <option selected="selected" value="default">--Seleccione una Categoria--</option>
+          {% for cat in categoria %}
+            <option value="{{cat.id}}">{{ cat.nombre }}</option>
+          {% endfor %}
+          </select>
+</div>
+
+<div class="form-group">
+          <label 
+          data-tooltip="Muy Frecuente = 100 = 1 vez al día Frecuente = 70 = 1 vez cada semana\n
+           Normal = 50 = 1 vez cada dos meses ...
+           Poco Frecuente = 10= 1 vez cada seis meses...
+           Muy poco Frecuenta = 5 = Una vez al año" >Amenazas</label>
+          <select class="textfield" name= "amenazaSeleccionada" id= "amenazaSeleccionada">
+          {% for ame in amenaza %}
+            {% if riesgo.amenaza == ame.id %}
+                <option selected="selected" value="{{ame.catAmenaza.id}}{{ame.id}}">{{ ame.nombre }}</option>
+            {% endif %}
+          <option value="{{ame.catAmenaza.id}}{{ame.id}}">{{ ame.nombre }}</option>
+
+          {% endfor %}
+          </select>
+          <input type="number" name="amenaza" id="amenaza" value="" style="display:none;">
+</div>
+
+
+<label onmouseover=""  >Ingrese Degradacion del activo en base a la amenaza</label>
+
+<input   type="number"  min="1" max="100"  title="Puede auxiliarse de Ayuda"  name="degradacionSeleccionada" id="degradacionSeleccionada" size="20" onChange="sumar()" value="{{ riesgo.degradacion }}"> 
+<a class=Ntooltip2 >
+     Ayuda
+<span>
+   Muy Atla = 100% <br> Alta = 75% <br> Media = 50% <br> Baja = 25% <br> Muy Baja = 1%
+</span>
+</a>
+
+<br><br>
+<label>Ingrese la probabilidad de ocurrencia de amenaza</label>
+<input  id="name" title="Puede auxiliarse de Ayuda" type="number" min="5" max="100" name="probabilidadSeleccionada" id="probabilidadSeleccionada" size="20" onChange="sumar()" value="{{ riesgo.probOcurrencia }}"> 
+<a class=Ntooltip >
+     Ayuda
+<span>
+    Muy Frecuente = 100 = 1 vez al día <br> Frecuente = 70 = 1 vez cada semana<br>Normal = 50 = 1 vez cada dos meses<br>Poco Frecuente = 10= 1 vez cada seis meses<br>Muy poco Frecuenta = 5 = Una vez al año
+</span>
+</a>
+
+<br>
+<br>
+<label >Impacto:</label>
+<input type="text" name="impactoCalc" id="impactoCalc" size="20" readonly="readonly" value="{{ riesgo.impacto }}">
+<label><h4>Riesgo de la Amenaza:</h4></label> <input type="text" name="riesgoCalc" id="riesgoCalc" size="20" readonly="readonly" value="{{ riesgo.estimacionRiesgo }}">
+</p>
+
+<a class="btn" href="{{ path('activo_index') }}">Regresar</a>
+<br><br>
+
+
+
+<center><input class="btn" type="submit" name="Enviar" value="Guardar"></center>
+</form>
+
+</div>
+   
+</div>
+
+
+{% endblock %}
+{% block javascripts %}
+<script src="{{ asset('public/js/tablaDinamica.js')}}"></script>
+<script type="text/javascript">
+
+    function sumar() {
+        var n1=parseInt(document.insertar.dispSeleccionada.value);
+        var n2=parseInt(document.insertar.confSeleccionada.value);
+        var n3=parseInt(document.insertar.intSeleccionada.value);
+
+        document.insertar.valorCalc.value=n1+n2+n3;
+        n33=n1+n2+n3;
+
+        var n5 = parseInt(document.insertar.degradacionSeleccionada.value);
+
+        document.insertar.impactoCalc.value=n33*n5;
+        impacto=n33*n5;
+
+        var n7 = parseInt(document.insertar.probabilidadSeleccionada.value);
+        document.insertar.riesgoCalc.value=n7*impacto;
+
+
+    }
+</script>
+<script type="text/javascript">
+    function cambioUbicacion(){
+  var value=document.getElementsByName("catameSeleccionada")[0].value;
+    var ubicacion=document.getElementById("amenazaSeleccionada");
+        ubicacion.options[0].selected=true;
+        
+        if(value=='default'){
+            
+             for (var i = 1; i < ubicacion.options.length; i++) {
+                ubicacion.options[i].style.display="block";
+            }   
+        }
+        else
+        {
+                
+            for (var i = 1; i < ubicacion.options.length; i++) {
+                var valorCorto=ubicacion.options[i].value.substring(0,1); //valor que se obtiene de la amenaza y solo tomamos con substring el primer elemento que es el id de catamenaza que esta en amenaza
+                //alert(valorCorto);
+                if(valorCorto==value)
+                {
+                    ubicacion.options[i].style.display="block";
+
+                }else{
+
+                    ubicacion.options[i].style.display="none";
+                }
+
+            }
+
+        }
+
+}
+    </script>
 {% endblock %}

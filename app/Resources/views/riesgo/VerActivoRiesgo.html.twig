@@ -31,6 +31,7 @@
                 <th> Riesgo </th>
                 <th> Activo Id </th>
                 <th> Amenaza  </th>
+                <th> Acciones </th>
                 </div>
             </tr>
         </thead>
@@ -54,6 +55,7 @@
                 <td>{{ ame.nombre }}</td>
                   {% endif %}
                 {% endfor %}
+                <td><a href="{{ path('riesgo_edit', { 'id': riesgo.id }) }}">Editar</a></td>
 
             </tr>
         {% endfor %}
