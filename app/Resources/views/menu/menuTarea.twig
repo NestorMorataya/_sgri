@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'controles.html.twig' %}
 {% block stylesheets %}
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/panelVertical2.css')}}">
 {% endblock %}
@@ -8,22 +8,31 @@
 <CENTER><H2>TAREAS</H2></CENTER>
 <hr>
 
+
+
+<div class="vertical-menu">
+  <div class="page-header"><center>Gestión de Tareas</center></a>
+
+   		
+   		</div>
+
+
+
+       <a data-toogle="modal" href="{{ path('tarea_index') }}"" data-target="#modal1">Ver tareas</a>
+       <div id="myModal"></div>
+       <a href="{{ path('tarea_new') }}">Ingresar tarea</a>
+
+       <a href="{{ path('tareas_control') }}">Control de Tareas</a>
+
+       <a href="{{ path('asignar_control') }}">Asignar Controles</a>
+
+      </div>
+<hr>
+
 <ul>
     <li>
         <a href="{{ path('menu_control') }}">Regresar</a>
     </li>
 </ul>
-
-
-<div class="vertical-menu">
-   		<div class="page-header">
-   		
-   		</div>
-	
-       <a href="{{ path('tarea_index') }}">Ver tareas</a>
-   
-       <a href="{{ path('tarea_new') }}">Ingresar tarea</a>
-
-      </div>
 
 {% endblock %}

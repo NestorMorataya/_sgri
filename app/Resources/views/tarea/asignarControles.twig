@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<br>
+<br>
+<h3><center>ASIGNAR CONTROLES A ACTIVOS</center></h3>
+<hr>
+<br>
+
+      <br>
+
+    <div class="col-xs-6">
+      <div class="panel panel-success">
+        <div class="panel-heading">CONTROLES</div>
+        <div class="panel-body">
+
+         {{ render(controller('ControlBundle:Control:index2')) }}
+
+       </div>
+     </div>
+   </div>
+   <div class="col-xs-6">
+    <div class="panel panel-success">
+      <div class="panel-heading">ACTIVOS</div>
+      <div class="panel-body">
+        <br>
+    <center><h4> Seleccione el activo:</h4>
+
+      
+      <br>
+          <br>
+          <br>
+          <button type="submit" class="btn">Asignar</button></center>
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+
+     <div class="col-xs-12">
+    <div class="panel panel-success">
+      <div class="panel-heading">CONTROLES ASIGNADOS</div>
+      <div class="panel-body">
+        <center><h4>Activo: </h4>
+        <br>
+           <input  type="text"  size="20" disabled="true"></center>
+          <br>
+          <br>
+
+          <br>
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
+
+

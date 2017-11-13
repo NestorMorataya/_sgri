@@ -1,63 +1,48 @@
-{% extends 'base.html.twig' %}
+{% extends 'controles.html.twig' %}
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/tablas.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/tabla3.css')}}">
 {% endblock %}
 {% block body %}
-<div class="container" style="margin-top:15px; margin-bottom:180px;">
-<hr>
-<div class="col-xs-12">
-<br>
-     <ul>
-        <li>
-            <a href="{{ path('tarea_menu') }}">Regresar</a>
-        </li>
-      </ul>
-<center>
-    <h2>LISTA DE TAREAS INGRESADAS</h2> 
 
+
+<center>
 
 <div class="box-body table-responsive">
     <table id='tabla' class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nombre</th>
                 <th>Control</th>
-                <th>Plan de Tratamiento </th>
-                <th>Acciones </th>
-         </div>
+                <th>Seleccionar</th>
+             
+                 </div>
             </tr>
         </thead>
         <tbody>
-        {% for tarea in tareas %}
-         <tr>
-          <td>{{ tarea.id }}</td>
-          <td>{{ tarea.nombre }}</td>
-          <td>{{ tarea.controles.control }}</td>
-          <td>{{ tarea.planes }}</td>
-          <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('tarea_edit', { 'id': tarea.id }) }}">Editar</a>
-                        </li>
+        {% for control in controls %}
+            <tr>
+                <td>{{ control.control }}</td>
+                <td><ul>
+                    <input type="checkbox" required="required" >
+                        
+
                     </ul>
-                </td>
+                    </td
+  
+                
             </tr>
         {% endfor %}
         </tbody>
-      </table>
+    </table>
     </div>
 </center>
 </div>
-
-    <ul>
+ <ul>
         <li>
-            <a href="{{ path('tarea_menu') }}">Regresar</a>
+            <a href="{{ path('menu_control') }}">Regresar</a>
         </li>
-      </ul>
-    </div>
+    </ul>
+</div>
 {% endblock %}
-
 {% block javascripts %}
 
  <script

@@ -35,6 +35,19 @@ class ControlController extends Controller
             ));
     }
 
+     public function index2Action()
+    {
+        $em = $this->getDoctrine()->getManager();
+        //$query=$em->createQuery(
+
+
+        $controls = $em->getRepository('ControlBundle:Control')->findAll();
+
+        return $this->render('control/index2.html.twig', array(
+            'controls' => $controls,
+            ));
+    }
+
     /**
      * Creates a new control entity.
      *

@@ -143,4 +143,17 @@ categoria_plan:
     resource: "@CategoriaPlanBundle/Resources/config/routing.yml"
     prefix: /categoria_plan
 
+asignar_control:
+    resource: "@TareaBundle/Controller/TareaController.php"
+    type:     annotation
+    prefix: /opcion1
+
+tareas_control:
+    resource: "@TareaBundle/Controller/TareaController.php"
+    type:     annotation
+
+tabla_control:
+    resource: "@TareaBundle/Controller/TareaController.php"
+    type:     annotation
+
 

@@ -37,6 +37,20 @@ class activoController extends Controller
         ));
     }
 
+    public function index2Action()
+    {
+
+        $user = $this->getUser(); //Devuelve el usario que esta en sesion
+        $em = $this->getDoctrine()->getManager();
+
+
+        $activos = $em->getRepository('ActivoBundle:activo')->findBy(array('empresaId' => $user->getEmpresa())); //Filtramos los activos en base al empresa Id
+
+        return $this->render('activo/index2.html.twig', array(
+            'activos' => $activos,
+        ));
+    }
+
     /**
      * Creates a new activo entity.
      *

@@ -37,11 +37,22 @@
     </div>
   </nav>
 
+               <div id="page-wrapper">
 
-  {% block body %}
-  <!--Navigation bar-->
+                <div class="container-fluid">
 
-  {% endblock %} {% block javascripts %} {% endblock %}
+                    <!-- Page Heading -->
+                    {% block PageHeading %}
+
+                    {% endblock %}
+                    <!-- /.row -->
+                    {% block body -%}
+                    {% endblock %}
+
+                    <!-- /.row -->
+
+                  </div>
+                </div> {% block javascripts %} {% endblock %}
 
 </body>
 

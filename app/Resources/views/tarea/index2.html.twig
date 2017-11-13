@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/tabla3.css')}}">
+{% endblock %}
+{% block body %}
+
+
+<div class="col-xs-6">
+ <div class="panel panel-success">
+  <div class="panel-heading">TAREAS</div>
+  <div class="panel-body">
+    <br>
+    <center><h4> Seleccione el control:</h4>
+
+      {% for tarea in tareas %}
+      {{form_widget(form.controles)}}
+
+      {% endfor %}
+      <br>
+      <br>
+      <button type="submit" class="btn">Asignar</button></center>
+      <br>
+      <br>
+
+      <div class="box-body table-responsive">
+        <table id='tabla' class="table table-hover">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Seleccionar tarea que desea asignar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for tarea in tareas %}
+            <tr>
+              <td>{{ tarea.nombre }}</td>
+              <td>
+              <input type="checkbox" name="chck3" value="1" onChange="suma(this)"> </td> 
+            </tr>
+            {% endfor%}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+    </div>
+
+
+    <div class="col-xs-6">
+      <div class="panel panel-success">
+        <div class="panel-heading">CARACTERÍSTICAS</div>
+        <div class="panel-body">
+          <center><h4>Progreso:</h4>
+
+            <br>
+
+            <input  type="text"  size="5" disabled="true" name="numero" id="numero" value="0" size="1"> Tareas
+
+          <br>
+          </center>
+          <br>
+          <br>
+
+          <br>
+
+        </div>
+      </div>
+    </div>
+
+    {% endblock %}
+    {% block javascripts %}
+    <script src="{{ asset('public/js/operaciones.js')}}"></script>
+    <script type="text/javascript">
+
+     function suma(obj) 
+    {     
+        total=parseInt(document.getElementById("numero").value);      
+        if(obj.checked) 
+        {          
+            total+=parseInt(obj.value); 
+
+        } 
+        else 
+        {          
+            total-=parseInt(obj.value);       
+        }        
+        document.getElementById("numero").value=String(total); 
+       
+    }  
+
+    function contar() {
+    var checkboxes = document.getElementById("test").checkbox; // Array de checkboxes
+    var cont = 0; // Checkboxes marcados, por defecto empieza la cuenta en 0
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            cont = cont++;
+        }
+    }
+        
+    var porcen = (cont/checkboxes.length) * 100; // Porcentaje de checboxes marcados
+    if (cont == checkboxes.length) {
+      alert("¡Todos marcados!");
+    } else {
+      alert("Resultado: " + cont + "/" + checkboxes.length + ". Porcentaje de checkboxes marcados: " + porcen);
+    }
+  }
+
+
+
+    </script>
+    {% endblock %}

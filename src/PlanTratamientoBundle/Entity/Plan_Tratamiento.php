@@ -63,9 +63,11 @@ class Plan_Tratamiento
         return $this->descripcion;
     }
 
+
     public function __toString() {
-    return $this->descripcion;
-}
+    return $this->getDescripcion();
+    }
+
 
     /**
     *Un plan tiene una categoria (One-To-One)

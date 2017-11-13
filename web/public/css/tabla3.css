@@ -1,0 +1,30 @@
+table {
+    border-spacing;
+    border-spacing: 1px;
+    border: solid 0.5px #A9A9A9;
+    width: 120px;
+    text-align: center;
+    align-content: center;
+
+}
+
+th, td {
+    border: solid 0.5px #A9A9A9;
+    text-align: center;
+    padding: 3px;
+    align-content: center;
+
+}
+
+tr:nth-child(even){
+  background-color: #f2f2f2;
+  text-align: center;
+  align-content: center;
+}
+
+th {
+    text-align: justify;
+    background-color: #424242;
+    color: white;
+    align-content: center;
+}

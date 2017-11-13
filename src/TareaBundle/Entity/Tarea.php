@@ -29,6 +29,13 @@ class Tarea
     private $nombre;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="estado", type="boolean", nullable=true)
+     */
+    private $estado;
+
+    /**
      * Get id
      *
      * @return int
@@ -62,10 +69,6 @@ class Tarea
         return $this->nombre;
     }
 
-    public function __toString() {
-    return $this->getNombre();
-    }
-    
     /**
      * @ORM\ManyToOne(targetEntity="ControlBundle\Entity\Control", inversedBy="tareas")
      * @ORM\JoinColumn(name="id_control", referencedColumnName="id", onDelete="CASCADE") 
@@ -125,5 +128,29 @@ class Tarea
     public function getPlanes()
     {
         return $this->planes;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param boolean $estado
+     *
+     * @return Tarea
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return boolean
+     */
+    public function getEstado()
+    {
+        return $this->estado;
     }
 }
