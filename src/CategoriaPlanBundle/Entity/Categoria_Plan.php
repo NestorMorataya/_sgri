@@ -14,7 +14,7 @@ class Categoria_Plan
 {
     /*
     *Una categoria tiene un plan (One-To-One)
-    *"@ORM\OneToOne (targetEntity="PlanTratamientoBundle\Entity\Plan_Tratamiento")
+    *@ORM\OneToMany (targetEntity="PlanTratamientoBundle\Entity\Plan_Tratamiento", mappedBy="categoria__plan")
     *
     */
     protected $plan_tratamiento;

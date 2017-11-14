@@ -13,7 +13,7 @@ class Plan_TratamientoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('descripcion')->add('categoria_plan')->add('riesgo');
+        $builder->add('descripcion')->add('categoria_plan');
     }
     
     /**

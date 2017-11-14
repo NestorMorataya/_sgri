@@ -68,10 +68,9 @@ class Plan_Tratamiento
     return $this->getDescripcion();
     }
 
-
     /**
-    *Un plan tiene una categoria (One-To-One)
-    *@ORM\OneToOne (targetEntity="CategoriaPlanBundle\Entity\Categoria_Plan")
+    *@ORM\ManyToOne (targetEntity="CategoriaPlanBundle\Entity\Categoria_Plan", inversedBy="categoria__plan")
+    *@ORM\JoinColumn(name="categoria_plan_id", referencedColumnName="id", onDelete="CASCADE")
     */
     public $categoria_plan;
     /**
@@ -100,12 +99,6 @@ class Plan_Tratamiento
     }
 
     /**
-    *Un plan tiene un riesgo (One-To-One)
-    *@ORM\OneToOne (targetEntity="RiesgoBundle\Entity\Riesgo")
-    */
-    protected $riesgo;
-
-    /**
      * @ORM\OneToMany(targetEntity="TareaBundle\Entity\Tarea", mappedBy="planes")
      */
     protected $tareas;
@@ -116,30 +109,6 @@ class Plan_Tratamiento
     public function __construct()
     {
         $this->tareas = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Set riesgo
-     *
-     * @param \RiesgoBundle\Entity\Riesgo $riesgo
-     *
-     * @return Plan_Tratamiento
-     */
-    public function setRiesgo(\RiesgoBundle\Entity\Riesgo $riesgo = null)
-    {
-        $this->riesgo = $riesgo;
-    
-        return $this;
-    }
-
-    /**
-     * Get riesgo
-     *
-     * @return \RiesgoBundle\Entity\Riesgo
-     */
-    public function getRiesgo()
-    {
-        return $this->riesgo;
     }
 
     /**
@@ -175,4 +144,35 @@ class Plan_Tratamiento
     {
         return $this->tareas;
     }
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="riesgo", type="integer", nullable=true)
+     */
+    private $riesgo;
+    
+    /**
+     * Set  riesgo
+     *
+     * @param int $riesgo
+     * @return Plan_Tratamiento
+     */
+    public function setRiesgo($riesgo)
+    {
+        $this->riesgo = $riesgo;
+    
+        return $this;
+    }
+
+    /**
+     * Get riesgo
+     *
+     * @return integer 
+     */
+    public function getRiesgo()
+    {
+        return $this->riesgo;
+    }
+    
 }

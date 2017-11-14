@@ -31,33 +31,41 @@
                 <td><a href="{{ path('plan_tratamiento_show', { 'id': plan_Tratamiento.id }) }}">{{ plan_Tratamiento.id }}</a></td>
                 <td>{{ plan_Tratamiento.descripcion }}</td>
                 <td>
-                    {% if plan_Tratamiento.categoria_plan is not null%}
+                    {% if plan_Tratamiento.categoria_plan is not null %}
                         {{ plan_Tratamiento.categoria_plan }}
                     {% else %}
                         N/A
                     {% endif %}
+                </td>
+                <td>
+                    {% for riesgo in riesgo %}
+                        {% if plan_Tratamiento.riesgo == riesgo.id %}
+                            {{riesgo.estimacionRiesgo}}
+                        {% endif %}
+                    {% endfor %}    
+                </td>
+                <td>
+                    {% for riesgo in riesgo %}
+                        {% if plan_Tratamiento.riesgo == riesgo.id %}
+                            {% for activo in activo %}
+                                {% if riesgo.activo == activo.id %}
+                                    {{activo.nombre}}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
                 </td> 
                 <td>
-                    {% if plan_Tratamiento.riesgo is not null%}
-                        {{ plan_Tratamiento.riesgo.estimacionRiesgo }}
-                    {% else %}
-                        N/A
-                    {% endif %}
+                    {% for riesgo in riesgo %}
+                        {% if plan_Tratamiento.riesgo == riesgo.id %}
+                            {% for amenaza in amenaza %}
+                                {% if riesgo.amenaza == amenaza.id %}
+                                    {{amenaza.nombre}}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
                 </td>
-                <td>
-                    {% if plan_Tratamiento.riesgo is not null%}
-                        {{ plan_Tratamiento.riesgo.activo.nombre }}
-                    {% else %}
-                        N/A
-                    {% endif %}
-                </td>
-                <td>
-                    {% if plan_Tratamiento.riesgo is not null%}
-                        {{ plan_Tratamiento.riesgo.amenaza.nombre }}
-                    {% else %}
-                        N/A
-                    {% endif %}
-                </td>  
                 <td>
                     <ul>
                         <li>
@@ -74,10 +82,6 @@
     </div>
 
     <ul>
-        <li>
-            <a href="{{ path('plan_tratamiento_new') }}">Crear un nuevo Plan de Tratamiento</a>
-        </li>
-        <br>
         <li>
             <a href="{{ path('menu_plan_tratamiento') }}">Regresar</a>                
         </li>

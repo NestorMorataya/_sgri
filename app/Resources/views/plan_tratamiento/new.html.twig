@@ -13,10 +13,13 @@
           {{ form_label(form.descripcion)}}
           {{ form_widget(form.descripcion, {'attr':{'class':'form-control'}}) }}
         </div>
+        <div>
+          <input type="submit" class="btn" value="Guardar">
+        </di>
         {{ form_end(form) }}
-    <button type="submit" class="btn">Guardar</button>
     <a href="{{ path('plan_tratamiento_index') }}">Regresar</a>
     </div>
    </div>
 </div>
+
 {% endblock %}

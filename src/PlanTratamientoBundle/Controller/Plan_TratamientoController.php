@@ -3,9 +3,11 @@
 namespace PlanTratamientoBundle\Controller;
 
 use PlanTratamientoBundle\Entity\Plan_Tratamiento;
+use RiesgoBundle\Entity\Riesgo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Plan_tratamiento controller.
@@ -25,30 +27,36 @@ class Plan_TratamientoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $plan_Tratamientos = $em->getRepository('PlanTratamientoBundle:Plan_Tratamiento')->findAll();
+        $riesgo=$em->getRepository('RiesgoBundle:Riesgo')->findAll();
+        $activo=$em->getRepository('ActivoBundle:activo')->findAll();
+        $amenaza=$em->getRepository('AmenazaBundle:Amenaza')->findAll();
 
         return $this->render('plan_tratamiento/index.html.twig', array(
-            'plan_Tratamientos' => $plan_Tratamientos,
+            'plan_Tratamientos' => $plan_Tratamientos, 'riesgo'=> $riesgo, 'activo'=> $activo, 'amenaza' => $amenaza
         ));
     }
 
     /**
      * Creates a new plan_Tratamiento entity.
      *
-     * @Route("/new", name="plan_tratamiento_new")
+     * @Route("/{id}/new", name="plan_tratamiento_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, Riesgo $riesgo)
     {
+        //return new Response($riesgo->getId(). " " . $riesgo->getEstimacionRiesgo());
         $plan_Tratamiento = new Plan_tratamiento();
         $form = $this->createForm('PlanTratamientoBundle\Form\Plan_TratamientoType', $plan_Tratamiento);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $plan_Tratamiento->setRiesgo($riesgo->getId());
             $em = $this->getDoctrine()->getManager();
             $em->persist($plan_Tratamiento);
             $em->flush();
 
-            return $this->redirectToRoute('plan_tratamiento_show', array('id' => $plan_Tratamiento->getId()));
+            return $this->redirectToRoute('user_homepage');
+            //return $this->redirectToRoute('plan_tratamiento_show', array('id' => $plan_Tratamiento->getId()));
         }
 
         return $this->render('plan_tratamiento/new.html.twig', array(

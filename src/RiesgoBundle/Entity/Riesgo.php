@@ -336,15 +336,6 @@ class Riesgo
         return $this->estimacionRiesgo;
     }
 
-    /**
-    Un riesgo tiene un plan (One-To-One)
-    *"@ORM\OneToOne (targetEntity="PlanTratamientoBundle\Entitiy\Plan_Tratamiento")
-    */
-    protected $plan_tratamiento;
-
-    public function __toString() {
-        
-        return $this->activo;
-    }
-
+    
+  
 }
