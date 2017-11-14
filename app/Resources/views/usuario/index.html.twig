@@ -18,7 +18,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Email</th>
-        
+                <th>Rol</th>
                
                 <th>Accion</th>
             </tr>
@@ -26,12 +26,12 @@
         <tbody>
         {% for usuario in usuarios %}
             <tr>
-                <td><a href="{{ path('usuario_show', { 'id': usuario.id }) }}">{{ usuario.id }}</a></td>
+                <td><a>{{ usuario.id }}</a></td>
                 <td>{{ usuario.username }}</td>
                 <td>{{ usuario.firstName }}</td>
                 <td>{{ usuario.lastName }}</td>
                 <td>{{ usuario.email }}</td>
-         
+                 <td>{{ usuario.role }}</td>
               
                
                 <td>
@@ -54,9 +54,9 @@
             <a href="{{ path('usuario_new2')}}">Crear un nuevo Usuario</a>
         </li>
          <br>
-        <!-- <li>
-            <a href="{{ path('menu_activo') }}">Regresar</a>
-        </li> -->
+        <li>
+            <a href="{{ path('menu_usuarios') }}">Regresar</a>
+        </li>
     </ul>
 {% endblock %}
 

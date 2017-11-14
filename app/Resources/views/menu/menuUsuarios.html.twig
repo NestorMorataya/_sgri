@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/css/panelVertical2.css')}}">
+{% endblock %}
+
+{% block body %}
+    <h1>Usuarios</h1>
+<CENTER><H2>GESTIÓN DE USUARIOS</H2></CENTER>
+<hr>
+
+<ul>
+    <li>
+        <a href="{{ path('user_homepage') }}">Regresar</a>
+    </li>
+</ul>
+<center>
+<div class="vertical-menu">
+<div class="page-header">
+<a href="{{ path('usuario_new2') }}">Nuevo Usuario</a>
+</div>
+
+<div class="page-header">
+<a href="{{ path('usuario_index') }}">Ver Lista de Usuarios</a>
+</div>
+</div >
+
+
+
+<center>
+
+{% endblock %}

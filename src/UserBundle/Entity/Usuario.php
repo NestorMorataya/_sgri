@@ -87,7 +87,29 @@ class Usuario implements AdvancedUserInterface, \Serializable
      */
     private $updateAt;
 
-        /**
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contra", type="string", length=255)
+     */
+    private $contra;
+
+    public function setContra($contra)
+    {
+        $this->contra = $contra;
+
+        return $this;
+    }
+
+    public function getContra()
+    {
+        return $this->contra;
+    }
+
+
+
+    /**
      * @var string
      *
      * @ORM\Column(name="empresa_id", type="integer", nullable=true)
