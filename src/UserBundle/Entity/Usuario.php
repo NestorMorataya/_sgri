@@ -327,9 +327,9 @@ class Usuario implements AdvancedUserInterface, \Serializable
         $this ->role = $role;
     }
 
-    public function getRoles()
+    public function getRoles() //para manejar autorizacion de usuarios
     {
-        return array($this ->role); 
+        return array($this ->role); //rol actual del usu
     }
 
     public function getSalt()

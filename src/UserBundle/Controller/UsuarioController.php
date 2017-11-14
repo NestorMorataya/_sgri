@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use EmpresaBundle\Entity\Empresa;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Usuario controller.
@@ -31,7 +32,7 @@ class UsuarioController extends Controller
     /**
      * Lists all usuario entities.
      *
-     * @Route("/", name="usuario_index")
+     * @Route("/index", name="usuario_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -48,10 +49,10 @@ class UsuarioController extends Controller
     /**
      * Creates a new usuario entity.
      *
-     * @Route("/{id}/new", name="usuario_new")
+     * @Route("/new", name="usuario_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request, Empresa $empresa)
+    public function newAction(Request $request)
     {
         $usuario = new Usuario();
         $form = $this->createForm('UserBundle\Form\UsuarioType', $usuario);
@@ -59,11 +60,16 @@ class UsuarioController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+
             $password = $form ->get('password')->getData();
 
             $encoder = $this->container->get('security.password_encoder');
             $encoded = $encoder->encodePassword($usuario,$password);
             $usuario->setPassword($encoded);
+
+$role=$request->get('role');
+//return new Response($role);
+$usuario->setRole($role);
             $em = $this->getDoctrine()->getManager();
 
             $emp = $em->getRepository('EmpresaBundle:Empresa')->findOneBy(array(),array('id' => 'DESC'));
@@ -78,17 +84,71 @@ class UsuarioController extends Controller
         }
 
         return $this->render('usuario/new.html.twig', array(
-            'usuario' => $usuario,
+            'usuario' => $usuario, 'role',
             'form' => $form->createView(),
         ));
     }
 
-    /**
+
+
+
+     /**
+     * Creates a new usuario entity.
+     *
+     * @Route("/new2", name="usuario_new2")
+     * @Method({"GET", "POST"})
+     */
+    public function newAction2(Request $request)
+    {
+// return new Response('<html><body>Hello booo</body></html>');
+        $usuario = new Usuario();
+    $user = $this->getUser();
+
+        $form = $this->createForm('UserBundle\Form\UsuarioType', $usuario);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+$role=$request->get('role');
+//return new Response($role);
+$usuario->setRole($role);
+
+            $password = $form ->get('password')->getData();
+
+            $encoder = $this->container->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($usuario,$password);
+            $usuario->setPassword($encoded);
+    $usuario->setEmpresa($user->getEmpresa());
+    // $usuario->setEmpresa($emp->getId());
+
+  
+            $em = $this->getDoctrine()->getManager();
+
+
+
+            $em->persist($usuario);
+            $em->flush();
+
+          //  return $this->redirectToRoute('user_login');
+        }
+
+        return $this->render('usuario/newusu.html.twig', array(
+            'usuario' => $usuario,
+            'form' => $form->createView(),
+
+  
+        ));
+    }
+
+
+
+ /**
      * Finds and displays a usuario entity.
      *
      * @Route("/{id}", name="usuario_show")
      * @Method("GET")
      */
+
     public function showAction(Usuario $usuario)
     {
         $deleteForm = $this->createDeleteForm($usuario);
@@ -99,14 +159,21 @@ class UsuarioController extends Controller
         ));
     }
 
+   
+
     /**
      * Displays a form to edit an existing usuario entity.
      *
      * @Route("/{id}/edit", name="usuario_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Usuario $usuario)
-    {
+    public function editAction(Request $request, Usuario $usu)
+    {   
+
+       // $id = $request->get('id');
+        return new Response($usu->getId(). " " .$usu->getUsername(). " " . $usu->getFirstName());
+
+
         $deleteForm = $this->createDeleteForm($usuario);
         $editForm = $this->createForm('UserBundle\Form\UsuarioType', $usuario);
         $editForm->handleRequest($request);

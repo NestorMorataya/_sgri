@@ -11,9 +11,9 @@ class UsuarioType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+   public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('username')->add('firstName')->add('lastName')->add('email')->add('password', 'password')->add('isActive','checkbox')->add('createdAt')->add('updateAt')->add('role', 'choice', array('choices' => array('ROLE_ADMIN' => 'Administrator'), 'placeholder' => 'Seleccionar un rol'));
+        $builder->add('username')->add('firstName')->add('lastName')->add('email')->add('password', 'password')->add('isActive','checkbox')->add('createdAt')->add('updateAt');
     }
     
     /**
