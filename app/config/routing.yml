@@ -157,3 +157,30 @@ tabla_control:
     type:     annotation
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+proceso:
+    resource: "@ProcesoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+proceso_menu:
+    resource: "@ProcesoBundle/Controller/"
+    type:     annotation
+
+
+
+
+

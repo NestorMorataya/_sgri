@@ -20,7 +20,8 @@
              "TareaBundle\\":"src/TareaBundle",
 
             "PlanTratamientoBundle\\":"src/PlanTratamientoBundle",
-            "CategoriaPlanBundle\\":"src/CategoriaPlanBundle"
+            "CategoriaPlanBundle\\":"src/CategoriaPlanBundle",
+            "ProcesoBundle\\":"src/ProcesoBundle"
 
 
         },

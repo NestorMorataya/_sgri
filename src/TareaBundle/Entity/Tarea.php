@@ -28,13 +28,7 @@ class Tarea
      */
     private $nombre;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="estado", type="boolean", nullable=true)
-     */
-    private $estado;
-
+    
     /**
      * Get id
      *
@@ -69,88 +63,43 @@ class Tarea
         return $this->nombre;
     }
 
+
+    public function __toString() {
+    return $this->getNombre();
+    }
+
+
     /**
-     * @ORM\ManyToOne(targetEntity="ControlBundle\Entity\Control", inversedBy="tareas")
-     * @ORM\JoinColumn(name="id_control", referencedColumnName="id", onDelete="CASCADE") 
+     * @ORM\ManyToOne(targetEntity="ProcesoBundle\Entity\Proceso", inversedBy="tareas")
+     * @ORM\JoinColumn(name="id_proceso", referencedColumnName="id", onDelete="CASCADE") 
      */
-    protected $controles;
+    protected $proceso;
+
+ 
 
 
-    /**
-     * @ORM\ManyToOne(targetEntity="PlanTratamientoBundle\Entity\Plan_Tratamiento", inversedBy="tareas")
-     * @ORM\JoinColumn(name="id_plan", referencedColumnName="id", onDelete="CASCADE") 
-     */
-    protected $planes;
 
     /**
-     * Set controles
+     * Set proceso
      *
-     * @param \ControlBundle\Entity\Control $controles
+     * @param \ProcesoBundle\Entity\Proceso $proceso
      *
      * @return Tarea
      */
-    public function setControles(\ControlBundle\Entity\Control $controles = null)
+    public function setProceso(\ProcesoBundle\Entity\Proceso $proceso = null)
     {
-        $this->controles = $controles;
+        $this->proceso = $proceso;
     
         return $this;
     }
 
     /**
-     * Get controles
+     * Get proceso
      *
-     * @return \ControlBundle\Entity\Control
+     * @return \ProcesoBundle\Entity\Proceso
      */
-    public function getControles()
+    public function getProceso()
     {
-        return $this->controles;
-    }
-
-    /**
-     * Set planes
-     *
-     * @param \PlanTratamientoBundle\Entity\Plan_Tratamiento $planes
-     *
-     * @return Tarea
-     */
-    public function setPlanes(\PlanTratamientoBundle\Entity\Plan_Tratamiento $planes = null)
-    {
-        $this->planes = $planes;
-    
-        return $this;
-    }
-
-    /**
-     * Get planes
-     *
-     * @return \PlanTratamientoBundle\Entity\Plan_Tratamiento
-     */
-    public function getPlanes()
-    {
-        return $this->planes;
-    }
-
-    /**
-     * Set estado
-     *
-     * @param boolean $estado
-     *
-     * @return Tarea
-     */
-    public function setEstado($estado)
-    {
-        $this->estado = $estado;
-    
-        return $this;
-    }
-
-    /**
-     * Get estado
-     *
-     * @return boolean
-     */
-    public function getEstado()
-    {
-        return $this->estado;
+        return $this->proceso;
     }
 }

@@ -63,19 +63,16 @@ class Plan_Tratamiento
         return $this->descripcion;
     }
 
-  
-     public function __toString(){
-        // to show the name of the Category in the select
-        return $this->descripcion;
-        // to show the id of the Category in the select
-        // return $this->id;
+
+    public function __toString() {
+    return $this->getDescripcion();
     }
 
     /**
-    *Un plan tiene una categoria (One-To-One)
-    *@ORM\OneToOne (targetEntity="CategoriaPlanBundle\Entity\Categoria_Plan")
+    *@ORM\ManyToOne (targetEntity="CategoriaPlanBundle\Entity\Categoria_Plan", inversedBy="categoria__plan")
+    *@ORM\JoinColumn(name="categoria_plan_id", referencedColumnName="id", onDelete="CASCADE")
     */
-    protected $categoria_plan;
+    public $categoria_plan;
     /**
     *Set categoria_plan
     *
@@ -102,14 +99,41 @@ class Plan_Tratamiento
     }
 
     /**
-    *Un plan tiene un riesgo (One-To-One)
-    *@ORM\OneToOne (targetEntity="RiesgoBundle\Entity\Riesgo")
-    */
-    protected $riesgo;
+     * @ORM\OneToMany(targetEntity="ProcesoBundle\Entity\Proceso", mappedBy="plan")
+     */
+    protected $procesos;
+
+   
 
     /**
-     * @ORM\OneToMany(targetEntity="TareaBundle\Entity\Tarea", mappedBy="planes")
+     * @var int
+     *
+     * @ORM\Column(name="riesgo", type="integer", nullable=true)
      */
-    protected $tareas;
+    private $riesgo;
+    
+    /**
+     * Set  riesgo
+     *
+     * @param int $riesgo
+     * @return Plan_Tratamiento
+     */
+    public function setRiesgo($riesgo)
+    {
+        $this->riesgo = $riesgo;
+    
+        return $this;
+    }
 
+    /**
+     * Get riesgo
+     *
+     * @return integer 
+     */
+    public function getRiesgo()
+    {
+        return $this->riesgo;
+    }
+    
+   
 }

@@ -99,51 +99,11 @@ class Plan_Tratamiento
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="TareaBundle\Entity\Tarea", mappedBy="planes")
+     * @ORM\OneToMany(targetEntity="ProcesoBundle\Entity\Proceso", mappedBy="plan")
      */
-    protected $tareas;
+    protected $procesos;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tareas = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add tarea
-     *
-     * @param \TareaBundle\Entity\Tarea $tarea
-     *
-     * @return Plan_Tratamiento
-     */
-    public function addTarea(\TareaBundle\Entity\Tarea $tarea)
-    {
-        $this->tareas[] = $tarea;
-    
-        return $this;
-    }
-
-    /**
-     * Remove tarea
-     *
-     * @param \TareaBundle\Entity\Tarea $tarea
-     */
-    public function removeTarea(\TareaBundle\Entity\Tarea $tarea)
-    {
-        $this->tareas->removeElement($tarea);
-    }
-
-    /**
-     * Get tareas
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTareas()
-    {
-        return $this->tareas;
-    }
+   
 
     /**
      * @var int
@@ -175,4 +135,46 @@ class Plan_Tratamiento
         return $this->riesgo;
     }
     
+   
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->procesos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add proceso
+     *
+     * @param \ProcesoBundle\Entity\Proceso $proceso
+     *
+     * @return Plan_Tratamiento
+     */
+    public function addProceso(\ProcesoBundle\Entity\Proceso $proceso)
+    {
+        $this->procesos[] = $proceso;
+    
+        return $this;
+    }
+
+    /**
+     * Remove proceso
+     *
+     * @param \ProcesoBundle\Entity\Proceso $proceso
+     */
+    public function removeProceso(\ProcesoBundle\Entity\Proceso $proceso)
+    {
+        $this->procesos->removeElement($proceso);
+    }
+
+    /**
+     * Get procesos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProcesos()
+    {
+        return $this->procesos;
+    }
 }

@@ -6,65 +6,55 @@
 <div class="container" style="margin-top:15px; margin-bottom:180px;">
 <hr>
 <div class="col-xs-12">
+<br>
+     <ul>
+        <li>
+            <a href="{{ path('tarea_menu') }}">Regresar</a>
+        </li>
+      </ul>
 <center>
-<hr>
-    <h2>RIESGO ACTIVOS</h2>
+    <h2>LISTA DE TAREAS INGRESADAS</h2> 
+
 
 <div class="box-body table-responsive">
     <table id='tabla' class="table table-hover">
         <thead>
             <tr>
-                <th> Código </th>
-                <th> Nombre </th>
-                <th> Descripción </th>
-                <th> Unidad Responsable </th>
-                <th> Persona Responsable </th>
-                <th> Ubicación </th>
-                <th> Cantidad </th>
-                <th> Categoría </th>
-                <th> Analisis Riesgo </th>
-                </div>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Control</th>
+                <th>Plan de Tratamiento </th>
+                <th>Acciones </th>
+         </div>
             </tr>
         </thead>
         <tbody>
-        {% for activo in activos %}
-            <tr>
-
-                <td>{{ activo.codigo }}</td>
-                <td>{{ activo.nombre }}</td>
-                <td>{{ activo.descripcion }}</td>
-                <td>{{ activo.unidadResponsable }}</td>
-                <td>{{ activo.personaResponsable }}</td>
-                <td>{{ activo.ubicacion }}</td>
-                <td>{{ activo.cantidad }}</td>
-                <td>{{ activo.categoria }}</td> 
-                <td>
+        {% for tarea in tareas %}
+         <tr>
+          <td>{{ tarea.id }}</td>
+          <td>{{ tarea.nombre }}</td>
+          <td>{{ tarea.controles.control }}</td>
+          <td>{{ tarea.planes }}</td>
+          <td>
                     <ul>
                         <li>
-                            <a href="{{ path('activo_show2', { 'id': activo.id }) }}">Analis Riesgo</a>
-                        </li>
-                        <br>
-                         <li>
-                            <a href="{{ path('activo_ver_riesgo', { 'id': activo.id }) }}">Ver Analisis</a>
+                            <a href="{{ path('tarea_edit', { 'id': tarea.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
-
             </tr>
         {% endfor %}
         </tbody>
-
-    </table>
+      </table>
     </div>
 </center>
 </div>
+
     <ul>
-        
-        <br>
         <li>
-            <a href="{{ path('menu_activo') }}">Regresar</a>
+            <a href="{{ path('tarea_menu') }}">Regresar</a>
         </li>
-    </ul>
+      </ul>
     </div>
 {% endblock %}
 

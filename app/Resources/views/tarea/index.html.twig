@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} 
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{{ asset('public/css/tablas.css')}}">
 {% endblock %}
@@ -20,10 +20,8 @@
     <table id='tabla' class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Control</th>
-                <th>Plan de Tratamiento </th>
+                <th>Plan</th>
+                <th>Tarea</th>
                 <th>Acciones </th>
          </div>
             </tr>
@@ -31,16 +29,16 @@
         <tbody>
         {% for tarea in tareas %}
          <tr>
-          <td>{{ tarea.id }}</td>
+          <td>{{ tarea.proceso.plan }}</td>
           <td>{{ tarea.nombre }}</td>
-          <td>{{ tarea.controles.control }}</td>
-          <td>{{ tarea.planes }}</td>
+   
           <td>
                     <ul>
                         <li>
                             <a href="{{ path('tarea_edit', { 'id': tarea.id }) }}">Editar</a>
                         </li>
                     </ul>
+      
                 </td>
             </tr>
         {% endfor %}

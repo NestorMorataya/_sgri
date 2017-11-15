@@ -2,7 +2,7 @@
 namespace TareaBundle\Controller;
 use ControlBundle\Entity\Control;
 use TareaBundle\Entity\Tarea;
-use ActivoBundle\Entity\activo;
+use ProcesoBundle\Entity\Proceso;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +24,7 @@ class TareaController extends Controller
         $em = $this->getDoctrine()->getManager();
         $tareas = $em->getRepository('TareaBundle:Tarea')->findAll();
         return $this->render('tarea/index.html.twig', array(
-            'tareas' => $tareas,
+            'tareas' => $tareas, 
         ));
     }
 
@@ -49,6 +49,10 @@ class TareaController extends Controller
 
        
     }
+
+    
+
+
     /**
      * Creates a new tarea entity.
      *
@@ -156,7 +160,7 @@ class TareaController extends Controller
     public function menuAction1()
     {
           
-        return $this->render('tarea/asignarControles.twig');
+        return $this->render('tarea/asignarControles.html.twig');
     }
 
     /**
@@ -166,7 +170,7 @@ class TareaController extends Controller
     */
     public function menuAction2()
     {
-        return $this->render('tarea/controlTareas.twig');
+        return $this->render('tarea/controlTareas.html.twig');
     }
 
     /**
@@ -200,7 +204,7 @@ class TareaController extends Controller
 
         }
 
-        return $this->render('Tarea/asignarControles.twig', array(
+        return $this->render('Tarea/asignarControles.html.twig', array(
             'tareas' => $tarea,
             'form' => $form->createView(),
             'activos' => $activo,
@@ -208,4 +212,80 @@ class TareaController extends Controller
 
 
      }
+
+    /**
+     * Finds and displays a tarea entity.
+     *
+     * @Route("/tarea/{id}", name="tarea_mostrar")
+     * @Method("GET")
+     */
+     public function showAction2(proceso $proceso)
+    {
+
+          $em = $this->getDoctrine()->getManager();
+          $pro = $em->getRepository('ProcesoBundle:Proceso')->findAll();
+      
+        return $this->render('tarea/indexAsignarTareas.html.twig', array(
+           'proceso' => $proceso,
+        
+        ));
+    }
+
+    
+    /**
+     * Finds and displays a tarea entity.
+     *
+     * @Route("/tarea/seguimiento/{id}", name="tarea_seguimiento")
+     * @Method("GET")
+     */
+     public function showAction3(proceso $proceso)
+    {
+          $tr=new Tarea();
+          $em = $this->getDoctrine()->getManager();
+          $pro = $em->getRepository('ProcesoBundle:Proceso')->findAll();
+          $tr = $em->getRepository('TareaBundle:Tarea')->findAll();
+      
+        return $this->render('tarea/index1.html.twig', array(
+           'proceso' => $proceso, 'tarea' =>$tr,
+        
+        ));
+    }
+
+
+     /**
+     * Lists all tarea entities.
+     *
+     * @Route("/guardar/tarea", name="guardar2")
+     * @Method("GET")
+     */
+    public function guardarAction(Request $request)
+    {
+       
+        $num = 0;
+        $contador = $request->get('contador');
+        $idproceso=$request->get('proceso');
+        for ($i=0; $i < $contador; $i++) { 
+            $plan = $request->get('plan'.$num);
+            $nom = $request->get('nom'.$num);
+            $control = $request->get('cont'.$num);
+
+            $tarea = new tarea();
+            $tarea->setProceso($idproceso);
+            $tarea->setPlan($plan);
+            $tarea->setNombre($nom);
+            $tarea->setPlan($control);
+            
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($tarea);
+            $em->flush();
+            $num++;
+        }
+         return $this->redirectToRoute('proceso_index');
+    }
+
+
+
+  
+     
 }

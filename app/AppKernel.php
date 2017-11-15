@@ -30,7 +30,7 @@ class AppKernel extends Kernel
 
             new PlanTratamientoBundle\PlanTratamientoBundle(),
             new CategoriaPlanBundle\CategoriaPlanBundle(),
-
+            new ProcesoBundle\ProcesoBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %} 
+
+{% block body %}
+
+<br>
+<br>
+<h3><center>CONTROL DE TAREAS </center></h3>
+<br>
+<div class="col-xs-12">
+	<div class="panel panel-default">
+		<div class="panel-body">
+
+
+			{{ render(controller('TareaBundle:Tarea:index2')) }}
+			<br><center>
+			<button type="submit" class="btn">Guardar</button></center>
+			<br>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+{% endblock %}

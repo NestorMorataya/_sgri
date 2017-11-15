@@ -131,8 +131,16 @@ class Control
         return $this->control;
     }
 
+
+    public function __toString() {
+    return $this->getControl();
+    }
+
    /**
-     * @ORM\OneToMany(targetEntity="TareaBundle\Entity\Tarea", mappedBy="controles")
+     * @ORM\OneToMany(targetEntity="ProcesoBundle\Entity\Proceso", mappedBy="control")
      */
-    protected $tareas;
+    protected $procesos;
+
+    
+   
 }

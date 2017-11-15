@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %} 
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/tablas.css')}}">
+{% endblock %}
+{% block body %}
+
+<form  name="insertar" method="get" action="{{ path('proceso2')}}">
+  <div class="container" style="margin-top:100px; margin-bottom:150px">
+    <div class="row well">
+{% set foo = 'foo' %}
+      <center><h3>Seguimiento del plan: {{ proceso.plan}}</h3></center>
+      <br>
+
+      <ul>
+        <li>
+          <a href="{{ path('tarea_menu') }}">Regresar</a>
+        </li>
+      </ul>
+
+      <input type="number" readonly="readonly" name="proceso" id="proceso" value="{{proceso.plan}}" style="display:none;">
+      <div class="col-xs-6">
+       <div class="panel panel-success">
+        <div class="panel-heading">LISTA DE TAREAS</div>
+        <div class="panel-body">
+          <div class="box-body table-responsive">
+            <table id='tdatos' class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Plan</th>
+                  <th>Tarea</th>
+                  <th>Seleccionar</th>
+              </tr>
+              {% set counter = 0 %}
+        
+            </thead>
+            <tbody>
+              {% for tr in tarea %}
+              <tr>
+             
+               {% if tr.proceso.id==proceso.plan.id %}
+               <td>{{ tr.proceso.plan }}</td>
+               <td>{{ tr.nombre }}</td>
+                <td><input type="checkbox" name="chck3" value="1" onChange="suma(this)"> </td> 
+               {% set counter = counter + 1 %}
+               {% endif %}
+             </tr>
+     
+
+       
+             {% endfor %}
+           </tbody>
+         </table>
+         </div>
+         </div>
+         </div>
+         </div>
+     
+      <div class="col-xs-6">
+       <div class="panel panel-success">
+        <div class="panel-heading">PROGRESO DE TAREAS</div>
+        <div class="panel-body">
+         <h5>Tareas Seleccionadas:
+        <input  type="text"  size="5" disabled="true" name="numero" id="numero" value="0" size="1"></h5>
+        <br>
+       <h5> Cantidad de planes: {{counter}}</h5>
+       <br>
+     <center><input type="button" onclick="capturar()" value="Seleccionar Tareas"></center>
+      </div>
+    </div>
+  </div>
+
+<div class="col-xs-12">
+       <div class="panel panel-default">
+        <div class="panel-heading">Porcentaje de seguimiento de tareas</div>
+        <div class="panel-body">
+
+<input type="number" readonly="readonly" name="contador" id="contador" style="display:none;">
+
+<div class="box-body table-responsive">
+<table class="table table-hover" width= "100%" >
+    <thead>
+    <tr>
+      <th style="width:10%" >Tarea</th>
+      <th style="width:10%" >Porcentaje de avance</th>
+      
+    </tr>
+    </thead>
+    <tbody>
+   {% for i in 0..20 %}
+    <tr class="hover" style="display:none" id="fila{{i}}" name="fila{{i}}">
+      <td><input class="colorfondo" size="8" type="text" id="disp{{i}}" name="disp{{i}}" readonly="readonly"></td>
+      <td><input class="colorfondo" size="8" type="text" id="conf{{i}}" name="conf{{i}}" readonly="readonly"></td>
+      
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  </div>
+</div>
+</div>
+
+</div>
+</div>
+</form>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+function suma(obj) 
+    {     
+        total=parseInt(document.getElementById("numero").value); 
+        var tabla=document.getElementById("tabla1");  
+        
+        if(obj.checked) 
+        {          
+            total+=parseInt(obj.value); 
+            
+
+        } 
+        else 
+        {          
+            total-=parseInt(obj.value);       
+        }        
+        document.getElementById("numero").value=String(total); 
+       
+    }  
+function contarrows(){
+                 var miArray=new Array()
+                 var i=0
+                 var tabla = document.getElementById("tdatos");
+                 var total=tabla.rows.length
+                 alert(total);
+
+                 for(j=1;j<=total-1;j++){
+                    var dato=tabla.rows[j].cells[0].childNodes[0].nodeValue
+                    miArray[i]=dato
+                    i=i+1
+                    var arreglo=miArray.toString();
+                    alert(arreglo);
+                }
+        }
+  
+function contar() {
+    var checkboxes = document.getElementById("test").checkbox; // Array de checkboxes
+    var cont = 0; // Checkboxes marcados, por defecto empieza la cuenta en 0
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            cont = cont++;
+        }
+    }
+        
+    var porcen = (cont/checkboxes.length) * 100; // Porcentaje de checboxes marcados
+    if (cont == checkboxes.length) {
+      alert("¡Todos marcados!");
+    } else {
+      alert("Resultado: " + cont + "/" + checkboxes.length + ". Porcentaje de checkboxes marcados: " + porcen);
+    }
+  }
+
+</script>
+{% endblock %}

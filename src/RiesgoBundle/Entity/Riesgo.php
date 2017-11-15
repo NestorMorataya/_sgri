@@ -336,6 +336,9 @@ class Riesgo
         return $this->estimacionRiesgo;
     }
 
-    
+     //cuando el valor a devolver no es un string
+    public function __toString() {
+    return sprintf(('%s'), $this->getActivo());
+    }
   
 }

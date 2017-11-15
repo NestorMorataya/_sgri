@@ -8,25 +8,28 @@
 <div class="col-xs-6">
  <div class="panel panel-success">
   <div class="panel-heading">TAREAS</div>
-  <div class="panel-body">
-    <br>
-    <center><h4> Seleccione el control:</h4>
+   <div class="panel-body">
 
-      {% for tarea in tareas %}
-      {{form_widget(form.controles)}}
-
-      {% endfor %}
-      <br>
-      <br>
-      <button type="submit" class="btn">Asignar</button></center>
-      <br>
-      <br>
+<center>
+<div class="form-group">
+    <select name='control'>
+    <center><option>Seleccione un control</option>
+    {% for tarea in tareas %}
+    <option value="{{tarea.controles}}">{{ tarea.controles}}</option>
+    {% endfor %}
+     </select>
+      </div>
+        <button type="submit" class="btn">Seleccionar</button>
+        <br>
+        <br>
+      </center>
 
       <div class="box-body table-responsive">
         <table id='tabla' class="table table-hover">
           <thead>
             <tr>
-              <th>Nombre</th>
+              <th>Tarea</th>
+              <th>Control</th>
               <th>Seleccionar tarea que desea asignar</th>
             </tr>
           </thead>
@@ -34,6 +37,7 @@
             {% for tarea in tareas %}
             <tr>
               <td>{{ tarea.nombre }}</td>
+              <td>{{ tarea.controles.control }}</td>
               <td>
               <input type="checkbox" name="chck3" value="1" onChange="suma(this)"> </td> 
             </tr>
@@ -66,6 +70,17 @@
         </div>
       </div>
     </div>
+
+<div class="col-xs-12">
+  <div class="panel panel-success">
+    <div class="panel-heading">TAREAS SELECCIONADAS</div>
+    <div class="panel-body">
+      <br>
+        {{ render(controller('ProcesoBundle:Proceso:index')) }}
+    </div>
+  </div>
+</div>
+    
 
     {% endblock %}
     {% block javascripts %}
@@ -108,4 +123,6 @@
 
 
     </script>
+
+
     {% endblock %}

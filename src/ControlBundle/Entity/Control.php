@@ -137,41 +137,44 @@ class Control
     }
 
    /**
-     * @ORM\OneToMany(targetEntity="TareaBundle\Entity\Tarea", mappedBy="controles")
+     * @ORM\OneToMany(targetEntity="ProcesoBundle\Entity\Proceso", mappedBy="control")
      */
-    protected $tareas;
+    protected $procesos;
+
+    
+   
 
     /**
-     * Add tarea
+     * Add proceso
      *
-     * @param \TareaBundle\Entity\Tarea $tarea
+     * @param \ProcesoBundle\Entity\Proceso $proceso
      *
      * @return Control
      */
-    public function addTarea(\TareaBundle\Entity\Tarea $tarea)
+    public function addProceso(\ProcesoBundle\Entity\Proceso $proceso)
     {
-        $this->tareas[] = $tarea;
+        $this->procesos[] = $proceso;
     
         return $this;
     }
 
     /**
-     * Remove tarea
+     * Remove proceso
      *
-     * @param \TareaBundle\Entity\Tarea $tarea
+     * @param \ProcesoBundle\Entity\Proceso $proceso
      */
-    public function removeTarea(\TareaBundle\Entity\Tarea $tarea)
+    public function removeProceso(\ProcesoBundle\Entity\Proceso $proceso)
     {
-        $this->tareas->removeElement($tarea);
+        $this->procesos->removeElement($proceso);
     }
 
     /**
-     * Get tareas
+     * Get procesos
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getTareas()
+    public function getProcesos()
     {
-        return $this->tareas;
+        return $this->procesos;
     }
 }

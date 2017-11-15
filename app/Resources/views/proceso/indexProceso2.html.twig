@@ -8,44 +8,32 @@
 <div class="col-xs-12">
 <center>
 <hr>
-    <h2>RIESGO ACTIVOS</h2>
+    <h2>RIESGO procesoS</h2>
 
 <div class="box-body table-responsive">
     <table id='tabla' class="table table-hover">
         <thead>
             <tr>
-                <th> Código </th>
-                <th> Nombre </th>
-                <th> Descripción </th>
-                <th> Unidad Responsable </th>
-                <th> Persona Responsable </th>
-                <th> Ubicación </th>
-                <th> Cantidad </th>
-                <th> Categoría </th>
-                <th> Analisis Riesgo </th>
+                <th> Plan </th>
+                <th> Controles </th>
+                <th> Acciones</th>
                 </div>
             </tr>
         </thead>
         <tbody>
-        {% for activo in activos %}
+        {% for proceso in procesos %}
             <tr>
 
-                <td>{{ activo.codigo }}</td>
-                <td>{{ activo.nombre }}</td>
-                <td>{{ activo.descripcion }}</td>
-                <td>{{ activo.unidadResponsable }}</td>
-                <td>{{ activo.personaResponsable }}</td>
-                <td>{{ activo.ubicacion }}</td>
-                <td>{{ activo.cantidad }}</td>
-                <td>{{ activo.categoria }}</td> 
+                <td>{{ proceso.plan }}</td>
+                <td>{{ proceso.control }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('activo_show2', { 'id': activo.id }) }}">Analis Riesgo</a>
+                            <a href="{{ path('proceso_show', { 'id': proceso.id }) }}">Asignar Tarea</a>
                         </li>
                         <br>
                          <li>
-                            <a href="{{ path('activo_ver_riesgo', { 'id': activo.id }) }}">Ver Analisis</a>
+                            <a href="{{ path('proceso_ver_riesgo', { 'id': proceso.id }) }}">Ver Seguimiento de Tareas</a>
                         </li>
                     </ul>
                 </td>
@@ -62,7 +50,7 @@
         
         <br>
         <li>
-            <a href="{{ path('menu_activo') }}">Regresar</a>
+            <a href="{{ path('menu_proceso') }}">Regresar</a>
         </li>
     </ul>
     </div>

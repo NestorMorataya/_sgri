@@ -1,6 +1,6 @@
 <?php
 
-namespace RiesgoBundle\Controller;
+namespace RiesgoBundle\Controller; 
  
 use RiesgoBundle\Entity\Riesgo;
 use AmenazaCatBundle\Entity\Cat_Amenaza;

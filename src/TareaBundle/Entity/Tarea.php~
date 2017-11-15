@@ -28,13 +28,7 @@ class Tarea
      */
     private $nombre;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="estado", type="boolean", length=1)
-     */
-    private $estado;
-
+    
     /**
      * Get id
      *
@@ -70,63 +64,12 @@ class Tarea
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="ControlBundle\Entity\Control", inversedBy="tareas")
-     * @ORM\JoinColumn(name="id_control", referencedColumnName="id", onDelete="CASCADE") 
+     * @ORM\ManyToOne(targetEntity="ProcesoBundle\Entity\Proceso", inversedBy="tareas")
+     * @ORM\JoinColumn(name="id_proceso", referencedColumnName="id", onDelete="CASCADE") 
      */
-    protected $controles;
+    protected $proceso;
+
+ 
 
 
-    /**
-     * @ORM\ManyToOne(targetEntity="PlanTratamientoBundle\Entity\Plan_Tratamiento", inversedBy="tareas")
-     * @ORM\JoinColumn(name="id_plan", referencedColumnName="id", onDelete="CASCADE") 
-     */
-    protected $planes;
-
-    /**
-     * Set controles
-     *
-     * @param \ControlBundle\Entity\Control $controles
-     *
-     * @return Tarea
-     */
-    public function setControles(\ControlBundle\Entity\Control $controles = null)
-    {
-        $this->controles = $controles;
-    
-        return $this;
-    }
-
-    /**
-     * Get controles
-     *
-     * @return \ControlBundle\Entity\Control
-     */
-    public function getControles()
-    {
-        return $this->controles;
-    }
-
-    /**
-     * Set planes
-     *
-     * @param \PlanTratamientoBundle\Entity\Plan_Tratamiento $planes
-     *
-     * @return Tarea
-     */
-    public function setPlanes(\PlanTratamientoBundle\Entity\Plan_Tratamiento $planes = null)
-    {
-        $this->planes = $planes;
-    
-        return $this;
-    }
-
-    /**
-     * Get planes
-     *
-     * @return \PlanTratamientoBundle\Entity\Plan_Tratamiento
-     */
-    public function getPlanes()
-    {
-        return $this->planes;
-    }
 }

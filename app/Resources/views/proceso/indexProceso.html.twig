@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/styleExtra.css')}}">
+{% endblock %}
+
+{% block body %}
+
+{% set ri=proceso.plan.riesgo %}
+{% set plan=proceso.plan.descripcion %}
+{% set idplan=proceso.plan.id %}
+
+<form  name="insertar" method="get" action="{{ path('proceso2')}}">
+  <div class="container" style="margin-top:100px; margin-bottom:150px">
+    <div class="row well">
+
+      <h3>Asignar controles al plan: {{ proceso.plan.id}}</h3>
+      <input type="number" readonly="readonly" name="proceso" id="proceso" value="{{proceso.plan}}" style="display:none;">
+
+
+      <div class="col-xs-6">
+       <div class="panel panel-success">
+        <div class="panel-heading">AGREGAR CONTROLES</div>
+        <div class="panel-body">
+         <center>
+            <h5><u>Datos de plan: </u></h5>
+  
+          <h5><i>Id de riesgo: <input type="text" value="{{ ri}}" name="riesS" id="riesS"  size="3" disabled="true"></i></h5>
+         <input type="text" value="{{idplan}}" name="idS" id="idS"  size="20" disabled="true" style="display:none;">
+          <h5><i>Descripción del plan: <input type="text" value="{{plan}}" name="plaS" id="plaS"  size="20" disabled="true"></i></h5>
+            <hr>
+         
+            <br>
+             <div class="form-group">
+              <h4><label>Controles</label></h4>
+              <select name= "controlSeleccionado" required id= "controlSeleccionado" class="textfield">
+                <option selected="selected" value="default">--Seleccione un Control--</option>
+                {% for cont in control %}
+                <option value="{{cont.id}}">{{ cont.control }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          <br>
+
+          <input type="button" onclick="capturar()" value="Agregar Control">
+          </center>
+          <br>
+          <a class="btn" href="{{ path('plan_tratamiento_index') }}">Regresar</a>
+          <br><br>
+
+
+          <input type="number" readonly="readonly" name="contador" id="contador" style="display:none;">
+
+
+          <div class="box-body table-responsive">
+            <table class="table table-hover" width= "100%" >
+             <thead>
+               <tr>
+                <th style="width:10%" >Plan de Tratamiento</th>
+                <th style="width:10%" >Riesgo</th>
+                <th style="width:10%" >Control</th>
+              </tr>
+            </thead>
+            <tbody>
+             {% for i in 0..20 %}
+             <tr class="hover" style="display:none" id="fila{{i}}" name="fila{{i}}">
+              <td><input class="colorfondo" size="8" type="text" id="id{{i}}" name="pla{{i}}" readonly="readonly"></td>
+
+              <td><input class="colorfondo" size="8" type="text" id="ries{{i}}" name="ries{{i}}" readonly="readonly"></td>
+
+
+              <td><input class="colorfondo" size="8" type="text" id="pla{{i}}" name="pla{{i}}" readonly="readonly"></td>
+
+              <td><input class="colorfondo" size="8" type="text" id="contr{{i}}" name="contr{{i}}" readonly="readonly"></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+
+      <center><input class="btn" type="submit" name="Enviar" value="Guardar"></center>
+    </form>
+
+  </div>
+
+</div>
+
+<style>
+  .colorfondo{
+    background-color: #F2F2F2;
+    border:0;
+  }
+</style>
+
+
+</div>
+</div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('public/js/tablaProceso.js')}}"></script>
+<script type="text/javascript">
+</script>
+
+{% endblock %}
+

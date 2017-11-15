@@ -315,7 +315,7 @@ class activo
         return $this->empresaId;
     }
 
-    
-    
- 
+    public function __toString() {
+    return $this->getNombre();
+    }
 }
