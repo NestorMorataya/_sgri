@@ -2,7 +2,7 @@
 
 
 {% block stylesheets %}
-  <link rel="stylesheet" type="text/css" href="{{ asset('public/css/styleExtra.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/tablas.css')}}">
 {% endblock %}
 
 {% block body %}
@@ -17,21 +17,21 @@
 
 
 <div class="box-body table-responsive">
-    <table id='tabla' class="table table-hover">
+    <table id='tabla' class="table table-hover" >
         <thead>
             <tr>
-                <th> Id </th>
-                <th> Disponibilidad </th>
-                <th> Confidencialidad </th>
-                <th> Integridad </th>
-                <th> Valor Activo </th>
-                <th> Degradacion </th>
-                <th> Impacto </th>
-                <th> Probabilidad Ocurrencia </th>
-                <th> Riesgo </th>
-                <th> Activo Id </th>
-                <th> Amenaza  </th>
-                <th> Acciones </th>
+                <th style="width:3%" ><font size=2> No Riesgo</font></th>
+                <th style="width:5%"><font size=2> Disponibilidad </font></th>
+                <th style="width:5%"><font size=2> Confidencialidad</font> </th>
+                <th style="width:5%"><font size=2> Integridad </font></th>
+                <th style="width:5%"> <font size=2>Valor Activo </font></th>
+                <th style="width:5%"> <font size=2>Degradacion </font></th>
+                <th style="width:5%"> <font size=2>Impacto</font> </th>
+                <th style="width:5%"> <font size=2>Probabilidad Ocurrencia </font></th>
+                <th style="width:5%"> <font size=2>Riesgo </font></th>
+                <th style="width:5%"><font size=2> Activo Id </font></th>
+                <th style="width:10%"><font size=2> Amenaza  </font></th>
+                <th style="width:30px"><font size=2> Acciones </font></th>
                 </div>
             </tr>
         </thead>
@@ -55,8 +55,8 @@
                 <td>{{ ame.nombre }}</td>
                   {% endif %}
                 {% endfor %}
-                <td><a href="{{ path('riesgo_edit', { 'id': riesgo.id }) }}">Editar</a></td>
-                <td><a href="{{path ('plan_tratamiento_new', {'id':riesgo.id}) }}">Crear Plan</a></td>
+                <td><a href="{{ path('riesgo_edit', { 'id': riesgo.id }) }}">Editar</a> <br><br>
+                <a href="{{path ('plan_tratamiento_new', {'id':riesgo.id}) }}">Crear Plan</a></td>
 
             </tr>
         {% endfor %}
@@ -72,7 +72,43 @@
 
 {% block javascripts %}
 
+<script
+  src="{{ asset('public/DataTables/jquery-3.2.1.js') }}"
+  integrity=""
+  crossorigin="anonymous"></script> 
 
+<script type="text/javascript" src="{{ asset('public/DataTables/datatables.js') }}"></script>
+
+<script>
+$(document).ready(function() {
+  $("#tabla").DataTable(
+  {
+    language: {
+    processing:     "Procesando...",
+    search:         "Buscar:",
+    lengthMenu:     "Mostrar _MENU_ registros",
+    info:           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    infoEmpty:      "Mostrando registros del 0 al 0 de un total de 0 registros",
+    infoFiltered:   "(filtrado de un total de _MAX_ registros)",
+    infoPostFix:    "",
+    loadingRecords: "Cargando...",
+    zeroRecords:    "No se encontraron resultados",
+    emptyTable:     "Ningún dato disponible en esta tabla",
+    paginate: {
+      first:      "Primero",
+      previous:   "Anterior",
+      next:       "Siguiente",
+      last:       "Último"
+    },
+    aria: {
+      sortAscending:  ": Activar para ordenar la columna de manera ascendente",
+      sortDescending: ": Activar para ordenar la columna de manera descendente"
+    }
+    }
+  } 
+  );
+});
+</script>
 
 {% endblock %}
 

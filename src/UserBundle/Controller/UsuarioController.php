@@ -37,9 +37,10 @@ class UsuarioController extends Controller
      */
     public function indexAction()
     {
+        $user = $this->getUser(); 
         $em = $this->getDoctrine()->getManager();
 
-        $usuarios = $em->getRepository('UserBundle:Usuario')->findAll();
+        $usuarios = $em->getRepository('UserBundle:Usuario')->findBy(array('empresaId' => $user->getEmpresa()));
 
         return $this->render('usuario/index.html.twig', array(
             'usuarios' => $usuarios,
@@ -62,6 +63,8 @@ class UsuarioController extends Controller
 
 
             $password = $form ->get('password')->getData();
+
+$usuario->setContra($password); //guardo en el nuevo campo contra la pass antes de encriptarla
 
             $encoder = $this->container->get('security.password_encoder');
             $encoded = $encoder->encodePassword($usuario,$password);
@@ -99,7 +102,7 @@ $usuario->setRole($role);
      * @Method({"GET", "POST"})
      */
     public function newAction2(Request $request)
-    {
+    {//estos son los usuarios que crea el admon de empresa
 // return new Response('<html><body>Hello booo</body></html>');
         $usuario = new Usuario();
     $user = $this->getUser();
@@ -114,7 +117,7 @@ $role=$request->get('role');
 $usuario->setRole($role);
 
             $password = $form ->get('password')->getData();
-
+$usuario->setContra($password);  //guardo en el nuevo campo contra la pass antes de encriptarla
             $encoder = $this->container->get('security.password_encoder');
             $encoded = $encoder->encodePassword($usuario,$password);
             $usuario->setPassword($encoded);
@@ -142,12 +145,7 @@ $usuario->setRole($role);
 
 
 
- /**
-     * Finds and displays a usuario entity.
-     *
-     * @Route("/{id}", name="usuario_show")
-     * @Method("GET")
-     */
+
 
     public function showAction(Usuario $usuario)
     {
@@ -171,21 +169,32 @@ $usuario->setRole($role);
     {   
 
        // $id = $request->get('id');
-        return new Response($usu->getId(). " " .$usu->getUsername(). " " . $usu->getFirstName());
+//return new Response($usu->getId(). " " .$usu->getUsername(). " " . $usu->getFirstName(). " " . $usu->getContra());
+         $user = $this->getUser();
 
-
-        $deleteForm = $this->createDeleteForm($usuario);
-        $editForm = $this->createForm('UserBundle\Form\UsuarioType', $usuario);
+        $deleteForm = $this->createDeleteForm($usu);
+        $editForm = $this->createForm('UserBundle\Form\UsuarioType', $usu);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            $role=$request->get('role');
+            $contra=$request->get('contra'); //recibo la contrasena sin encriptar
+                               
+
+$usu->setRole($role);
+$usu->setContra($contra); //seteo el usu con la contra sin encriptar
+
+$encoder = $this->container->get('security.password_encoder');
+$encoded = $encoder->encodePassword($usu,$contra); //encripto la contrasena sin encriptar, se reescribe lo que hay en password por la nueva (contra)
+$usu->setPassword($encoded); //metemos la nueva contrasena encriptada en password, (en la vista solo se trabaja con la contra no encriptada al venir aca se encripta )
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('usuario_edit', array('id' => $usuario->getId()));
+            return $this->redirectToRoute('usuario_edit', array('id' => $usu->getId()));
         }
 
         return $this->render('usuario/edit.html.twig', array(
-            'usuario' => $usuario,
+            'usuario' => $usu,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -199,6 +208,7 @@ $usuario->setRole($role);
      */
     public function deleteAction(Request $request, Usuario $usuario)
     {
+
         $form = $this->createDeleteForm($usuario);
         $form->handleRequest($request);
 
@@ -226,4 +236,16 @@ $usuario->setRole($role);
             ->getForm()
         ;
     }
+   /**
+     * Lists all categoria entities.
+     *
+     * @Route("/menu", name="menu_usuarios")
+     * @Method("GET")
+     */
+     public function menuAction()
+    {
+        return $this->render('menu/menuUsuarios.html.twig');
+        //return new Response("hola");
+    }
+
 }
