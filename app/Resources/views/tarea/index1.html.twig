@@ -19,15 +19,16 @@
 
       <input type="number" readonly="readonly" name="proceso" id="proceso" value="{{proceso.id}}" style="display:none;">
       <input type="number" readonly="readonly" name="plann" id="plann" value="{{proceso.plan.id}}" style="display:none;">
-      <div class="col-xs-6">
+      <div class="col-xs-8">
        <div class="panel panel-success">
-        <div class="panel-heading">LISTA DE TAREAS</div>
+        <div class="panel-heading">LISTA DE TAREAS DEL CONTROL:<b> {{proceso.control}}</b></div>
         <div class="panel-body">
           <div class="box-body table-responsive">
+         <label> <b> &#8226;&#8226;Seleccione las tareas que ya han sido realizadas <b></label><br>
             <table id='tdatos' class="table table-hover">
               <thead>
                 <tr>
-                 
+                
                   <th>Tarea</th>
                   <th>Seleccionar</th>
               </tr>
@@ -35,11 +36,19 @@
         
             </thead>
             <tbody>
-              {% for tr in tarea %}
+             {% for tr in tarea %}
               <tr>
                 <td style="display: none;"><input type="id{{ counter }}" name="id{{ counter }}" value="{{ tr.id }}"></td>
                <td>{{ tr.nombre }}</td>
+
+
+                {% if tr.hecha == 1  %} 
+
+                 <td><input type="checkbox" id="check{{ counter }}" name="check{{ counter }}" onChange="suma(this)" checked="checked"> </td> 
+               {% else %}
                 <td><input type="checkbox" id="check{{ counter }}" name="check{{ counter }}" onChange="suma(this)"> </td> 
+               {% endif %}
+
                {% set counter = counter + 1 %}
              </tr>
             {% endfor %}
