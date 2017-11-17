@@ -233,7 +233,7 @@ class RiesgoController extends Controller
       /**
      * Lists all riesgo entities.
      *
-     * @Route("/guardar/prueba", name="guardar2")
+     * @Route("/guardar/prueba", name="guardarRiesgo")
      * @Method("GET")
      */
  public function guardarAction(Request $request)

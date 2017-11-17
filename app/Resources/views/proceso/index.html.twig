@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/css/tablas.css')}}">
 {% endblock %}
 {% block body %}
+<h2>Plan tratamiento {{ plan.descripcion }}</h2>
 <hr>
 <br>
 <br>
@@ -11,25 +12,21 @@
     <table id='tabla' class="table table-hover">
         <thead>
             <tr>
-                <th>Plan de Tratamiento</th>
+                
                 <th>Control</th>
+                  <th>Porcentaje Avance</th>
                 <th>Acciones</th>
+              
             </tr>
         </thead>
         <tbody>
         {% for proceso in procesos %}
             <tr>
-                <td>{{ proceso.plan}}</td>
+                
                 <td>{{ proceso.control}}</td>
+                   <td>{{ proceso.procesoTarea}} %</td>
                 <td><ul>
-                        <li>
-                            <a href="{{ path('proceso_mostrar', { 'id': proceso.id }) }}">Asignar control
-                        </li>
-                        <br>
-                         <li>
-                            <a href="{{ path('proceso_new', { 'id': proceso.id }) }}">Ver controles</a>
-                        </li>
-                        <br>
+
                         <li>
                             <a href="{{ path('tarea_mostrar', { 'id': proceso.id }) }}">Agregar Tarea</a>
                         </li>
@@ -37,6 +34,7 @@
                          <li>
                             <a href="{{ path('tarea_seguimiento', { 'id': proceso.id }) }}">Ver seguimiento</a>
                         </li>
+
                     </ul></td>
             </tr>
         {% endfor %}

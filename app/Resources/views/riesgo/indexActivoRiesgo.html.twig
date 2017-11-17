@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-<form  name="insertar" method="get" action="{{ path('guardar2')}}">
+<form  name="insertar" method="get" action="{{ path('guardarRiesgo')}}">
 <div class="container" style="margin-top:100px; margin-bottom:150px">
 <div class="row well">
 
@@ -14,10 +14,16 @@
 
 <input type="number" readonly="readonly" name="activo" id="activo" value="{{activo.id}}" style="display:none;">
 
+<div class="col-xs-12">
+<div class="panel panel-success">
+<div class="panel-heading">Agrege Informacion de Riesgo</div>
+<div class="panel-body">
 
 
 <h4>Ingrese Dimensiones del Activo</h4>
 <br>
+
+    <input type="text"  name="yy" id="yy"  size="3"   onmouseover="sumar()" >
 
 <label>Disponibilidad</label>
 <select name="dispSeleccionada" id="dispSeleccionada" onChange="sumar()" selected=0>
@@ -76,35 +82,46 @@
 </div>
 
 
-<label onmouseover=""  >Ingrese Degradacion del activo en base a la amenaza</label>
+<label onmouseover=""  >Ingrese Degradacion del activo en base a la amenaza (en %)</label>
 
 <input   type="number"  min="1" max="100"  title="Puede auxiliarse de Ayuda"  name="degradacionSeleccionada" id="degradacionSeleccionada" size="20" onChange="sumar()"> 
 <a class=Ntooltip2 >
      Ayuda
 <span>
-   Muy Atla = 100% <br> Alta = 75% <br> Media = 50% <br> Baja = 25% <br> Muy Baja = 1%
+   Muy Alto = 100% <br> Alto = 75% <br> Medio = 50% <br> Bajo = 25% <br> Muy Bajo = 1%
 </span>
 </a>
 
 <br><br>
-<label>Ingrese la probabilidad de ocurrencia de amenaza</label>
+<label>Ingrese la probabilidad de ocurrencia de amenaza (en %)</label>
 <input  id="name" title="Puede auxiliarse de Ayuda" type="number" min="5" max="100" name="probabilidadSeleccionada" id="probabilidadSeleccionada" size="20" onChange="sumar()"> 
 <a class=Ntooltip >
      Ayuda
 <span>
-    Muy Frecuente = 100 = 1 vez al día <br> Frecuente = 70 = 1 vez cada semana<br>Normal = 50 = 1 vez cada dos meses<br>Poco Frecuente = 10= 1 vez cada seis meses<br>Muy poco Frecuenta = 5 = Una vez al año
+    Muy Frecuente = 100 % = 1 vez al día <br> Frecuente = 70 % = 1 vez cada semana<br>Normal = 50 % = 1 vez cada dos meses<br>Poco Frecuente = 10 %= 1 vez cada seis meses<br>Muy poco Frecuente = 5 % = Una vez al año
 </span>
-</a>
 
+
+</a>
+<a class="btn" href="{{ path('activo_index') }}">Regresar</a>
 <br>
 <br>
-<label >Impacto:</label>
+
+<div>
+<label >Impacto (en %):</label>
 <input type="text" name="impactoCalc" id="impactoCalc" size="20" disabled="true">
-<label><h4>Riesgo de la Amenaza:</h4></label> <input type="text" name="riesgoCalc" id="riesgoCalc" size="20" disabled="true">
-</p>
+<label><h4>Riesgo de la Amenaza (en %):</h4></label> <input type="text" name="riesgoCalc" id="riesgoCalc" size="20" disabled="true">
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input disabled="true" type="text" name="impacNom" id="impacNom" size="20" onChange="sumar()">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input  disabled="true" type="text" name="riesNom" id="riesNom" size="20" onChange="sumar()">
+</p></div>
+
+<br><br>
 <input type="button" onclick="capturar()" value="Agregar Amenaza">
 
-<a class="btn" href="{{ path('activo_index') }}">Regresar</a>
+
 <br><br>
 
 
@@ -120,15 +137,17 @@
 			<th style="width:10%" >Integridad</th>
 			<th style="width: 10%" >Valor Activo</th>
 			<th style="width: 10%" >Amenaza</th>
-			<th style="width: 10%">Probabilidad Ocurrencia</th>
-			<th style="width: 10%" >Degradacion Activo</th>
-			<th style="width: 10%" >Impacto</th>
-			<th style="width: 10%" >Riesgo</th>
+			<th style="width: 10%">Probabilidad Ocurrencia (%)</th>
+			<th style="width: 10%" >Degradacion Activo (%)</th>
+      <th style="width: 10%" >Impacto </th>
+      <th style="width: 10%" >Riesgo </th>
+
 		</tr>
 		</thead>
 		<tbody>
+
 	 {% for i in 0..20 %}
-    <tr class="hover" style="display:none" id="fila{{i}}" name="fila{{i}}">
+  <tr class="hover" style="display:none" id="fila{{i}}" name="fila{{i}}">
       <td><input class="colorfondo" size="8" type="text" id="disp{{i}}" name="disp{{i}}" readonly="readonly"></td>
       <td><input class="colorfondo" size="8" type="text" id="conf{{i}}" name="conf{{i}}" readonly="readonly"></td>
       <td><input class="colorfondo" size="8" type="text" id="int{{i}}" name="int{{i}}" readonly="readonly"></td>
@@ -137,8 +156,10 @@
       <td><input class="colorfondo" size="10" type="text" id="ameN{{i}}" name="ameN{{i}}" readonly="readonly"></td>
       <td><input class="colorfondo" size="8" type="text" id="prob{{i}}" name="prob{{i}}" readonly="readonly"></td>
       <td><input class="colorfondo"  size="8" type="text" id="degra{{i}}" name="degra{{i}}" readonly="readonly"></td>
-      <td><input class="colorfondo" size="8" type="text" id="impac{{i}}" name="impac{{i}}" readonly="readonly"></td>
-      <td><input class="colorfondo" size="10" type="text" id="ries{{i}}" name="ries{{i}}" readonly="readonly"></td>
+      <td style="display:none"><input class="colorfondo" size="8" type="text" id="impac{{i}}" name="impac{{i}}" readonly="readonly"></td>
+       <td><input class="colorfondo" size="8" type="text" id="impacNom{{i}}" name="impacNom{{i}}" readonly="readonly"></td>
+      <td style="display:none" ><input class="colorfondo" size="10" type="text" id="ries{{i}}" name="ries{{i}}" readonly="readonly"></td>
+      <td><input class="colorfondo" size="10" type="text" id="riesNomb{{i}}" name="riesNomb{{i}}" readonly="readonly"></td>
     </tr>
     {% endfor %}
 		</tbody>
@@ -152,13 +173,17 @@
 </div>
    
 </div>
-
+</div>
 <style>
   .colorfondo{
     background-color: #F2F2F2;
     border:0;
   }
 </style>
+
+</div>
+</div>
+</div>
 
 {% endblock %}
 
@@ -167,6 +192,12 @@
 <script type="text/javascript">
 
 function sumar() {
+
+var rie = document.getElementById("activo").value;
+// alert(rie);
+
+
+
 var n1=parseInt(document.insertar.dispSeleccionada.value);
 var n2=parseInt(document.insertar.confSeleccionada.value);
 var n3=parseInt(document.insertar.intSeleccionada.value);
@@ -176,11 +207,67 @@ n33=n1+n2+n3;
 
 var n5 = parseInt(document.insertar.degradacionSeleccionada.value);
 
-document.insertar.impactoCalc.value=n33*n5;
-impacto=n33*n5;
+impacto=((n33*(n5/100))/9)*100;
+document.insertar.impactoCalc.value=impacto.toFixed(2);
+
+if (impacto<=20)
+  var nom= document.insertar.impacNom.value="Muy Bajo";
+else
+   if (impacto>20 && impacto<=40)
+     var nom= document.insertar.impacNom.value="Bajo";
+   else
+      if (impacto>=41 && impacto<=60)
+     var nom= document.insertar.impacNom.value="Medio";
+     else
+        if (impacto>=61 && impacto<=80)
+        var nom=document.insertar.impacNom.value="Alto";
+           else
+              if (impacto>=81 && impacto<=100)
+            var nom=  document.insertar.impacNom.value="Muy Alto";
+
+      else  var nom=  document.insertar.impacNom.value="NO existe";
 
 var n7 = parseInt(document.insertar.probabilidadSeleccionada.value);
-document.insertar.riesgoCalc.value=n7*impacto;
+ri=(n7/100)*(impacto)
+document.insertar.riesgoCalc.value=ri.toFixed(2);
+
+if(ri <= 15){
+  document.insertar.riesNom.value="Despreciable";
+  riesNom.style.backgroundColor = "#82FA58";
+            riesNom.style.color = "#000000";
+            riesNom.style.fontSize=1+'em';
+            riesNom.style.fontWeight='bold';
+            document.insertar.yy.value=rie;
+          }
+else
+  if (ri>15 && ri<=29){
+     document.insertar.riesNom.value="Bajo";
+      riesNom.style.backgroundColor = "#BDBDBD";
+            riesNom.style.color = "#000000";
+            riesNom.style.fontSize=1+'em';
+            riesNom.style.fontWeight='bold';}
+    else
+      if (ri>=30 && ri<=45){
+       document.insertar.riesNom.value="Apreciable";
+         riesNom.style.backgroundColor = "#F4FA58";
+            riesNom.style.color = "#000000";
+            riesNom.style.fontSize=1.2+'em';
+            riesNom.style.fontWeight='bold';}
+      
+      else
+        if (ri>=46 && ri<=59){
+        document.insertar.riesNom.value="Importante";
+         riesNom.style.backgroundColor = "#FFBF00";
+            riesNom.style.color = "#000000";
+            riesNom.style.fontSize=1.2+'em';
+            riesNom.style.fontWeight='bold';}
+         else
+          if (ri>=60 && ri<=100){
+            document.insertar.riesNom.value="Critico";
+            riesNom.style.backgroundColor = "#FE2E2E";
+            riesNom.style.color = "#000000";
+            riesNom.style.fontSize=1.2+'em';
+            riesNom.style.fontWeight='bold';}
 
 }
 </script>

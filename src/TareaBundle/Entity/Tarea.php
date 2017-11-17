@@ -28,7 +28,14 @@ class Tarea
      */
     private $nombre;
 
-    
+   
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="hecha", type="boolean", nullable=true)
+     */
+    private $hecha;
+
     /**
      * Get id
      *
@@ -38,6 +45,32 @@ class Tarea
     {
         return $this->id;
     }
+
+     /**
+     * Get hecha
+     *
+     * @return boolean
+     */
+    public function getHecha()
+    {
+        return $this->hecha;
+    }
+
+
+    /**
+     * Set hecha
+     *
+     * @param boolean $hecha
+     *
+     * @return Tarea
+     */
+    public function setHecha($hecha)
+    {
+        $this->hecha = $hecha;
+
+        return $this;
+    }
+
 
     /**
      * Set nombre

@@ -6,6 +6,7 @@ use ProcesoBundle\Entity\Proceso;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 /**
  * Tarea controller.
  *
@@ -223,7 +224,7 @@ class TareaController extends Controller
     {
 
           $em = $this->getDoctrine()->getManager();
-          $pro = $em->getRepository('ProcesoBundle:Proceso')->findAll();
+         // $pro = $em->getRepository('ProcesoBundle:Proceso')->findAll();
       
         return $this->render('tarea/indexAsignarTareas.html.twig', array(
            'proceso' => $proceso,
@@ -242,8 +243,8 @@ class TareaController extends Controller
     {
           $tr=new Tarea();
           $em = $this->getDoctrine()->getManager();
-          $pro = $em->getRepository('ProcesoBundle:Proceso')->findAll();
-          $tr = $em->getRepository('TareaBundle:Tarea')->findAll();
+          //$pro = $em->getRepository('ProcesoBundle:Proceso')->findAll();
+          $tr = $em->getRepository('TareaBundle:Tarea')->findBy(array('proceso' => $proceso->getId()));
       
         return $this->render('tarea/index1.html.twig', array(
            'proceso' => $proceso, 'tarea' =>$tr,
@@ -283,6 +284,46 @@ class TareaController extends Controller
         }
          return $this->redirectToRoute('proceso_index');
     }
+     /**
+     * Lists all tarea entities.
+     *
+     * @Route("/guardar/proceso/control", name="dar_seguimiento")
+     * @Method("GET")
+     */
+     public function darSeguimiento(Request $request){
+
+        $id_plan = $request->get('plann');
+       // return new Response($id_plan);
+        $contador = $request->get('counter'); //cuantas tareas hay para el control
+        $proceso = $request->get('proceso');
+        
+        for ($i=0; $i < $contador; $i++) {
+            $id = $request->get('id'.$i);
+            $check = $request->get('check'.$i);
+
+            if ($check == true) {
+                 $tarea = new Tarea();
+                 $em = $this->getDoctrine()->getManager();
+                 $tarea =$em->getRepository('TareaBundle:Tarea')->findOneBy(array('id' => $id));
+                 $tarea->setHecha($check);
+                 $em->persist($tarea);
+                 $em->flush();
+            }
+            else{
+                  $tarea = new Tarea();
+                 $em = $this->getDoctrine()->getManager();
+                 $tarea =$em->getRepository('TareaBundle:Tarea')->findOneBy(array('id' => $id));
+                 $tarea->setHecha(false);
+                 $em->persist($tarea);
+                 $em->flush();
+            }
+        }
+
+       return $this->redirectToRoute('actualizar_proceso', array('id' => $proceso, 'plan'=>$id_plan));
+
+     }
+
+
 
 
 

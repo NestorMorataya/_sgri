@@ -9,13 +9,14 @@
     var prob=[];
     var degra=[];
     var impa=[];
+    var impacNom=[];
     var ries=[];
+    var riesNombre=[];
 
 
     //Funcion que captura la informacion en los Textfield y Select
     function capturar(){
-
-        //alert('capturar');
+    //alert('capturar');
         var dispSeleccionada = document.getElementsByName("dispSeleccionada")[0].value;
         var confSeleccionada= document.getElementsByName("confSeleccionada")[0].value;
         var intSeleccionada = document.getElementsByName("intSeleccionada")[0].value;
@@ -24,12 +25,12 @@
         var probabilidadSeleccionada = document.getElementsByName("probabilidadSeleccionada")[0].value;
         var degradacionSeleccionada = document.getElementsByName("degradacionSeleccionada")[0].value;
         var impactoCalc = document.getElementsByName("impactoCalc")[0].value;
+        var impacN = document.getElementsByName("impacNom")[0].value;
         var riesgoCalc = document.getElementsByName("riesgoCalc")[0].value;
+        var riesNom = document.getElementsByName("riesNom")[0].value;
        
-
-
         //arreglo[arreglo.length]= _arreglo.trim();  ?
-
+ 
         dispo[dispo.length]= dispSeleccionada.trim();
         conf[conf.length]= confSeleccionada.trim();
         inte[inte.length]= intSeleccionada.trim();
@@ -39,17 +40,18 @@
         prob[prob.length]= probabilidadSeleccionada.trim();
         degra[degra.length]= degradacionSeleccionada.trim();
         impa[impa.length]= impactoCalc.trim();
+        impacNom[impacNom.length]= impacN.trim();
         ries[ries.length]= riesgoCalc.trim();
+        riesNombre[riesNombre.length]= riesNom.trim();
 
         actualizarTabla();
         //document.getElementById("select").value="0";
-
-
     }
 
     //Actualizando la tabla dinamica con la informacion en Array Globales       
     function actualizarTabla(){
         var num = 1;
+
             //alert('actualizar');
             for (var i = 0; i < dispo.length ; i++) {
                 document.getElementById("fila"+i).style.display="table-row";
@@ -62,15 +64,20 @@
                 document.getElementById("prob"+i).value = prob[i];
                 document.getElementById("degra"+i).value = degra[i];
                 document.getElementById("impac"+i).value = impa[i];
-               document.getElementById("ries"+i).value = ries[i];
-           
+                document.getElementById("impacNom"+i).value = impacNom[i];
+                document.getElementById("ries"+i).value = ries[i];
+                document.getElementById("riesNomb"+i).value = riesNombre[i];
+         
+
                 num++;
             }
             document.getElementById("contador").value = num-1;
+           
     }
 
 
     function prueba(){
+
         var value = document.getElementsByName("select")[0].value;
         var ubicacion=document.getElementById("select2");
 

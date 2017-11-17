@@ -22,7 +22,7 @@ a.Ntooltip:hover span {
 display: block; /* se fuerza a mostrar el bloque */
 position: absolute; /* se fuerza a que se ubique en un lugar de la pantalla */
 top:-5em; left:5em; /* donde va a estar la ventana emergente*/
-width:300px; /* el ancho por defecto que va a tener */
+width:312px; /* el ancho por defecto que va a tener */
 padding:7px; /* la separación entre el contenido y los bordes */
 background-color:#D8D8D8 ; /* el color de fondo de la ventana emergente */
 color: black; /* el color de los textos de la evntana emergente */

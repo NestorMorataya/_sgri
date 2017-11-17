@@ -4,6 +4,7 @@ namespace PlanTratamientoBundle\Controller;
 
 use PlanTratamientoBundle\Entity\Plan_Tratamiento;
 use RiesgoBundle\Entity\Riesgo;
+use ControlBundle\Entity\Control;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -141,6 +142,34 @@ class Plan_TratamientoController extends Controller
             ->getForm()
         ;
     }
+
+
+
+  /**
+     * Finds and displays a Plan_Tratamiento entity.
+     *
+     * @Route("/plan/{id}", name="asignar_controles")
+     * @Method("GET")
+     */
+    public function showAction2(Plan_Tratamiento $plan_Tratamiento)
+    {
+       
+        $rie= new Riesgo();
+          $cont = new Control();
+        
+          $em = $this->getDoctrine()->getManager();
+
+         $rie = $em->getRepository('RiesgoBundle:Riesgo')->findOneBy(array('id'=> $plan_Tratamiento->getRiesgo()));
+
+  // return new Response($rie->getId());
+
+         $cont = $em->getRepository('ControlBundle:Control')->findAll();
+        return $this->render('proceso/indexProceso.html.twig', array(
+        'control'=>$cont, 'plan_Tratamiento'=>$plan_Tratamiento, 'rie'=>$rie,
+       
+        ));
+    }
+
 
     
     /**

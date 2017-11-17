@@ -5,9 +5,12 @@ namespace ProcesoBundle\Controller;
 use ProcesoBundle\Entity\Proceso;
 use ControlBundle\Entity\Control;
 use PlanTratamientoBundle\Entity\Plan_Tratamiento;
+use TareaBundle\Entity\Tarea;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 
 /**
  * Proceso controller.
@@ -19,17 +22,18 @@ class ProcesoController extends Controller
     /**
      * Lists all proceso entities.
      *
-     * @Route("/", name="proceso_index")
+     * @Route("/{id}", name="proceso_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Plan_Tratamiento $plan_Tratamiento)
     {
+        //return new Response($plan_Tratamiento->getDescripcion());
         $em = $this->getDoctrine()->getManager();
 
-        $procesos = $em->getRepository('ProcesoBundle:Proceso')->findAll();
+        $procesos = $em->getRepository('ProcesoBundle:Proceso')->findBy(array('plan' => $plan_Tratamiento->getId() ));
 
         return $this->render('proceso/index.html.twig', array(
-            'procesos' => $procesos,
+            'procesos' => $procesos, 'plan' => $plan_Tratamiento,
         ));
     }
 
@@ -232,7 +236,36 @@ class ProcesoController extends Controller
         return $this->render('proceso/asignarControles.html.twig');
     }
 
+    /**
+    *
+    * @Route("/actualizar/{id}/{plan}", name="actualizar_proceso")
+    * @Method("GET")
+    */
+    public function actualizarProcesoAction(proceso $proceso, Plan_Tratamiento $plan)
+    {
+      
+        $true = 0;//tareas en true
+        $num = 0; //total tareas
+        //return new Response($proceso->getProcesoTarea());
+        $tareas = new Tarea();
+        $em = $this->getDoctrine()->getManager();
+        $tareas = $em->getRepository('TareaBundle:Tarea')->findBy(array('proceso'=> $proceso->getId()));
+        foreach ($tareas as $tarea) {
+            $num++;
+            if ($tarea->getHecha() == true) {
+                $true++;
+            }
+        }
 
+        $porcentaje = ($true/$num)*100;
+        $proceso->setProcesoTarea($porcentaje);
+        $em->persist($proceso);
+        $em->flush();
+        return $this->redirectToRoute('proceso_index', array('id'=>$plan->getId()));
+        //return new Response($porcentaje);
+       
+        //return $this->render('proceso/asignarControles.html.twig');
+    }
 
 
 

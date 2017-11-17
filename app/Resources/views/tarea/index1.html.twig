@@ -4,7 +4,7 @@
 {% endblock %}
 {% block body %}
 
-<form  name="insertar" method="get" action="{{ path('proceso2')}}">
+<form  name="insertar" method="get" action="{{ path('dar_seguimiento')}}">
   <div class="container" style="margin-top:100px; margin-bottom:150px">
     <div class="row well">
 {% set foo = 'foo' %}
@@ -17,7 +17,8 @@
         </li>
       </ul>
 
-      <input type="number" readonly="readonly" name="proceso" id="proceso" value="{{proceso.plan}}" style="display:none;">
+      <input type="number" readonly="readonly" name="proceso" id="proceso" value="{{proceso.id}}" style="display:none;">
+      <input type="number" readonly="readonly" name="plann" id="plann" value="{{proceso.plan.id}}" style="display:none;">
       <div class="col-xs-6">
        <div class="panel panel-success">
         <div class="panel-heading">LISTA DE TAREAS</div>
@@ -26,7 +27,7 @@
             <table id='tdatos' class="table table-hover">
               <thead>
                 <tr>
-                  <th>Plan</th>
+                 
                   <th>Tarea</th>
                   <th>Seleccionar</th>
               </tr>
@@ -36,63 +37,26 @@
             <tbody>
               {% for tr in tarea %}
               <tr>
-             
-               {% if tr.proceso.id==proceso.plan.id %}
-               <td>{{ tr.proceso.plan }}</td>
+                <td style="display: none;"><input type="id{{ counter }}" name="id{{ counter }}" value="{{ tr.id }}"></td>
                <td>{{ tr.nombre }}</td>
-                <td><input type="checkbox" name="chck3" value="1" onChange="suma(this)"> </td> 
+                <td><input type="checkbox" id="check{{ counter }}" name="check{{ counter }}" onChange="suma(this)"> </td> 
                {% set counter = counter + 1 %}
-               {% endif %}
              </tr>
-     
-
-       
-             {% endfor %}
+            {% endfor %}
            </tbody>
          </table>
+         <input type="number" name="counter" value="{{ counter }}" style="display: none;">
+         <input type="submit"  value="Guardar">
          </div>
          </div>
          </div>
          </div>
      
-      <div class="col-xs-6">
-       <div class="panel panel-success">
-        <div class="panel-heading">PROGRESO DE TAREAS</div>
-        <div class="panel-body">
-         <h5>Tareas Seleccionadas:
-        <input  type="text"  size="5" disabled="true" name="numero" id="numero" value="0" size="1"></h5>
-        <br>
-       <h5> Cantidad de planes: {{counter}}</h5>
-       <br>
-     <center><input type="button" onclick="capturar()" value="Seleccionar Tareas"></center>
-      </div>
-    </div>
-  </div>
-
-<div class="col-xs-12">
-       <div class="panel panel-default">
-        <div class="panel-heading">Porcentaje de seguimiento de tareas</div>
-        <div class="panel-body">
-
-<input type="number" readonly="readonly" name="contador" id="contador" style="display:none;">
-
-<div class="box-body table-responsive">
-<table class="table table-hover" width= "100%" >
-    <thead>
-    <tr>
-      <th style="width:10%" >Tarea</th>
-      <th style="width:10%" >Porcentaje de avance</th>
       
-    </tr>
-    </thead>
-    <tbody>
-   {% for i in 0..20 %}
-    <tr class="hover" style="display:none" id="fila{{i}}" name="fila{{i}}">
-      <td><input class="colorfondo" size="8" type="text" id="disp{{i}}" name="disp{{i}}" readonly="readonly"></td>
-      <td><input class="colorfondo" size="8" type="text" id="conf{{i}}" name="conf{{i}}" readonly="readonly"></td>
-      
-    </tr>
-    {% endfor %}
+
+
+
+ 
     </tbody>
   </table>
 
