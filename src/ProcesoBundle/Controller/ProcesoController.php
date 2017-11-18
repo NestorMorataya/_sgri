@@ -158,12 +158,12 @@ class ProcesoController extends Controller
   // $control = $request->get('contr'.$num);
        
         for ($i=0; $i < $contador; $i++) { 
-<<<<<<< HEAD
+
             $pla = $request->get('pla'.$num);
             $ries = $request->get('ries'.$num);
             $contr = $request->get('contr'.$num);
             
-=======
+
 $c= new Control();
 $p= new Plan_Tratamiento();
   $em = $this->getDoctrine()->getManager();
@@ -172,7 +172,7 @@ $p= new Plan_Tratamiento();
 $c=$em->getRepository('ControlBundle:Control')->findOneBy(array('id'=>$control));
 $p=$em->getRepository('PlanTratamientoBundle:Plan_Tratamiento')->findOneBy(array('id'=>$idplan));
         // return new Response($control);   
->>>>>>> 42561a864f538d75759c33ab73ab57a71df211c7
+
             $proceso = new Proceso();
            
             $proceso->setPlan($p);
