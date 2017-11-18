@@ -95,6 +95,7 @@ class Proceso
     {
         $this->control = $control;
     
+  
         return $this;
     }
 
@@ -168,6 +169,8 @@ class Proceso
     {
         $this->tareas->removeElement($tarea);
     }
+
+
 
     /**
      * Get tareas

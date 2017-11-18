@@ -151,20 +151,22 @@ class ProcesoController extends Controller
     {
        
         $num = 0;
+             $em = $this->getDoctrine()->getManager();
         $contador = $request->get('contador');
-        $pla=$request->get('plan');
+        $idplan=$request->get('idS');
+       //  $plans = $em->getRepository('PlanTratamientoBundle:Plan_Tratamiento')->findOneBy(array('id' => $idplan ));
+  // $control = $request->get('contr'.$num);
+       
         for ($i=0; $i < $contador; $i++) { 
-            $pla = $request->get('pla'.$num);
-            $ries = $request->get('ries'.$num);
-            $contr = $request->get('contr'.$num);
-            
 
+            $control = $request->get('contr'.$num);
+        // return new Response($control);   
             $proceso = new Proceso();
-            $proceso->setPlan($plan);
-            $proceso->setRiesgo($ries);
-            $proceso->setControl($contr);
-            
-            $em = $this->getDoctrine()->getManager();
+           
+            $proceso->setPlan($idplan);
+             $proceso->setControl($control);
+
+       
             $em->persist($proceso);
             $em->flush();
             $num++;
