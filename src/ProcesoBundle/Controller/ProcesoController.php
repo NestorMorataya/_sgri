@@ -4,6 +4,7 @@ namespace ProcesoBundle\Controller;
 
 use ProcesoBundle\Entity\Proceso;
 use ControlBundle\Entity\Control;
+use RiesgoBundle\Entity\Riesgo;
 use PlanTratamientoBundle\Entity\Plan_Tratamiento;
 use TareaBundle\Entity\Tarea;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -151,27 +152,32 @@ class ProcesoController extends Controller
     {
        
         $num = 0;
-             $em = $this->getDoctrine()->getManager();
+
         $contador = $request->get('contador');
-        $idplan=$request->get('idS');
+        $idplan=$request->get('idPlancito');
        //  $plans = $em->getRepository('PlanTratamientoBundle:Plan_Tratamiento')->findOneBy(array('id' => $idplan ));
   // $control = $request->get('contr'.$num);
        
         for ($i=0; $i < $contador; $i++) { 
+$c= new Control();
+$p= new Plan_Tratamiento();
+  $em = $this->getDoctrine()->getManager();
 
             $control = $request->get('contr'.$num);
+$c=$em->getRepository('ControlBundle:Control')->findOneBy(array('id'=>$control));
+$p=$em->getRepository('PlanTratamientoBundle:Plan_Tratamiento')->findOneBy(array('id'=>$idplan));
         // return new Response($control);   
             $proceso = new Proceso();
            
-            $proceso->setPlan($idplan);
-             $proceso->setControl($control);
+            $proceso->setPlan($p);
+             $proceso->setControl($c);
 
-       
+       $em=$this->getDoctrine()->getManager();
             $em->persist($proceso);
             $em->flush();
             $num++;
         }
-         return $this->redirectToRoute('proceso_index');
+          return $this->redirectToRoute('proceso_index', array( 'id' => $idplan));
     }
 
 
