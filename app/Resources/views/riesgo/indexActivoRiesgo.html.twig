@@ -23,7 +23,7 @@
 <h4>Ingrese Dimensiones del Activo</h4>
 <br>
 
-    <input type="text"  name="yy" id="yy"  size="3"   onmouseover="sumar()" >
+  
 
 <label>Disponibilidad</label>
 <select name="dispSeleccionada" id="dispSeleccionada" onChange="sumar()" selected=0>
@@ -103,7 +103,7 @@
 
 
 </a>
-<a class="btn" href="{{ path('activo_index') }}">Regresar</a>
+
 <br>
 <br>
 
@@ -114,13 +114,19 @@
 <p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input disabled="true" type="text" name="impacNom" id="impacNom" size="20" onChange="sumar()">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input  disabled="true" type="text" name="riesNom" id="riesNom" size="20" onChange="sumar()">
 </p></div>
 
-<br><br>
+<br>
 <input type="button" onclick="capturar()" value="Agregar Amenaza">
 
+
+        
+      
+      
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="{{ path('algo') }}">Regresar</a>
+ 
 
 <br><br>
 
@@ -211,10 +217,12 @@ impacto=((n33*(n5/100))/9)*100;
 document.insertar.impactoCalc.value=impacto.toFixed(2);
 
 if (impacto<=20)
-  var nom= document.insertar.impacNom.value="Muy Bajo";
+  document.insertar.impacNom.value="Muy Bajo";
+
 else
    if (impacto>20 && impacto<=40)
      var nom= document.insertar.impacNom.value="Bajo";
+   
    else
       if (impacto>=41 && impacto<=60)
      var nom= document.insertar.impacNom.value="Medio";

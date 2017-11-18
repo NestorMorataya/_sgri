@@ -15,6 +15,10 @@
 <input type="number" readonly="readonly" name="activo" id="activo" value="{{ riesgo.activo }}" style="display:none;">
 
 
+<div class="col-xs-12">
+<div class="panel panel-success">
+<div class="panel-heading">Editar Informacion de Riesgo</div>
+<div class="panel-body">
 
 <h4>Ingrese Dimensiones del Activo</h4>
 <br>
@@ -82,7 +86,7 @@
 </div>
 
 
-<label onmouseover=""  >Ingrese Degradacion del activo en base a la amenaza</label>
+<label onmouseover=""  >Ingrese Degradacion del activo en base a la amenaza en %) </label>
 
 <input   type="number"  min="1" max="100"  title="Puede auxiliarse de Ayuda"  name="degradacionSeleccionada" id="degradacionSeleccionada" size="20" onChange="sumar()" value="{{ riesgo.degradacion }}"> 
 <a class=Ntooltip2 >
@@ -93,23 +97,23 @@
 </a>
 
 <br><br>
-<label>Ingrese la probabilidad de ocurrencia de amenaza</label>
+<label>Ingrese la probabilidad de ocurrencia de amenaza (en %) </label>
 <input  id="name" title="Puede auxiliarse de Ayuda" type="number" min="5" max="100" name="probabilidadSeleccionada" id="probabilidadSeleccionada" size="20" onChange="sumar()" value="{{ riesgo.probOcurrencia }}"> 
 <a class=Ntooltip >
      Ayuda
 <span>
-    Muy Frecuente = 100 = 1 vez al día <br> Frecuente = 70 = 1 vez cada semana<br>Normal = 50 = 1 vez cada dos meses<br>Poco Frecuente = 10= 1 vez cada seis meses<br>Muy poco Frecuenta = 5 = Una vez al año
+    Muy Frecuente = 100 % = 1 vez al día <br> Frecuente = 70 % = 1 vez cada semana<br>Normal = 50 % = 1 vez cada dos meses<br>Poco Frecuente = 10 % = 1 vez cada seis meses<br>Muy poco Frecuenta = 5 % = Una vez al año
 </span>
 </a>
 
 <br>
 <br>
-<label >Impacto:</label>
+<label >Impacto (en %):</label>
 <input type="text" name="impactoCalc" id="impactoCalc" size="20" readonly="readonly" value="{{ riesgo.impacto }}">
-<label><h4>Riesgo de la Amenaza:</h4></label> <input type="text" name="riesgoCalc" id="riesgoCalc" size="20" readonly="readonly" value="{{ riesgo.estimacionRiesgo }}">
+<label><h4>Riesgo de la Amenaza (en %):</h4></label> <input type="text" name="riesgoCalc" id="riesgoCalc" size="20" readonly="readonly" value="{{ riesgo.estimacionRiesgo }}">
 </p>
 
-<a class="btn" href="{{ path('activo_index') }}">Regresar</a>
+<a class="btn" href="{{ path('activo_ver_riesgo', { 'id': riesgo.activo}) }}">Regresar</a>
 <br><br>
 
 
@@ -121,7 +125,9 @@
    
 </div>
 
-
+</div>
+</div>
+</div>
 {% endblock %}
 {% block javascripts %}
 <script src="{{ asset('public/js/tablaDinamica.js')}}"></script>
@@ -137,11 +143,15 @@
 
         var n5 = parseInt(document.insertar.degradacionSeleccionada.value);
 
-        document.insertar.impactoCalc.value=n33*n5;
-        impacto=n33*n5;
+        // document.insertar.impactoCalc.value=n33*n5;
+        impacto=((n33*(n5/100))/9)*100;
+        document.insertar.impactoCalc.value=impacto.toFixed(2);
+        //impacto=n33*n5;
 
         var n7 = parseInt(document.insertar.probabilidadSeleccionada.value);
-        document.insertar.riesgoCalc.value=n7*impacto;
+        ri=(n7/100)*(impacto);
+        document.insertar.riesgoCalc.value=ri.toFixed(2);
+        //document.insertar.riesgoCalc.value=n7*impacto;
 
 
     }
