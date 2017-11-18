@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('public/css/tablas.css')}}">
+
+{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-top:15px; margin-bottom:250px;">
+    <br>
+    <hr>
+    <div class="col-xs-12">
+    <center>
+    <h2>PLAN TRATAMIENTO </h2>
+    <div class="box-body table-responsive">
+        <table id='tabla' class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripcion de Plan</th>
+                <th>Categoria plan</th>
+                <th>Estimacion del riesgo (%)</th>
+                <th>Nombre activo</th>
+                <th>Nombre amenaza</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for plan_Tratamiento in plan_Tratamientos %}
+            <tr>
+                <td><a href="{{ path('plan_tratamiento_show', { 'id': plan_Tratamiento.id }) }}">{{ plan_Tratamiento.id }}</a></td>
+                <td>{{ plan_Tratamiento.descripcion }}</td>
+                <td>
+                    {% if plan_Tratamiento.categoria_plan is not null %}
+                        {{ plan_Tratamiento.categoria_plan }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </td>
+                <td>
+                    {% for riesgo in riesgo %}
+                        {% if plan_Tratamiento.riesgo == riesgo.id %}
+                            {{riesgo.estimacionRiesgo}}
+                        {% endif %}
+                    {% endfor %}    
+                </td>
+                <td>
+                    {% for riesgo in riesgo %}
+                        {% if plan_Tratamiento.riesgo == riesgo.id %}
+                            {% for activo in activo %}
+                                {% if riesgo.activo == activo.id %}
+                                    {{activo.nombre}}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td> 
+                <td>
+                    {% for riesgo in riesgo %}
+                        {% if plan_Tratamiento.riesgo == riesgo.id %}
+                            {% for amenaza in amenaza %}
+                                {% if riesgo.amenaza == amenaza.id %}
+                                    {{amenaza.nombre}}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('plan_tratamiento_edit', { 'id': plan_Tratamiento.id }) }}">Editar</a>
+                        </li>
+<br>
+
+         <li>
+            <a href="{{ path('asignar_controles', { 'id': plan_Tratamiento.id }) }}">Asignar Controles</a>                
+        </li>
+<br>
+         <li>
+            <a href="{{ path('proceso_index', {'id' : plan_Tratamiento.id }) }}">Ver Controles</a>                
+        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    </center>
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('menu_plan_tratamiento') }}">Regresar</a>                
+        </li>
+
+
+    </ul>
+{% endblock %}
+
+{% block javascripts %}
+
+ <script
+  src="{{ asset('public/DataTables/jquery-3.2.1.js') }}"
+  integrity=""
+  crossorigin="anonymous"></script> 
+
+<script type="text/javascript" src="{{ asset('public/DataTables/datatables.js') }}"></script>
+
+<script>
+$(document).ready(function() {
+  $("#tabla").DataTable(
+  {
+    language: {
+    processing:     "Procesando...",
+    search:         "Buscar:",
+    lengthMenu:     "Mostrar _MENU_ registros",
+    info:           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    infoEmpty:      "Mostrando registros del 0 al 0 de un total de 0 registros",
+    infoFiltered:   "(filtrado de un total de _MAX_ registros)",
+    infoPostFix:    "",
+    loadingRecords: "Cargando...",
+    zeroRecords:    "No se encontraron resultados",
+    emptyTable:     "Ningún dato disponible en esta tabla",
+    paginate: {
+      first:      "Primero",
+      previous:   "Anterior",
+      next:       "Siguiente",
+      last:       "Último"
+    },
+    aria: {
+      sortAscending:  ": Activar para ordenar la columna de manera ascendente",
+      sortDescending: ": Activar para ordenar la columna de manera descendente"
+    }
+    }
+  } 
+  );
+});
+</script>
+
+{% endblock %}

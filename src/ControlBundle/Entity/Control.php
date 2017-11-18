@@ -4,7 +4,8 @@ namespace ControlBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use AppBundle\Entity\Media;
+use AppBundle\Form\MediaType;
 /**
  * Control
  *
@@ -94,7 +95,9 @@ class Control
     {
         $this->objetivo = $objetivo;
 
+
         return $this;
+
     }
 
     /**

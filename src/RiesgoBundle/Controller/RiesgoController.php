@@ -218,7 +218,6 @@ class RiesgoController extends Controller
     }
 
 
-
     /**
      * Lists all riesgo entities.
      *

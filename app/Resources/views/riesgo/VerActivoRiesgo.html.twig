@@ -29,7 +29,7 @@
                 <th style="width:5%"> <font size=2>Impacto</font> </th>
                 <th style="width:5%"> <font size=2>Probabilidad Ocurrencia </font></th>
                 <th style="width:5%"> <font size=2>Riesgo </font></th>
-                <th style="width:5%"><font size=2> Activo Id </font></th>
+                
                 <th style="width:10%"><font size=2> Amenaza  </font></th>
                 <th style="width:30px"><font size=2> Acciones </font></th>
                 </div>
@@ -48,14 +48,15 @@
                 <td>{{ riesgo.impacto }}</td>
                 <td>{{ riesgo.probOcurrencia }}</td>
                 <td>{{ riesgo.estimacionRiesgo }}</td>
-                <td>{{ riesgo.activo }}</td>
+         
 
                 {% for ame in amenaza %}
                   {% if ame.id == riesgo.amenaza %}
                 <td>{{ ame.nombre }}</td>
                   {% endif %}
                 {% endfor %}
-                <td><a href="{{ path('riesgo_edit', { 'id': riesgo.id }) }}">Editar</a> <br><br>
+                <td><a href="{{ path('riesgo_edit', { 'id': riesgo.id }) }}">Editar</a> <br>
+                <a href="{{ path('planes_ries', { 'id': riesgo.id }) }}">Ver Plan</a><br>
                 <a href="{{path ('plan_tratamiento_new', {'id':riesgo.id}) }}">Crear Plan</a></td>
 
             </tr>

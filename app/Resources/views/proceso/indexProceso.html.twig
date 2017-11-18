@@ -13,7 +13,7 @@
     <div class="row well">
 
       <h3>Asignar controles al plan: {{plan_Tratamiento.id}}</h3>
-      <input type="number" readonly="readonly" name="proceso" id="proceso" value="{{plan_Tratamiento.id}}" style="display:none;">
+      <input type="number" readonly="readonly" name="idPlancito" id="idPlancito" value="{{plan_Tratamiento.id}}" style="display:none;">
 
 
       <div class="col-xs-8">
@@ -26,10 +26,16 @@
           <h5><i>Id de riesgo: <input type="text" value="{{ plan_Tratamiento.riesgo }}" name="riesS" id="riesS"  size="3" disabled="true"></i></h5>
  <h5><i>Riesgo (en %):
     <input type="text" value="{{ rie.estimacionRiesgo}}" name="rie" id="rie"  size="3" disabled="true">
-{% if rie.estimacionRiesgo <=20 %}
+{% if rie.estimacionRiesgo <=15 %}
    <input  style="background-color:#82FA58;text-align:center;" value="Despreciable" placeholder="Despreciable" disabled="true">
-{% else %}
-     <label>Riesgo mayor a 20</label>
+{% elseif rie.estimacionRiesgo > 15 and rie.estimacionRiesgo <= 29 %}
+     <input  style="background-color:#BDBDBD;text-align:center;" value="Bajo" placeholder="Bajo" disabled="true">
+{% elseif rie.estimacionRiesgo >= 30 and rie.estimacionRiesgo <= 45 %}
+     <input  style="background-color:#F4FA58;text-align:center;" value="Apreciable" placeholder="Apreciable" disabled="true">
+{% elseif rie.estimacionRiesgo >= 46 and rie.estimacionRiesgo <= 59 %}
+     <input  style="background-color:#FFBF00;text-align:center;" value="Importante" placeholder="Importante" disabled="true">
+{% elseif rie.estimacionRiesgo >= 60 and rie.estimacionRiesgo <= 100 %}
+     <input  style="background-color:#FE2E2E;text-align:center;" value="Critico" placeholder="Critico" disabled="true">
 {% endif %} </i></h5>
 
          <input type="text" value="{{plan_Tratamiento.id}}" name="idS" id="idS"  size="20" disabled="true" style="display:none;">
@@ -63,16 +69,16 @@
              <thead>
                <tr>
                <th style="width:10%" >No.</th>
+              
                 <th style="width:10%" >Nombre Control</th>
               </tr>
             </thead>
             <tbody>
              {% for i in 0..20 %}
              <tr style="display:none" class="hover" id="fila{{i}}" name="fila{{i}}">
+             <td ><input value="" class="colorfondo" size="8" type="text" id="num{{i}}" name="num{{i}}" readonly="readonly"></td>
 
-            
-
-              <td ><input value="" class="colorfondo" size="8" type="text" id="num{{i}}" name="num{{i}}" readonly="readonly"></td>
+              <td style="display:none" ><input  class="colorfondo" size="8" type="text" id="plan{{i}}" name="plan{{i}}" readonly="readonly"></td>
 
               <td style="display:none" ><input class="colorfondo" size="8" type="text" id="ries{{i}}" name="ries{{i}}" readonly="readonly"></td>
 

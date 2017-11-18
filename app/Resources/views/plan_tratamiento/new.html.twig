@@ -8,15 +8,34 @@
             <h2>NUEVO PLAN DE TRATAMIENTO</h2>
         </div>
 
+ 
+    {% if todosplanes is empty %}
+
         {{ form_start(form) }}
         <div class="form-group">
           {{ form_label(form.descripcion)}}
           {{ form_widget(form.descripcion, {'attr':{'class':'form-control'}}) }}
         </div>
-        <div>
-          <input type="submit" class="btn" value="Guardar">
-        </di>
+
+ <div>
+          
+        </div>
+       <br>
+
+    
+
+<input type="submit" class="btn" value="Guardar">
+             
+
+<br><br>
+
+
+       
         {{ form_end(form) }}
+        {% else %}
+               YA TIENE UN PLAN ASOSIADO 
+           {% endif %}
+
     <a href="{{ path('plan_tratamiento_index') }}">Regresar</a>
     </div>
    </div>

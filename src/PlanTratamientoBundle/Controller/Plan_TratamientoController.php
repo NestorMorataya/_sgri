@@ -37,6 +37,33 @@ class Plan_TratamientoController extends Controller
         ));
     }
 
+
+
+
+    /**
+     * Lists all plan_Tratamiento entities para un riesgo.
+     *
+     * @Route("/planes_riesgo/{id}", name="planes_ries")
+     * @Method("GET")
+     */
+    public function indexActionPlanRi(Riesgo $riesgo)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $plan_Tratamientos = $em->getRepository('PlanTratamientoBundle:Plan_Tratamiento')->findBy(array('riesgo'=>$riesgo->getId()));
+        $riesgo=$em->getRepository('RiesgoBundle:Riesgo')->findAll();
+        $activo=$em->getRepository('ActivoBundle:activo')->findAll();
+        $amenaza=$em->getRepository('AmenazaBundle:Amenaza')->findAll();
+
+        return $this->render('plan_tratamiento/indexRiesgo.html.twig', array(
+            'plan_Tratamientos' => $plan_Tratamientos, 'riesgo'=> $riesgo, 'activo'=> $activo, 'amenaza' => $amenaza
+        ));
+    }
+
+
+
+
+
     /**
      * Creates a new plan_Tratamiento entity.
      *
@@ -45,12 +72,24 @@ class Plan_TratamientoController extends Controller
      */
     public function newAction(Request $request, Riesgo $riesgo)
     {
-        //return new Response($riesgo->getId(). " " . $riesgo->getEstimacionRiesgo());
+       // return new Response($riesgo->getId(). " " . $riesgo->getEstimacionRiesgo());
+
         $plan_Tratamiento = new Plan_tratamiento();
-        $form = $this->createForm('PlanTratamientoBundle\Form\Plan_TratamientoType', $plan_Tratamiento);
+$em = $this->getDoctrine()->getManager();
+$todosplanes = $em->getRepository('PlanTratamientoBundle:Plan_Tratamiento')->findOneBy(array('riesgo'=>$riesgo->getId()));
+
+
+// $ee=$todosplanes->getId();
+
+if($todosplanes == null){
+   
+ $form = $this->createForm('PlanTratamientoBundle\Form\Plan_TratamientoType', $plan_Tratamiento);
+
         $form->handleRequest($request);
 
+ // if ($riesgo->getId() == $plan_Tratamiento->getRiesgo()){
         if ($form->isSubmitted() && $form->isValid()) {
+
             $plan_Tratamiento->setRiesgo($riesgo->getId());
             $em = $this->getDoctrine()->getManager();
             $em->persist($plan_Tratamiento);
@@ -59,11 +98,17 @@ class Plan_TratamientoController extends Controller
             return $this->redirectToRoute('user_homepage');
             //return $this->redirectToRoute('plan_tratamiento_show', array('id' => $plan_Tratamiento->getId()));
         }
+        
 
         return $this->render('plan_tratamiento/new.html.twig', array(
-            'plan_Tratamiento' => $plan_Tratamiento,
+            'plan_Tratamiento' => $plan_Tratamiento, 'riesgo'=>$riesgo,'todosplanes'=>$todosplanes,
             'form' => $form->createView(),
         ));
+    } else{
+        return $this->redirectToRoute('planes_ries', array('id'=>$riesgo->getId()));
+    }
+
+         
     }
 
     /**
