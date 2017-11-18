@@ -62,7 +62,7 @@ class Proceso
     {
         return $this->procesoTarea;
     }
-
+ 
     //cuando el valor a devolver no es un string
     public function __toString() {
     return sprintf(('%s'), $this->getProcesoTarea());

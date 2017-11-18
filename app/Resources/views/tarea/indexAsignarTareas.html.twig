@@ -1,100 +1,145 @@
 {% extends 'base.html.twig' %}
 
-
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{{ asset('public/css/styleExtra.css')}}">
 {% endblock %}
 
 {% block body %}
-<form  name="insertar" method="get" action="{{ path('proceso2')}}">
-<div class="container" style="margin-top:100px; margin-bottom:150px">
-<div class="row well">
-
-<h2>Asignar tareas al plan: {{ proceso.plan.descripcion }}</h2>
-
-<input type="number" readonly="readonly" name="proceso" id="proceso" value="{{proceso.plan.id}}" style="display:none;">
 
 
-<div class="col-xs-6">
-<div class="panel panel-success">
-<div class="panel-heading">ASIGNAR TAREAS</div>
-<div class="panel-body">
-<center>
+<form  name="insertar" method="get" action="{{ path('proceso3')}}">
+  <div class="container" style="margin-top:100px; margin-bottom:150px">
+    <div class="row well">
 
-<br>
-<br>
+     <h3>Asignar tareas al plan: {{ proceso.plan.descripcion }}</h3>
 
-<div class="form-group">
-<h4>Control: {{proceso.control.control}}</h4>
-    <br>         
-<h4>Ingrese el nombre de la tarea:</h4>
-<input type="text" min="5" max="100" name="nombre" id="nombre" size="20">               
-
-<input style="display:none;" type="text" name="cont" value="{{proceso.id}}">              
-       
-</div>
+      <input type="number" readonly="readonly" name="proceso" id="proceso" value="{{proceso.plan.id}}" style="display:none;">
 
 
 
-<br>
-<input type="button" class="btn btn success" onclick="capturar()" value="Agregar Control">
-</center>
-<a class="btn" href="{{ path('proceso_index' ,  { 'id': proceso.id } ) }}">Regresar</a>
-<hr>
-<br><br>
+
+      <div class="col-xs-8">
+       <div class="panel panel-success">
+        <div class="panel-heading">ASIGNAR TAREAS</div> 
+        <div class="panel-body">
+         <center>
 
 
-<input type="number" readonly="readonly" name="contador" id="contador" style="display:none;">
+        <h4>Control: {{proceso.control.control}}</h4>
+        <br>  
+        <h4>Ingrese el nombre de la tarea:</h4>
+   
+        <br>
+        <input type="text" id="nombreseleccionado" />
+        <input type="text" value="{{proceso.id}}" name="procesoseleccionado" id="procesoseleccionado"  size="3" disabled="true" style="display:none;">
 
 
-<div class="box-body table-responsive">
-<table class="table table-hover" width= "100%" >
-<thead>
-<tr>
-<th style="width:10%" >No.</th>
-<th style="width:10%" >Tarea</th>
+        <br>
+      
+        <br>
 
-</tr>
-</thead>
-<tbody>
-{% for i in 0..20 %}
-<tr class="hover" style="display:none" id="fila{{i}}" name="fila{{i}}">
-<td><input class="colorfondo" size="8" type="text" id="plan{{i}}" name="plan{{i}}" readonly="readonly"></td>
-<td><input class="colorfondo" size="8" type="text" id="nom{{i}}" name="nom{{i}}" readonly="readonly"></td>
-<td><input class="colorfondo" size="8" type="text" id="control{{i}}" name="control{{i}}" readonly="readonly"></td>
-</tr>
-{% endfor %}
-</tbody>
-</table>
+       <input type="button" onclick="capturar()" value="Agregar Tarea">
+       <input type="button" onclick="limpiar()" value="Nueva Tarea">
+    
+        </center>
+        <br>
+        <a class="btn" href="{{ path('proceso_index', { 'id': proceso.id } ) }}" }}">Regresar</a>
+        <br><br>
 
-</div>
+        <input type="number" readonly="readonly" name="contador" id="contador" style="display:none;">
 
-<center><input class="btn" type="submit" name="Enviar" value="Guardar"></center>
-</form>
+ 
 
-</div>
+          <div class="box-body table-responsive">
+            <table class="table table-hover" width= "100%" >
+             <thead>
+               <tr>
+               <th style="width:10%" >No.</th>
+                <th style="width:10%" >Tarea</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+             {% for i in 0..20 %}
+             <tr style="display:none" class="hover" id="fila{{i}}" name="fila{{i}}">
+
+              <td><input value="" class="colorfondo" size="8" type="text" id="num{{i}}" name="num{{i}}" readonly="readonly"></td>
+             <td><input class="colorfondo" size="50" type="text" id="nombr{{i}}" name="nombr{{i}}" readonly="readonly"></td>
+             <td style="display:none"><input class="colorfondo" size="50" type="text" id="proce{{i}}" name="proce{{i}}" readonly="readonly"></td>
+             
+             </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+
+      <center><input class="btn" type="submit" name="Enviar" value="Guardar"></center>
+    </form>
+
+  </div>
+           
 
 </div>
 
 <style>
-.colorfondo{
-background-color: #F2F2F2;
-border:0;
-}
+  .colorfondo{
+    background-color: #F2F2F2;
+    border:0;
+  }
 </style>
 
-</div>
-</div>
-</div>
 
+</div>
+</div>
+</div>
 
 {% endblock %}
 
 {% block javascripts %}
-<script src="{{ asset('public/js/tablaTareas.js')}}"></script>
+<!--<script src="{{ asset('public/js/tablaTareas.js')}}"></script>-->
+
 <script type="text/javascript">
-</script>
+
+ //Arreglos Globales
+    var nom=[]; 
+   var proc=[];
+   
+    
+    //Funcion que captura la informacion en los Textfield y Select
+    function capturar(){
+
+       //var nombreseleccionado= document.getElementsById("nombreseleccionado")[0].value;
+       var nombreseleccionado = document.getElementById("nombreseleccionado").value;
+       var procesoseleccionado= document.getElementsByName("procesoseleccionado")[0].value;
+       
+        //elimina los espacios en blanco
+       nom[nom.length]= nombreseleccionado.trim();
+       proc[proc.length]= procesoseleccionado.trim();
+       actualizarTabla();
+    }
+
+ 
 
 
+    //Actualizando la tabla dinamica con la informacion en Array Globales       
+    function actualizarTabla(){
+        var num = 1;
+        
+            for (var i = 0; i < proc.length; i++) {
+                document.getElementById("fila"+i).style.display="table-row";
+                document.getElementById("num"+i).value = num;
+                document.getElementById("nombr"+i).value = nom[i];
+                document.getElementById("proce"+i).value = proc[i];
+                num++;
+            }
+            document.getElementById("contador").value = num-1;
+    }
+
+    
+    function limpiar() {
+    document.getElementById("nombreseleccionado").value = "";
+    } 
+</script> 
 {% endblock %}
 

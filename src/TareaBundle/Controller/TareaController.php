@@ -181,38 +181,9 @@ class TareaController extends Controller
     */
     public function menuAction3() 
     {
-        return $this->render('tarea/tablaControles.twig');
+        return $this->render('tarea/tablaControles.twig'); 
     }
 
-
-    public function index3Action(Request $request){
-         
-       $tarea = new Tarea();
-        $activo = new Activo();
-        $em = $this->getDoctrine()->getManager();
-        $activos = $em->getRepository('ActivoBundle:activo')->findAll();
-
-        $form = $this->createForm('TareaBundle\Form\TareaType', $tarea );
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $activo = $request->get('activo');
-            $tarea->setActivo($activo);
-            $em = $this->getDoctrine()->getManager();
-            $tareas = $em->getRepository('TareaBundle:Tarea')->findAll();
-            $em->persist($tarea);
-            $em->flush();
-
-        }
-
-        return $this->render('Tarea/asignarControles.html.twig', array(
-            'tareas' => $tarea,
-            'form' => $form->createView(),
-            'activos' => $activo,
-        ));
-
-
-     }
 
     /**
      * Finds and displays a tarea entity.
@@ -222,12 +193,12 @@ class TareaController extends Controller
      */
      public function showAction2(proceso $proceso)
     {
-
+          $tarea = new Tarea();
           $em = $this->getDoctrine()->getManager();
-         // $pro = $em->getRepository('ProcesoBundle:Proceso')->findAll();
+          $tarea = $em->getRepository('TareaBundle:Tarea')->findAll();
       
         return $this->render('tarea/indexAsignarTareas.html.twig', array(
-           'proceso' => $proceso,
+           'proceso' => $proceso, 'tarea' => $tarea,
         
         ));
     }
@@ -251,6 +222,7 @@ class TareaController extends Controller
         
         ));
     }
+
 
 
      /**
@@ -324,9 +296,38 @@ class TareaController extends Controller
      }
 
 
+     /** 
+     * Guardar tareas.
+     *
+     * @Route("/proceso/tarea/guardar", name="proceso3") 
+     * @Method("GET")
+     */
+     public function guardarAction2(Request $request)
+    {
+       
+        $num = 0;
+        $contador = $request->get('contador'); 
 
+        for ($i=0; $i < $contador; $i++) { 
+            $proc= new Proceso();
+            $idproceso= $request->get('proce'.$num);
 
+            $em=$this->getDoctrine()->getManager();
+            $nombre = $request->get('nombr'.$num);
+            $proc=$em->getRepository('ProcesoBundle:Proceso')
+            ->findOneBy(array('id'=>$idproceso));
+            
+            $tarea= new Tarea();
+            $tarea->setNombre($nombre);
+            $tarea->setProceso($proc);
+            $tarea->setHecha(false);
 
-  
+            $em->persist($tarea);
+            $em->flush();
+            $num++;
+        }
+       return $this->redirectToRoute('user_homepage');
+    }
      
 }
+

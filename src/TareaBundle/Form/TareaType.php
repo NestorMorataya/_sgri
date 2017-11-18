@@ -13,7 +13,7 @@ class TareaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')->add('planes');
+        $builder->add('nombre')->add('planes')->add('proceso');
       
     }
     

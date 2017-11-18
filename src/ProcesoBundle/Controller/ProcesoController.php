@@ -140,14 +140,13 @@ class ProcesoController extends Controller
         ;
     }
 
-
     /** 
      * Guardar procesos.
      *
      * @Route("/proceso/proceso/guardar", name="proceso2")
      * @Method("GET")
      */
- public function guardarAction(Request $request)
+    public function guardarAction(Request $request)
     {
        
         $num = 0;
@@ -158,7 +157,6 @@ class ProcesoController extends Controller
             $ries = $request->get('ries'.$num);
             $contr = $request->get('contr'.$num);
             
-
             $proceso = new Proceso();
             $proceso->setPlan($plan);
             $proceso->setRiesgo($ries);
@@ -172,6 +170,8 @@ class ProcesoController extends Controller
          return $this->redirectToRoute('proceso_index');
     }
 
+
+   
 
     /**
      * Edición de procesos.

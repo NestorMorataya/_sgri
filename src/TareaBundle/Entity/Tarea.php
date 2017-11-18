@@ -108,9 +108,6 @@ class Tarea
      */
     protected $proceso;
 
- 
-
-
 
     /**
      * Set proceso
@@ -118,7 +115,7 @@ class Tarea
      * @param \ProcesoBundle\Entity\Proceso $proceso
      *
      * @return Tarea
-     */
+     */ 
     public function setProceso(\ProcesoBundle\Entity\Proceso $proceso = null)
     {
         $this->proceso = $proceso;
@@ -135,4 +132,6 @@ class Tarea
     {
         return $this->proceso;
     }
+
+ 
 }
