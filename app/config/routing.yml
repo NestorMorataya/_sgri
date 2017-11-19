@@ -1,3 +1,11 @@
+vulnerabilidad_vulnerabilidad:
+    resource: "@VulnerabilidadBundle/Controller/VulnerabilidadController.php"
+    type:     annotation
+
+vulnerabilidad_cat_cat.vulnerabilidad:
+    resource: "@VulnerabilidadCatBundle/Controller/Cat_VulnerabilidadController.php"
+    type:     annotation
+
 
 algo:
     resource: "@RiesgoBundle/Controller/RiesgoController.php"
@@ -89,6 +97,9 @@ menu_catamenaza:
     resource: "@AmenazaCatBundle/Controller/Cat_AmenazaController.php"
     type:     annotation
 
+menu_vulnerabilidad:
+    resource: "@VulnerabilidadBundle/Controller/VulnerabilidadController.php"
+    type:     annotation
 
 
 

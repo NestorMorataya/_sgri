@@ -6,6 +6,8 @@ use RiesgoBundle\Entity\Riesgo;
 use AmenazaCatBundle\Entity\Cat_Amenaza;
 use AmenazaBundle\Entity\Amenaza;
 use ActivoBundle\Entity\activo;
+use VulnerabilidadCatBundle\Entity\Cat_Vulnerabilidad;
+use VulnerabilidadBundle\Entity\Vulnerabilidad;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -35,42 +37,7 @@ class RiesgoController extends Controller
          ));
      }
 
-    /**
-     * Creates a new riesgo entity.
-     *
-     * @Route("/new", name="riesgo_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request)
-    {
-        $riesgo = new Riesgo();
-        $form = $this->createForm('RiesgoBundle\Form\RiesgoType', $riesgo);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($riesgo);
-            $em->flush();
-
-            return $this->redirectToRoute('riesgo_show', array('id' => $riesgo->getId()));
-        }
-
-        return $this->render('riesgo/new.html.twig', array(
-            'riesgo' => $riesgo,
-            'form' => $form->createView(),
-        ));
-    }
-
-
-    public function showAction(Riesgo $riesgo)
-    {
-        $deleteForm = $this->createDeleteForm($riesgo);
-
-        return $this->render('riesgo/show.html.twig', array(
-            'riesgo' => $riesgo,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
     /**
      * Displays a form to edit an existing riesgo entity.
@@ -131,7 +98,7 @@ class RiesgoController extends Controller
     /**
      * Lists all activo entities.
      *
-     * @Route("/algo", name="algo")
+     * @Route("/new", name="riesgo_new")
      * @Method("GET")
      */
     public function riesgoAction()
@@ -158,29 +125,20 @@ class RiesgoController extends Controller
      */
     public function showAction2(activo $activo)
     {
-        //$deleteForm = $this->createDeleteForm($activo);
-       // return new Response('Holi');
 
-         $cat = new Cat_Amenaza();
-         $ame = new Amenaza();
+          $cat = new Cat_Amenaza();
+          $ame = new Amenaza();
+          $catV = new Cat_Vulnerabilidad();
+          $vul = new Vulnerabilidad();
           $em = $this->getDoctrine()->getManager();
           $cat = $em->getRepository('AmenazaCatBundle:Cat_Amenaza')->findAll();
           $ame = $em->getRepository('AmenazaBundle:Amenaza')->findAll();
+          $catV = $em->getRepository('VulnerabilidadCatBundle:Cat_Vulnerabilidad')->findAll();
+          $vul = $em->getRepository('VulnerabilidadBundle:Vulnerabilidad')->findAll();
 
-//           $query = $em->createQuery(
-//          'SELECT p , p2
-//          FROM AmenazaBundle:Amenaza p, AmenazaCatBundle:Cat_Amenaza p2
-//          WHERE p.categoria_id = p2.id'
 
-// );
-//  $em->flush();
-          //$ame = $em->getRepository('AmenazaBundle:Amenaza')->findById($cat);
-         // $mascotas = $em->getRepository(‘AppBundle:Mascota’)->findByClienteId($cliente_id);
-
-         // $ame = $em->getRepository('AmenazaBundle:Amenaza')->findByCategoriaId($Id);
         return $this->render('riesgo/indexActivoRiesgo.html.twig', array(
-           'activo' => $activo,'categoria' => $cat,'amenaza'=>$ame,
-           // 'delete_form' => $deleteForm->createView(),
+           'activo' => $activo,'categoria' => $cat,'amenaza'=>$ame, 'vul' => $vul, 'catv' => $catV,
         ));
     }
 
@@ -192,8 +150,6 @@ class RiesgoController extends Controller
      */
     public function showRiesgoAct(activo $activo)
     {
-        //$deleteForm = $this->createDeleteForm($activo);
-       // return new Response('Holi');
         
          $cat = new Cat_Amenaza();
          $ame = new Amenaza();
@@ -203,12 +159,6 @@ class RiesgoController extends Controller
 
         $cat = $em->getRepository('AmenazaCatBundle:Cat_Amenaza')->findAll();
         $ame = $em->getRepository('AmenazaBundle:Amenaza')->findAll();
-
-
-// );
-//  $em->flush();
-          //$ame = $em->getRepository('AmenazaBundle:Amenaza')->findById($cat);
-         // $mascotas = $em->getRepository(‘AppBundle:Mascota’)->findByClienteId($cliente_id);
 
          // $ame = $em->getRepository('AmenazaBundle:Amenaza')->findByCategoriaId($Id);
         return $this->render('riesgo/verActivoRiesgo.html.twig', array(

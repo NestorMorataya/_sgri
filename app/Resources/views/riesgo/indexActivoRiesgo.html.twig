@@ -57,6 +57,31 @@
 <br>
 
 <div class="form-group">
+          <label>Categoria de Vulnerabilidad</label>
+          <select name= "catvulSeleccionada" required id= "catvulSeleccionada" class="textfield" onchange="cambioUbicacion()">
+            <option selected="selected" value="default">--Seleccione una Categoria--</option>
+          {% for catv in catv %}
+            <option value="{{catv.id}}">{{ catv.nombre }}</option>
+          {% endfor %}
+          </select>
+</div>
+<div class="form-group">
+          <label 
+          data-tooltip="Muy Frecuente = 100 = 1 vez al día Frecuente = 70 = 1 vez cada semana\n
+           Normal = 50 = 1 vez cada dos meses ...
+           Poco Frecuente = 10= 1 vez cada seis meses...
+           Muy poco Frecuenta = 5 = Una vez al año" >Vulnerabilidades</label>
+          <select class="textfield" name= "amenazaSeleccionada" id= "amenazaSeleccionada">
+            <option selected="selected" value="default">Seleccione una Vulnerabilidad</option>
+          {% for vul in vul %}
+          <option value="{{vul.catVulnerabilidad.id}}{{vul.id}}{{ vul.nombre }}">{{ vul.nombre }}</option>
+
+          {% endfor %}
+          </select>
+</div>
+
+
+<div class="form-group">
           <label>Categoria de Amenazas</label>
           <select name= "catameSeleccionada" required id= "catameSeleccionada" class="textfield" onchange="cambioUbicacion()">
             <option selected="selected" value="default">--Seleccione una Categoria--</option>
@@ -125,7 +150,7 @@
         
       
       
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="{{ path('algo') }}">Regresar</a>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="{{ path('riesgo_new') }}">Regresar</a>
  
 
 <br><br>

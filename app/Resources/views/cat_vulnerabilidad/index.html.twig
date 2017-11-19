@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cat_vulnerabilidads list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cat_Vulnerabilidad in cat_Vulnerabilidads %}
+            <tr>
+                <td><a href="{{ path('cat_vulnerabilidad_show', { 'id': cat_Vulnerabilidad.id }) }}">{{ cat_Vulnerabilidad.id }}</a></td>
+                <td>{{ cat_Vulnerabilidad.nombre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('cat_vulnerabilidad_show', { 'id': cat_Vulnerabilidad.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('cat_vulnerabilidad_edit', { 'id': cat_Vulnerabilidad.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cat_vulnerabilidad_new') }}">Create a new cat_Vulnerabilidad</a>
+        </li>
+    </ul>
+{% endblock %}

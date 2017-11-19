@@ -132,7 +132,7 @@ $usuario->setContra($password);  //guardo en el nuevo campo contra la pass antes
             $em->persist($usuario);
             $em->flush();
 
-          //  return $this->redirectToRoute('user_login');
+           return $this->redirectToRoute('usuario_index');
         }
 
         return $this->render('usuario/newusu.html.twig', array(
