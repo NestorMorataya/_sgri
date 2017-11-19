@@ -60,7 +60,7 @@ class Cat_AmenazaController extends Controller
     /**
      * Finds and displays a cat_Amenaza entity.
      *
-     * @Route("/{id}", name="cat_amenaza_show")
+     * @Route("/mostrar/{id}", name="cat_amenaza_show")
      * @Method("GET")
      */
     public function showAction(Cat_Amenaza $cat_Amenaza)
@@ -102,18 +102,15 @@ class Cat_AmenazaController extends Controller
      * Deletes a cat_Amenaza entity.
      *
      * @Route("/{id}", name="cat_amenaza_delete")
-     * @Method("DELETE")
+     * @Method("GET")
      */
     public function deleteAction(Request $request, Cat_Amenaza $cat_Amenaza)
     {
-        $form = $this->createDeleteForm($cat_Amenaza);
-        $form->handleRequest($request);
+    
 
-        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($cat_Amenaza);
             $em->flush();
-        }
 
         return $this->redirectToRoute('cat_amenaza_index');
     }
