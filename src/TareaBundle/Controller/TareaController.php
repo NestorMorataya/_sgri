@@ -327,7 +327,7 @@ class TareaController extends Controller
             $num++;
         }
 
-        return $this->redirectToRoute('proceso_index', array( 'id' => $idproceso));
+        return $this->redirectToRoute('user_homepage');
 
     }
      
