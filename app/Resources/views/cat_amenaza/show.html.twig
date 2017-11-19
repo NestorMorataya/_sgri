@@ -1,16 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cat_amenaza</h1>
+<br>
+<br> 
+<br>
+        <div class="col-xs-8">
+       <div class="panel panel-success">
+        <div class="panel-heading">Categoría de Amenaza</div> 
+        <div class="panel-body">
 
     <table>
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>Id: </th>
                 <td>{{ cat_Amenaza.id }}</td>
             </tr>
             <tr>
-                <th>Nombre</th>
+                <th>Nombre de Amenaza: </th>
                 <td>{{ cat_Amenaza.nombre }}</td>
             </tr>
         </tbody>
@@ -18,15 +24,19 @@
 
     <ul>
         <li>
-            <a href="{{ path('cat_amenaza_index') }}">Back to the list</a>
+            <a href="{{ path('cat_amenaza_index') }}">Ver lista de Amenazas</a>
         </li>
         <li>
-            <a href="{{ path('cat_amenaza_edit', { 'id': cat_Amenaza.id }) }}">Edit</a>
+            <a href="{{ path('cat_amenaza_edit', { 'id': cat_Amenaza.id }) }}">Editar </a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Eliminar">
             {{ form_end(delete_form) }}
         </li>
     </ul>
+</div>
+</div>
+</div>
+</div>
 {% endblock %}

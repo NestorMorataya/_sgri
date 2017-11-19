@@ -1,16 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Plan_tratamiento</h1>
+<br>
+<br>
+   
+      <div class="col-xs-8">
+       <div class="panel panel-success">
+        <div class="panel-heading">Categoría de Amenaza Ingresada</div> 
+        <div class="panel-body">
 
     <table>
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>Id: </th>
                 <td>{{ plan_Tratamiento.id }}</td>
             </tr>
             <tr>
-                <th>Descripcion</th>
+                <th>Descripción: </th>
                 <td>{{ plan_Tratamiento.descripcion }}</td>
             </tr>
         </tbody>
@@ -18,15 +24,18 @@
 
     <ul>
         <li>
-            <a href="{{ path('plan_tratamiento_index') }}">Back to the list</a>
+            <a href="{{ path('plan_tratamiento_index') }}">Ver lista de amenazas</a>
         </li>
         <li>
-            <a href="{{ path('plan_tratamiento_edit', { 'id': plan_Tratamiento.id }) }}">Edit</a>
+            <a href="{{ path('plan_tratamiento_edit', { 'id': plan_Tratamiento.id }) }}">Editar amenaza</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Eliminar">
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    </div>
+    </div>
+    </div>
 {% endblock %}
