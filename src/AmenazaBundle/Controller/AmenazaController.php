@@ -71,7 +71,7 @@ class AmenazaController extends Controller
 
         return $this->render('amenaza/show.html.twig', array(
             'amenaza' => $amenaza,
-            'delete_form' => $deleteForm->createView(),
+            'delete_form' => $deleteForm->createView(), 
         ));
     }
 

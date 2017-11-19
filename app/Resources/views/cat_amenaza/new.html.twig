@@ -1,17 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+<br>
+
     <div class="container" style="margin-top:30px;">
   <div class="row well">
    <div class="col-md-6">
-       <div class="page-header">
-            <h2>NUEVA CATEGORIA AMENAZA</h2> 
-       </div>
-
+       <div class="col-xs-12">
+       <div class="panel panel-success">
+        <div class="panel-heading">NUEVA CATEGORÍA DE AMENAZA</div> 
+        <div class="panel-body">
+   <center>
     {{ form_start(form) }}
         {{ form_widget(form) }}
         <br>
-        <input class="btn" type="submit" value="Guardar" />
+        <input class="btn" type="submit" value="Guardar" /></center>
     {{ form_end(form) }}
     </div>
 </div>
@@ -21,4 +25,8 @@
             <a href="{{ path('cat_amenaza_index') }}">Regresar</a>
         </li>
     </ul>
+
+</div>
+</div>
+</div>
 {% endblock %}

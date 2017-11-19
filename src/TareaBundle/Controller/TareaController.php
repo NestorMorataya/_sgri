@@ -326,7 +326,9 @@ class TareaController extends Controller
             $em->flush();
             $num++;
         }
-       return $this->redirectToRoute('user_homepage');
+
+        return $this->redirectToRoute('proceso_index', array( 'id' => $idproceso));
+
     }
      
 }

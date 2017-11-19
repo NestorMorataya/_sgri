@@ -73,6 +73,7 @@ class Plan_Tratamiento
     *@ORM\JoinColumn(name="categoria_plan_id", referencedColumnName="id", onDelete="CASCADE")
     */
     public $categoria_plan;
+    
     /**
     *Set categoria_plan
     *

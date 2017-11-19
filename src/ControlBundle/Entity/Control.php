@@ -26,21 +26,21 @@ class Control
     /**
      * @var string
      *
-     * @ORM\Column(name="dominio", type="string", length=50)
+     * @ORM\Column(name="dominio", type="string", length=500)
      */
     private $dominio;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="objetivo", type="string", length=50)
+     * @ORM\Column(name="objetivo", type="string", length=500)
      */
     private $objetivo;
 
     /**
      * @var strings
      *
-     * @ORM\Column(name="control", type="string", length=50)
+     * @ORM\Column(name="control", type="string", length=500)
      */
     private $control;
 
