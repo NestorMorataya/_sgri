@@ -44,3 +44,9 @@ security:
         UserBundle\Entity\Usuario:
             algorithm: bcrypt
             cost: 12
+
+    access_control:
+         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/usuario/, roles: ROLE_ADMIN }
+         - { path: ^/plan_tratamiento/, roles: ROLE_EXP }
+         - { path: ^/riesgo/, roles: ROLE_CUST }

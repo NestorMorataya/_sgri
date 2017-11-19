@@ -46,12 +46,12 @@
 <div>
 <label>Seleccione un Rol</label>
 <select name="role" id="role"  >
-{% if usuario.role == 'Administrador Empresa' %}
+{% if usuario.role == 'POLE_ADMIN' %}
 <option selected value="{{ usuario.role }}" >{{ usuario.role }}</option>
 {% else %}
 <option selected value="{{ usuario.role }}" >{{ usuario.role }}</option>
-<option value="Experto Seguridad" >Experto Seguridad</option>
-<option value="Custodio Informacion">Custodio Informacion</option>
+<option value="ROLE_EXP" >Experto Seguridad</option>
+<option value="ROLE_CUST">Custodio Informacion</option>
 </select>
 {% endif %}
 </div>
@@ -85,7 +85,7 @@
     <ul>
         
 <br>
-    {% if ((usuario.role == 'Custodio Informacion')or(usuario.role == 'Experto Seguridad')) %} 
+    {% if ((usuario.role == 'ROLE_CUST')or(usuario.role == 'ROLE_EXP')) %} 
           <li>
             {{ form_start(delete_form) }}
                 <input class="btn"  type="submit" value="Eliminar Usuario">
