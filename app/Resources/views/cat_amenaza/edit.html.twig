@@ -16,12 +16,10 @@
          <br>
          <ul>
         <li>
-          {{ form_start(delete_form) }}
-                <input class="btn" type="submit" value="Eliminar">
-            {{ form_end(delete_form) }}
     {{ form_end(edit_form) }}
         </li>
     </ul>
+     <a href="{{path ('cat_amenaza_delete', {'id':cat_Amenaza.id}) }}">Eliminar</a>
    </div>
  </div>
 </div>
