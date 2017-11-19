@@ -7,7 +7,7 @@
 
 {% block body %}
 
-<div class="container" style="margin-top:30px; margin-bottom:210px" s>
+<div class="container" style="margin-top:30px; margin-bottom:400px" s>
    <div class="container text-center">
    		<div class="page-header">
    			<h2>Bienvenido {{ app.user.username }}</h2>
@@ -27,11 +27,11 @@
 
       <a href="{{ path('menu_catamenaza') }}">Gestionar Categorías de Amenazas</a>
 
-      <a href="{{ path('menu_riesgo') }}">Análisis de Riesgo</a>
+      <a href="{{ path('algo') }}">Iniciar analisis de riesgo</a>
 
       <a href="{{ path('menu_control') }}">Plan de Tratamiento</a>
 
-      <a href="{{ path('menu_control') }}">Gestionar categorías de plan</a>
+      <a href="{{ path('menu_cat_plan') }}">Gestionar Categorías de Plan</a>
 
       <a href="{{ path('menu_usuarios') }}">Gestionar Usuarios</a>
    

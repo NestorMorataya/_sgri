@@ -327,7 +327,7 @@ class TareaController extends Controller
             $num++;
         }
 
-        return $this->redirectToRoute('user_homepage');
+        return $this->redirectToRoute('plan_tratamiento_index');
 
     }
      
