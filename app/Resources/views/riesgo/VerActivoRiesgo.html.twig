@@ -31,8 +31,9 @@
                 <th style="width:15%"><font size=3> Amenaza  </font></th>
                  <th style="width:15%"><font size=3> Vulnerabilidad  </font></th>
                 <th style="width:25%"><font size=3> Acciones </font></th>
-                </div>
+                
             </tr>
+            </div>
         </thead>
 
          <tbody>
@@ -58,12 +59,13 @@
                 <td>{{ vulnerabilidad.nombre }}</td>
                   {% endif %}
                 {% endfor %}
-
-
+              <td>
+               <ul>
                 <td><a href="{{ path('riesgo_edit', { 'id': riesgo.id }) }}">|Editar riesgo|</a> 
                 <a href="{{ path('planes_ries', { 'id': riesgo.id }) }}">|Ver Plan|</a>
-                <a href="{{path ('plan_tratamiento_new', {'id':riesgo.id}) }}">|Crear Plan</a></td>
-
+                <a href="{{path ('plan_tratamiento_new', {'id':riesgo.id}) }}">|Crear Plan</a>
+               </ul>
+               </td>
             </tr>
         {% endfor %}
         </tbody>
