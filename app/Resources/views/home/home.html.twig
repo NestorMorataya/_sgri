@@ -30,9 +30,13 @@
        <a href="{{ path('menu_usuarios') }}">Gestionar Usuarios</a>
 
 {% elseif is_granted('ROLE_CUST') %}
-       <a href="{{ path('menu_amenaza') }}">Gestionar Amenazas</a>
+      <a href="{{ path('menu_amenaza') }}">Gestionar Amenazas</a>
 
       <a href="{{ path('menu_catamenaza') }}">Gestionar Categorías de Amenazas</a>
+
+      <a href="{{ path('menu_vulnerabilidad') }}">Gestionar Vulnerabilidades</a>
+
+      <a href="#">Gestionar Categorías de Vulnerabilidades</a>
 
       <a href="{{ path('riesgo_new') }}">Iniciar Análisis de Riesgo</a>
 

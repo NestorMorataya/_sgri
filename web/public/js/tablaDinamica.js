@@ -5,6 +5,8 @@
     var inte=[];
     var valor=[];
     var ame=[];
+    var vu=[];
+    var vuN=[];
     var ameN=[];
     var prob=[];
     var degra=[];
@@ -23,6 +25,8 @@
         var valorCalc = document.getElementsByName("valorCalc")[0].value;
         var amenazaSeleccionada = document.getElementsByName("amenazaSeleccionada")[0].value;
         var probabilidadSeleccionada = document.getElementsByName("probabilidadSeleccionada")[0].value;
+
+        var vulneSeleccionada = document.getElementsByName("vulnerabilidadSeleccionada")[0].value;
         var degradacionSeleccionada = document.getElementsByName("degradacionSeleccionada")[0].value;
         var impactoCalc = document.getElementsByName("impactoCalc")[0].value;
         var impacN = document.getElementsByName("impacNom")[0].value;
@@ -35,8 +39,10 @@
         conf[conf.length]= confSeleccionada.trim();
         inte[inte.length]= intSeleccionada.trim();
         valor[valor.length]= valorCalc.trim();
-       ame[ame.length]= amenazaSeleccionada.substring(1,2).trim();
+        ame[ame.length]= amenazaSeleccionada.substring(1,2).trim();
          ameN[ameN.length]= amenazaSeleccionada.substring(2,15).trim();
+vu[vu.length]= vulneSeleccionada.substring(1,2).trim();
+vuN[vuN.length]= vulneSeleccionada.substring(2,15).trim();
         prob[prob.length]= probabilidadSeleccionada.trim();
         degra[degra.length]= degradacionSeleccionada.trim();
         impa[impa.length]= impactoCalc.trim();
@@ -61,6 +67,10 @@
                 document.getElementById("valor"+i).value = valor[i];
                 document.getElementById("ame"+i).value = ame[i];
                 document.getElementById("ameN"+i).value = ameN[i];
+
+                document.getElementById("vuln"+i).value = vu[i];
+                document.getElementById("vulN"+i).value = vuN[i];
+
                 document.getElementById("prob"+i).value = prob[i];
                 document.getElementById("degra"+i).value = degra[i];
                 document.getElementById("impac"+i).value = impa[i];

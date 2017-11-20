@@ -91,6 +91,12 @@ class Riesgo
      */
     private $amenaza;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="vulnerabilidad", type="integer", nullable=true)
+     */
+    private $vulnerabilidad;
     
 
     /**
@@ -139,6 +145,30 @@ class Riesgo
     public function getAmenaza()
     {
         return $this->amenaza;
+    }
+
+
+    /**
+     * Set vulnerabilidad
+     *
+     * @param integer $vulnerabilidad
+     * @return Riesgo
+     */
+    public function setVulnerabilidad($vulnerabilidad)
+    {
+        $this->vulnerabilidad = $vulnerabilidad;
+    
+        return $this;
+    }
+
+    /**
+     * Get vulnerabilidad
+     *
+     * @return integer 
+     */
+    public function getVulnerabilidad()
+    {
+        return $this->vulnerabilidad;
     }
 
 

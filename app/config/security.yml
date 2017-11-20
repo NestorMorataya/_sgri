@@ -48,5 +48,7 @@ security:
     access_control:
          - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
          - { path: ^/usuario/, roles: ROLE_ADMIN }
+         - { path: ^/activo/, roles: ROLE_ADMIN }
          - { path: ^/plan_tratamiento/, roles: ROLE_EXP }
          - { path: ^/riesgo/, roles: ROLE_CUST }
+         - { path: ^/vulnerabilidad/, roles: ROLE_CUST }

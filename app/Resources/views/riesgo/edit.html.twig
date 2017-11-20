@@ -53,8 +53,8 @@
 <label>Valor del Activo:</label>
 <input  type="text" name="valorCalc" id="valorCalc" size="20" readonly="readonly" value="{{ riesgo.valorActivo }}">
 <br><br>
-
-<h4>Analisis Amenazas:</h4>
+<div style="float:left;margin: 5px;">
+<h4>Amenazas:</h4>
 <br>
 
 <div class="form-group">
@@ -84,9 +84,43 @@
           </select>
           <input type="number" name="amenaza" id="amenaza" value="" style="display:none;">
 </div>
+</div>
+
+<div style="float:left;margin: 5px;">
+<h4>Vulnerabilidad:</h4>
+<br>
+
+<div class="form-group">
+          <label>Categoria de Vulnerabilidades</label>
+          <select name= "catvulSeleccionada" required id= "catvulSeleccionada" class="textfield" onchange="cambioUbicacion2()">
+            <option selected="selected" value="default">--Seleccione una Categoria--</option>
+           {% for catv in catv %}
+            <option value="{{catv.id}}">{{ catv.nombre }}</option>
+          {% endfor %}
+          </select>
+</div>
+
+<div class="form-group">
+          <label 
+          data-tooltip="Muy Frecuente = 100 = 1 vez al día Frecuente = 70 = 1 vez cada semana\n
+           Normal = 50 = 1 vez cada dos meses ...
+           Poco Frecuente = 10= 1 vez cada seis meses...
+           Muy poco Frecuenta = 5 = Una vez al año" >Vulnerabilidad</label>
+          <select class="textfield" name= "vulnerabilidadSeleccionada" id= "vulnerabilidadSeleccionada">
+          {% for vulnerabilidad in vulnerabilidad %}
+            {% if riesgo.vulnerabilidad == vulnerabilidad.id %}
+                <option selected="selected" value="{{vulnerabilidad.catVulnerabilidad.id}}{{vulnerabilidad.id}}">{{ vulnerabilidad.nombre }}</option>
+            {% endif %}
+          <option value="{{vulnerabilidad.catVulnerabilidad.id}}{{vulnerabilidad.id}}">{{ vulnerabilidad.nombre }}</option>
+
+          {% endfor %}
+          </select>
+          <input type="number" name="vulnerabilidad" id="vulnerabilidad" value="" style="display:none;">
+</div>
+</div>
 
 
-<label onmouseover=""  >Ingrese Degradacion del activo en base a la amenaza en %) </label>
+<label onmouseover=""  >Ingrese Degradacion del activo en base a la amenaza y vulnerabilidad (en %) </label>
 
 <input   type="number"  min="1" max="100"  title="Puede auxiliarse de Ayuda"  name="degradacionSeleccionada" id="degradacionSeleccionada" size="20" onChange="sumar()" value="{{ riesgo.degradacion }}"> 
 <a class=Ntooltip2 >
@@ -171,6 +205,41 @@
         else
         {
                 
+            for (var i = 1; i < ubicacion.options.length; i++) {
+                var valorCorto=ubicacion.options[i].value.substring(0,1); //valor que se obtiene de la amenaza y solo tomamos con substring el primer elemento que es el id de catamenaza que esta en amenaza
+                //alert(valorCorto);
+                if(valorCorto==value)
+                {
+                    ubicacion.options[i].style.display="block";
+
+                }else{
+
+                    ubicacion.options[i].style.display="none";
+                }
+
+            }
+
+        }
+
+}
+    </script>
+
+
+<script type="text/javascript">
+    function cambioUbicacion2(){
+  var value=document.getElementsByName("catvulSeleccionada")[0].value;
+  var ubicacion=document.getElementById("vulnerabilidadSeleccionada");
+        ubicacion.options[0].selected=true;
+        
+        if(value=='default'){
+          
+             for (var i = 1; i < ubicacion.options.length; i++) {
+                ubicacion.options[i].style.display="block";
+            }   
+        }
+        else
+        {
+            
             for (var i = 1; i < ubicacion.options.length; i++) {
                 var valorCorto=ubicacion.options[i].value.substring(0,1); //valor que se obtiene de la amenaza y solo tomamos con substring el primer elemento que es el id de catamenaza que esta en amenaza
                 //alert(valorCorto);

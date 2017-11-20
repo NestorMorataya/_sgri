@@ -54,8 +54,11 @@ class RiesgoController extends Controller
         $cat = $em->getRepository('AmenazaCatBundle:Cat_Amenaza')->findAll();
         $ame = $em->getRepository('AmenazaBundle:Amenaza')->findAll();
 
+        $catv = $em->getRepository('VulnerabilidadCatBundle:Cat_Vulnerabilidad')->findAll();
+        $vulnerabilidad = $em->getRepository('VulnerabilidadBundle:Vulnerabilidad')->findAll();
+
         return $this->render('riesgo/edit.html.twig', array(
-            'riesgo' => $riesgo, 'categoria' => $cat, 'amenaza' => $ame,
+            'riesgo' => $riesgo, 'categoria' => $cat, 'amenaza' => $ame, 'catv' => $catv, 'vulnerabilidad' => $vulnerabilidad,
         ));
     }
 
@@ -160,9 +163,12 @@ class RiesgoController extends Controller
         $cat = $em->getRepository('AmenazaCatBundle:Cat_Amenaza')->findAll();
         $ame = $em->getRepository('AmenazaBundle:Amenaza')->findAll();
 
+         $catv = $em->getRepository('VulnerabilidadCatBundle:Cat_Vulnerabilidad')->findAll();
+        $vulnerabilidad = $em->getRepository('VulnerabilidadBundle:Vulnerabilidad')->findAll();
+
          // $ame = $em->getRepository('AmenazaBundle:Amenaza')->findByCategoriaId($Id);
         return $this->render('riesgo/verActivoRiesgo.html.twig', array(
-           'activo' => $activo, 'categoria' => $cat,'amenaza'=>$ame, 'riesgos' => $riesgos,
+           'activo' => $activo, 'categoria' => $cat,'amenaza'=>$ame, 'riesgos' => $riesgos,'vulnerabilidad'=>$vulnerabilidad, 
            // 'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -199,7 +205,8 @@ class RiesgoController extends Controller
             $deg = $request->get('degra'.$num);
             $impacto = $request->get('impac'.$num);
             $ame = $request->get('ame'.$num);
-            //$vul = $request->get('vulnerabilidad'.$num);
+
+            $vul = $request->get('vuln'.$num);
             $prob = $request->get('prob'.$num);
             $eRiesgo = $request->get('ries'.$num);
 
@@ -212,6 +219,7 @@ class RiesgoController extends Controller
             $riesgo->setDegradacion($deg);
             $riesgo->setImpacto($impacto);
             $riesgo->setAmenaza($ame);
+            $riesgo->setVulnerabilidad($vul);
             $riesgo->setProbOcurrencia($prob);
             $riesgo->setEstimacionRiesgo($eRiesgo);
             
@@ -220,7 +228,7 @@ class RiesgoController extends Controller
             $em->flush();
             $num++;
         }
-         return $this->redirectToRoute('user_homepage');
+         return $this->redirectToRoute('activo_ver_riesgo',  array( 'id' => $idactivo ));
     }
 
         /**
@@ -246,8 +254,10 @@ class RiesgoController extends Controller
         $estR = $request->get('riesgoCalc');
 
         $ame = $request->get('amenazaSeleccionada');
+        $vul = $request->get('vulnerabilidadSeleccionada');
 
         $ame = substr($ame, 1);
+         $vul = substr($vul, 1);
 
         $riesgo->setDisponibilidad($dis);
         $riesgo->setConfidencialidad($con);
@@ -256,6 +266,7 @@ class RiesgoController extends Controller
         $riesgo->setDegradacion($deg);
         $riesgo->setImpacto($imp);
         $riesgo->setAmenaza($ame);
+        $riesgo->setVulnerabilidad($vul);
         $riesgo->setProbOcurrencia($prob);
         $riesgo->setEstimacionRiesgo($estR);
 

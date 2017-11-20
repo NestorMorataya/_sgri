@@ -20,18 +20,17 @@
     <table id='tabla' class="table table-hover" >
         <thead>
             <tr>
-                <th style="width:3%" ><font size=2> No Riesgo</font></th>
-                <th style="width:5%"><font size=2> Disp. </font></th>
-                <th style="width:5%"><font size=2> Conf.</font> </th>
-                <th style="width:5%"><font size=2> Int.</font></th>
-                <th style="width:5%"> <font size=2>Valor Activo </font></th>
-                <th style="width:5%"> <font size=2>Degradacion (%) </font></th>
-                <th style="width:5%"> <font size=2>Impacto (%)</font> </th>
-                <th style="width:5%"> <font size=2>Prob. Ocurrencia (%) </font></th>
-                <th style="width:5%"> <font size=2>Riesgo (%)</font></th>
+                <th style="width:3%" ><font size=3> No Riesgo</font></th>
+               
+                <th style="width:5%"> <font size=3>Valor Activo </font></th>
+                <th style="width:5%"> <font size=3>Degradacion (%) </font></th>
+                <th style="width:5%"> <font size=3>Impacto (%)</font> </th>
+                <th style="width:5%"> <font size=3>Prob. Ocurrencia (%) </font></th>
+                <th style="width:5%"> <font size=3>Riesgo (%)</font></th>
                 
-                <th style="width:10%"><font size=2> Amenaza  </font></th>
-                <th style="width:25%"><font size=2> Acciones </font></th>
+                <th style="width:10%"><font size=3> Amenaza  </font></th>
+                 <th style="width:10%"><font size=3> Vulnerabilidad  </font></th>
+                <th style="width:25%"><font size=3> Acciones </font></th>
                 </div>
             </tr>
         </thead>
@@ -40,9 +39,7 @@
         {% for riesgo in riesgos %}
             <tr>
                 <td>{{ riesgo.id }}</td>
-                <td>{{ riesgo.disponibilidad }}</td>
-                <td>{{ riesgo.confidencialidad }}</td>
-                <td>{{ riesgo.integridad }}</td>
+              
                 <td>{{ riesgo.valorActivo }}</td>
                 <td>{{ riesgo.degradacion }}</td>
                 <td>{{ riesgo.impacto }}</td>
@@ -55,9 +52,17 @@
                 <td>{{ ame.nombre }}</td>
                   {% endif %}
                 {% endfor %}
-                <td><a href="{{ path('riesgo_edit', { 'id': riesgo.id }) }}">Editar riesgo</a> <br>
-                <a href="{{ path('planes_ries', { 'id': riesgo.id }) }}">Ver Plan</a><br>
-                <a href="{{path ('plan_tratamiento_new', {'id':riesgo.id}) }}">Crear Plan</a></td>
+
+                 {% for vulnerabilidad in vulnerabilidad %}
+                  {% if vulnerabilidad.id == riesgo.vulnerabilidad %}
+                <td>{{ vulnerabilidad.nombre }}</td>
+                  {% endif %}
+                {% endfor %}
+
+
+                <td><a href="{{ path('riesgo_edit', { 'id': riesgo.id }) }}">|Editar riesgo|</a> 
+                <a href="{{ path('planes_ries', { 'id': riesgo.id }) }}">|Ver Plan|</a>
+                <a href="{{path ('plan_tratamiento_new', {'id':riesgo.id}) }}">|Crear Plan</a></td>
 
             </tr>
         {% endfor %}
