@@ -28,11 +28,12 @@
                 <th style="width:5%"> <font size=3>Prob. Ocurrencia (%) </font></th>
                 <th style="width:5%"> <font size=3>Riesgo (%)</font></th>
                 
-                <th style="width:10%"><font size=3> Amenaza  </font></th>
-                 <th style="width:10%"><font size=3> Vulnerabilidad  </font></th>
+                <th style="width:15%"><font size=3> Amenaza  </font></th>
+                 <th style="width:15%"><font size=3> Vulnerabilidad  </font></th>
                 <th style="width:25%"><font size=3> Acciones </font></th>
-                </div>
+                
             </tr>
+            </div>
         </thead>
 
          <tbody>
@@ -58,28 +59,39 @@
                 <td>{{ vulnerabilidad.nombre }}</td>
                   {% endif %}
                 {% endfor %}
-
-
+              <td>
+               <ul>
                 <td><a href="{{ path('riesgo_edit', { 'id': riesgo.id }) }}">|Editar riesgo|</a> 
                 <a href="{{ path('planes_ries', { 'id': riesgo.id }) }}">|Ver Plan|</a>
-                <a href="{{path ('plan_tratamiento_new', {'id':riesgo.id}) }}">|Crear Plan</a></td>
-
+                <a href="{{path ('plan_tratamiento_new', {'id':riesgo.id}) }}">|Crear Plan</a>
+               </ul>
+               </td>
             </tr>
         {% endfor %}
         </tbody>
-       
-
 
     </table>
     </div>
- <a href="{{ path('riesgo_new') }}">Regresar</a>
 
+</center>
+</div>
+
+    <ul>
+        
+        <br>
+        <li>
+ <a href="{{ path('riesgo_new') }}">Regresar</a>
+</li>
+    </ul>
+    </div>
 
 {% endblock %}
 
+
+
 {% block javascripts %}
 
-<script
+ <script
   src="{{ asset('public/DataTables/jquery-3.2.1.js') }}"
   integrity=""
   crossorigin="anonymous"></script> 
@@ -118,4 +130,8 @@ $(document).ready(function() {
 </script>
 
 {% endblock %}
+
+
+
+
 

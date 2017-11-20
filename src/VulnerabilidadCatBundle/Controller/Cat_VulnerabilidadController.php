@@ -133,4 +133,18 @@ class Cat_VulnerabilidadController extends Controller
             ->getForm()
         ;
     }
+
+
+
+     /**
+     * Lists all categoria entities.
+     *
+     * @Route("/menu/catvu", name="menu_catvulnerabilidad")
+     * @Method("GET")
+     */
+     public function menuAction()
+    {
+
+        return $this->render('menu/menuCatVulnerabilidad.html.twig');
+    }
 }

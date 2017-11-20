@@ -100,7 +100,9 @@ menu_catamenaza:
 menu_vulnerabilidad:
     resource: "@VulnerabilidadBundle/Controller/VulnerabilidadController.php"
     type:     annotation
-
+menu_catvulnerabilidad:
+    resource: "@VulnerabilidadCatBundle/Controller/Cat_VulnerabilidadController.php"
+    type:     annotation
 
 
 
