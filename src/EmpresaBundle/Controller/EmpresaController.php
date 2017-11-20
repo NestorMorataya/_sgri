@@ -45,17 +45,12 @@ class EmpresaController extends Controller
         $usuario = new Usuario();
         $form = $this->createForm('EmpresaBundle\Form\EmpresaType', $empresa);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($empresa);
             $em->flush();
 
-
-
-            return $this->redirectToRoute('usuario_new', array('id' => $empresa->getId()));
+            return $this->redirectToRoute('usuario_new');
         }
 
         return $this->render('empresa/new.html.twig', array(

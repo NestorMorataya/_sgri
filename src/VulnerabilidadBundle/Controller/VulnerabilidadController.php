@@ -49,7 +49,7 @@ class VulnerabilidadController extends Controller
             $em->persist($vulnerabilidad);
             $em->flush();
 
-            return $this->redirectToRoute('vulnerabilidad_show', array('id' => $vulnerabilidad->getId()));
+            return $this->redirectToRoute('vulnerabilidad_index');
         }
 
         return $this->render('vulnerabilidad/new.html.twig', array(

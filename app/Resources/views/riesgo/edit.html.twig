@@ -76,7 +76,7 @@
           <select class="textfield" name= "amenazaSeleccionada" id= "amenazaSeleccionada">
           {% for ame in amenaza %}
             {% if riesgo.amenaza == ame.id %}
-                <option selected="selected" value="{{ame.catAmenaza.id}}{{ame.id}}">{{ ame.nombre }}</option>
+                <option style="background:#CEF6CE;" selected="selected" value="{{ame.catAmenaza.id}}{{ame.id}}">{{ ame.nombre }} </option>
             {% endif %}
           <option value="{{ame.catAmenaza.id}}{{ame.id}}">{{ ame.nombre }}</option>
 
@@ -193,23 +193,24 @@
 <script type="text/javascript">
     function cambioUbicacion(){
   var value=document.getElementsByName("catameSeleccionada")[0].value;
+  //alert(value);
     var ubicacion=document.getElementById("amenazaSeleccionada");
         ubicacion.options[0].selected=true;
         
         if(value=='default'){
             
-             for (var i = 1; i < ubicacion.options.length; i++) {
+             for (var i = 0; i < ubicacion.options.length; i++) {
                 ubicacion.options[i].style.display="block";
             }   
         }
         else
         {
-                
-            for (var i = 1; i < ubicacion.options.length; i++) {
+            document.getElementById("amenazaSeleccionada").value = " ";
+            for (var i = 0; i < ubicacion.options.length; i++) {
                 var valorCorto=ubicacion.options[i].value.substring(0,1); //valor que se obtiene de la amenaza y solo tomamos con substring el primer elemento que es el id de catamenaza que esta en amenaza
                 //alert(valorCorto);
                 if(valorCorto==value)
-                {
+                { 
                     ubicacion.options[i].style.display="block";
 
                 }else{
@@ -233,14 +234,14 @@
         
         if(value=='default'){
           
-             for (var i = 1; i < ubicacion.options.length; i++) {
+             for (var i = 0; i < ubicacion.options.length; i++) {
                 ubicacion.options[i].style.display="block";
             }   
         }
         else
         {
-            
-            for (var i = 1; i < ubicacion.options.length; i++) {
+            document.getElementById("vulnerabilidadSeleccionada").value = " ";
+            for (var i = 0; i < ubicacion.options.length; i++) {
                 var valorCorto=ubicacion.options[i].value.substring(0,1); //valor que se obtiene de la amenaza y solo tomamos con substring el primer elemento que es el id de catamenaza que esta en amenaza
                 //alert(valorCorto);
                 if(valorCorto==value)
