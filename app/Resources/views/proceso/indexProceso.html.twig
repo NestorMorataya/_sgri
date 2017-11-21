@@ -12,7 +12,6 @@
   <div class="container" style="margin-top:100px; margin-bottom:150px">
     <div class="row well">
 
-      <h3>Asignar controles al plan: {{plan_Tratamiento.id}}</h3>
       <input type="number" readonly="readonly" name="idPlancito" id="idPlancito" value="{{plan_Tratamiento.id}}" style="display:none;">
 
 
@@ -23,7 +22,7 @@
          <center>
             <h5><u>Datos de plan: </u></h5>
   
-          <h5><i>Id de riesgo: <input type="text" value="{{ plan_Tratamiento.riesgo }}" name="riesS" id="riesS"  size="3" disabled="true"></i></h5>
+          <h5 style="display:none;"><i>Id de riesgo: <input type="text" value="{{ plan_Tratamiento.riesgo }}" name="riesS" id="riesS"  size="3" disabled="true"></i></h5>
  <h5><i>Riesgo (en %):
     <input type="text" value="{{ rie.estimacionRiesgo}}" name="rie" id="rie"  size="3" disabled="true">
 {% if rie.estimacionRiesgo <=15 %}

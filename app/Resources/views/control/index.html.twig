@@ -14,7 +14,6 @@
     <table id='tabla' class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Dominio</th>
                 <th>Objetivo</th>
                 <th>Control</th>
@@ -25,7 +24,7 @@
         <tbody>
         {% for control in controls %}
             <tr>
-                <td><a href="{{ path('control_show', { 'id': control.id }) }}">{{ control.id }}</a></td>
+               
                 <td>{{ control.dominio }}</td>
                 <td>{{ control.objetivo }}</td>
                 <td>{{ control.control }}</td>

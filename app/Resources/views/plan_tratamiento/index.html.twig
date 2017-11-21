@@ -16,7 +16,6 @@
         <table id='tabla' class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Descripcion</th>
                 <th>Categoria plan</th>
                 <th>Estimacion del riesgo</th>
@@ -28,7 +27,6 @@
         <tbody>
         {% for plan_Tratamiento in plan_Tratamientos %}
             <tr>
-                <td><a href="{{ path('plan_tratamiento_show', { 'id': plan_Tratamiento.id }) }}">{{ plan_Tratamiento.id }}</a></td>
                 <td>{{ plan_Tratamiento.descripcion }}</td>
                 <td>
                     {% if plan_Tratamiento.categoria_plan is not null %}

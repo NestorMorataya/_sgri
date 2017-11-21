@@ -17,7 +17,7 @@ class Cat_VulnerabilidadController extends Controller
     /**
      * Lists all cat_Vulnerabilidad entities.
      *
-     * @Route("/", name="cat_vulnerabilidad_index")
+     * @Route("/index", name="cat_vulnerabilidad_index")
      * @Method("GET")
      */
     public function indexAction()

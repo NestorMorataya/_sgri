@@ -14,7 +14,6 @@
     <table id='tabla' class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nombre</th>
                 <th>Accion</th>
             </tr>
@@ -22,7 +21,6 @@
         <tbody>
         {% for categoria_Plan in categoria_Plans %}
             <tr>
-                <td><a href="{{ path('categoria_plan_show', { 'id': categoria_Plan.id }) }}">{{ categoria_Plan.id }}</a></td>
                 <td>{{ categoria_Plan.nombre }}</td>
                 <td>
                     <ul>

@@ -15,7 +15,7 @@
     <table id='tabla' class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
+                
                 <th>Nombre</th>
                 <th>Categoria</th>
                 <th>Accion</th>
@@ -25,7 +25,7 @@
         <tbody>
         {% for amenaza in amenazas %}
             <tr>
-                <td><a href="{{ path('amenaza_show', { 'id': amenaza.id }) }}">{{ amenaza.id }}</a></td>
+                
                 <td>{{ amenaza.nombre }}</td>
                  <td>{{amenaza.catAmenaza.nombre}}</td>
                 <td>

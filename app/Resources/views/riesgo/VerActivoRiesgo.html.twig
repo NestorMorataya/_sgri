@@ -10,7 +10,7 @@
 <div class="container" style="margin-top:100px; margin-bottom:150px">
 <div class="row well">
 
-    <h2>Riesgos para el activo con codigo: {{ activo.id }}</h2>
+    <h2>Riesgos para el activo con codigo: {{ activo.codigo }}</h2>
      <h4>Nombre: {{ activo.nombre }}</h4> 
 
 <input type="number" readonly="readonly" name="activo" id="activo" value="{{activo.id}}" style="display:none;">
@@ -20,7 +20,7 @@
     <table id='tabla' class="table table-hover" >
         <thead>
             <tr>
-                <th style="width:3%" ><font size=3> No Riesgo</font></th>
+
                
                 <th style="width:5%"> <font size=3>Valor Activo </font></th>
                 <th style="width:5%"> <font size=3>Degradacion (%) </font></th>
@@ -39,7 +39,7 @@
          <tbody>
         {% for riesgo in riesgos %}
             <tr>
-                <td>{{ riesgo.id }}</td>
+
               
                 <td>{{ riesgo.valorActivo }}</td>
                 <td>{{ riesgo.degradacion }}</td>
@@ -63,7 +63,7 @@
                <ul>
                 <a href="{{ path('riesgo_edit', { 'id': riesgo.id }) }}">|Editar riesgo|</a> 
                 <a href="{{ path('planes_ries', { 'id': riesgo.id }) }}">|Ver Plan|</a>
-                <a href="{{path ('plan_tratamiento_new', {'id':riesgo.id}) }}">|Crear Plan</a>
+                <a href="{{path ('plan_tratamiento_new', {'id':riesgo.id}) }}">|Crear Plan|</a>
                </ul>
                </td>
             </tr>

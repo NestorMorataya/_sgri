@@ -13,7 +13,6 @@
     <table id='tabla' class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Usuario</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
@@ -26,7 +25,6 @@
         <tbody>
         {% for usuario in usuarios %}
             <tr>
-                <td><a>{{ usuario.id }}</a></td>
                 <td>{{ usuario.username }}</td>
                 <td>{{ usuario.firstName }}</td>
                 <td>{{ usuario.lastName }}</td>
