@@ -41,6 +41,10 @@ class VulnerabilidadController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($vulnerabilidad);
             $em->flush();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7a871e3f49cd421586473f3097bcb704c9f45fad
             return $this->redirectToRoute('vulnerabilidad_index');
         }
         return $this->render('vulnerabilidad/new.html.twig', array(

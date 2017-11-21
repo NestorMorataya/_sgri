@@ -61,7 +61,7 @@
                 {% endfor %}
               <td>
                <ul>
-                <td><a href="{{ path('riesgo_edit', { 'id': riesgo.id }) }}">|Editar riesgo|</a> 
+                <a href="{{ path('riesgo_edit', { 'id': riesgo.id }) }}">|Editar riesgo|</a> 
                 <a href="{{ path('planes_ries', { 'id': riesgo.id }) }}">|Ver Plan|</a>
                 <a href="{{path ('plan_tratamiento_new', {'id':riesgo.id}) }}">|Crear Plan</a>
                </ul>
