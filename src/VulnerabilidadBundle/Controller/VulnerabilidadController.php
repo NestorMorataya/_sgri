@@ -1,13 +1,10 @@
 <?php
-
 namespace VulnerabilidadBundle\Controller;
-
 use VulnerabilidadBundle\Entity\Vulnerabilidad;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Vulnerabilidad controller.
  *
@@ -24,14 +21,11 @@ class VulnerabilidadController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $vulnerabilidads = $em->getRepository('VulnerabilidadBundle:Vulnerabilidad')->findAll();
-
         return $this->render('vulnerabilidad/index.html.twig', array(
             'vulnerabilidades' => $vulnerabilidads,
         ));
     }
-
     /**
      * Creates a new vulnerabilidad entity.
      *
@@ -43,23 +37,17 @@ class VulnerabilidadController extends Controller
         $vulnerabilidad = new Vulnerabilidad();
         $form = $this->createForm('VulnerabilidadBundle\Form\VulnerabilidadType', $vulnerabilidad);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($vulnerabilidad);
             $em->flush();
-
-            return $this->redirectToRoute('vulnerabilidad_show', array('id' => $vulnerabilidad->getId()));
+            return $this->redirectToRoute('vulnerabilidad_index');
         }
-
         return $this->render('vulnerabilidad/new.html.twig', array(
             'vulnerabilidad' => $vulnerabilidad,
             'form' => $form->createView(),
         ));
     }
-
-
-
     /**
      * Displays a form to edit an existing vulnerabilidad entity.
      *
@@ -71,20 +59,16 @@ class VulnerabilidadController extends Controller
         $deleteForm = $this->createDeleteForm($vulnerabilidad);
         $editForm = $this->createForm('VulnerabilidadBundle\Form\VulnerabilidadType', $vulnerabilidad);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('vulnerabilidad_edit', array('id' => $vulnerabilidad->getId()));
         }
-
         return $this->render('vulnerabilidad/edit.html.twig', array(
             'vulnerabilidad' => $vulnerabilidad,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Deletes a vulnerabilidad entity.
      *
@@ -95,16 +79,13 @@ class VulnerabilidadController extends Controller
     {
         $form = $this->createDeleteForm($vulnerabilidad);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($vulnerabilidad);
             $em->flush();
         }
-
         return $this->redirectToRoute('vulnerabilidad_index');
     }
-
     /**
      * Creates a form to delete a vulnerabilidad entity.
      *
@@ -126,10 +107,8 @@ class VulnerabilidadController extends Controller
      * @Route("/menu", name="menu_vulnerabilidad")
      * @Method("GET")
      */
-
     public function menuAction()
     {
-
         return $this->render('menu/menuVulnerabilidad.html.twig');
     }
 }

@@ -76,7 +76,7 @@
           <select class="textfield" name= "amenazaSeleccionada" id= "amenazaSeleccionada">
           {% for ame in amenaza %}
             {% if riesgo.amenaza == ame.id %}
-                <option selected="selected" value="{{ame.catAmenaza.id}}{{ame.id}}">{{ ame.nombre }}</option>
+                <option style="background:#CEF6CE;" selected="selected" value="{{ame.catAmenaza.id}}{{ame.id}}">{{ ame.nombre }} </option>
             {% endif %}
           <option value="{{ame.catAmenaza.id}}{{ame.id}}">{{ ame.nombre }}</option>
 
@@ -166,61 +166,50 @@
 {% block javascripts %}
 <script src="{{ asset('public/js/tablaDinamica.js')}}"></script>
 <script type="text/javascript">
-
     function sumar() {
         var n1=parseInt(document.insertar.dispSeleccionada.value);
         var n2=parseInt(document.insertar.confSeleccionada.value);
         var n3=parseInt(document.insertar.intSeleccionada.value);
-
         document.insertar.valorCalc.value=n1+n2+n3;
         n33=n1+n2+n3;
-
         var n5 = parseInt(document.insertar.degradacionSeleccionada.value);
-
         // document.insertar.impactoCalc.value=n33*n5;
         impacto=((n33*(n5/100))/9)*100;
         document.insertar.impactoCalc.value=impacto.toFixed(2);
         //impacto=n33*n5;
-
         var n7 = parseInt(document.insertar.probabilidadSeleccionada.value);
         ri=(n7/100)*(impacto);
         document.insertar.riesgoCalc.value=ri.toFixed(2);
         //document.insertar.riesgoCalc.value=n7*impacto;
-
-
     }
 </script>
 <script type="text/javascript">
     function cambioUbicacion(){
   var value=document.getElementsByName("catameSeleccionada")[0].value;
+  //alert(value);
     var ubicacion=document.getElementById("amenazaSeleccionada");
         ubicacion.options[0].selected=true;
         
         if(value=='default'){
             
-             for (var i = 1; i < ubicacion.options.length; i++) {
+             for (var i = 0; i < ubicacion.options.length; i++) {
                 ubicacion.options[i].style.display="block";
             }   
         }
         else
         {
-                
-            for (var i = 1; i < ubicacion.options.length; i++) {
+            document.getElementById("amenazaSeleccionada").value = " ";
+            for (var i = 0; i < ubicacion.options.length; i++) {
                 var valorCorto=ubicacion.options[i].value.substring(0,1); //valor que se obtiene de la amenaza y solo tomamos con substring el primer elemento que es el id de catamenaza que esta en amenaza
                 //alert(valorCorto);
                 if(valorCorto==value)
-                {
+                { 
                     ubicacion.options[i].style.display="block";
-
                 }else{
-
                     ubicacion.options[i].style.display="none";
                 }
-
             }
-
         }
-
 }
     </script>
 
@@ -233,29 +222,24 @@
         
         if(value=='default'){
           
-             for (var i = 1; i < ubicacion.options.length; i++) {
+             for (var i = 0; i < ubicacion.options.length; i++) {
                 ubicacion.options[i].style.display="block";
             }   
         }
         else
         {
-            
-            for (var i = 1; i < ubicacion.options.length; i++) {
+            document.getElementById("vulnerabilidadSeleccionada").value = " ";
+            for (var i = 0; i < ubicacion.options.length; i++) {
                 var valorCorto=ubicacion.options[i].value.substring(0,1); //valor que se obtiene de la amenaza y solo tomamos con substring el primer elemento que es el id de catamenaza que esta en amenaza
                 //alert(valorCorto);
                 if(valorCorto==value)
                 {
                     ubicacion.options[i].style.display="block";
-
                 }else{
-
                     ubicacion.options[i].style.display="none";
                 }
-
             }
-
         }
-
 }
     </script>
 {% endblock %}
