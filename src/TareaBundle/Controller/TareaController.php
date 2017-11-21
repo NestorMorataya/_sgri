@@ -2,6 +2,7 @@
 namespace TareaBundle\Controller;
 use ControlBundle\Entity\Control;
 use TareaBundle\Entity\Tarea;
+use PlanTratamientoBundle\Entity\Plan_Tratamiento;
 use ProcesoBundle\Entity\Proceso;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -303,8 +304,19 @@ class TareaController extends Controller
      * @Method("GET")
      */
      public function guardarAction2(Request $request)
-    {
-       
+    {   
+        $proceso = new Proceso();
+        $plan = new Plan_Tratamiento();
+        $procid = $request->get('procesoseleccionado');
+        $planid = $request->get('proceso');
+
+
+        $em=$this->getDoctrine()->getManager();
+        $proceso = $em->getRepository('ProcesoBundle:Proceso')
+            ->findOneBy(array('id'=>$procid));
+        $plan = $em->getRepository('PlanTratamientoBundle:Plan_Tratamiento')
+            ->findOneBy(array('id'=>$planid));
+            
         $num = 0;
         $contador = $request->get('contador'); 
 
@@ -326,8 +338,7 @@ class TareaController extends Controller
             $em->flush();
             $num++;
         }
-
-        return $this->redirectToRoute('plan_tratamiento_index');
+       return $this->redirectToRoute('actualizar_proceso', array('id' => $proceso->getId(), 'plan'=>$plan->getId()));
 
     }
      
