@@ -22,20 +22,13 @@
         </div>
        <br>
 
-    
-
 <input type="submit" class="btn" value="Guardar">
-             
-
-<br><br>
-
-
+  {{ form_end(form) }} 
        
-        {{ form_end(form) }}
-        {% else %}
-               YA TIENE UN PLAN ASOSIADO 
            {% endif %}
 
+
+           
     <a href="{{ path('plan_tratamiento_index') }}">Regresar</a>
     </div>
    </div>

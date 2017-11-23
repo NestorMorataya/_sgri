@@ -67,15 +67,15 @@
             <table class="table table-hover" width= "100%" >
              <thead>
                <tr>
-               <th style="width:10%" >No.</th>
+               <th style="width:3%" >No.</th>
               
-                <th style="width:10%" >Nombre Control</th>
+                <th style="width:97%" >Nombre Control</th>
               </tr>
             </thead>
             <tbody>
              {% for i in 0..20 %}
              <tr style="display:none" class="hover" id="fila{{i}}" name="fila{{i}}">
-             <td ><input value="" class="colorfondo" size="8" type="text" id="num{{i}}" name="num{{i}}" readonly="readonly"></td>
+             <td ><input value="" class="colorfondo" size="3" type="text" id="num{{i}}" name="num{{i}}" readonly="readonly"></td>
 
               <td style="display:none" ><input  class="colorfondo" size="8" type="text" id="plan{{i}}" name="plan{{i}}" readonly="readonly"></td>
 
@@ -85,7 +85,7 @@
 
               <td style="display:none" ><input class="colorfondo" size="8" type="text" id="contr{{i}}" name="contr{{i}}" readonly="readonly"></td>
 
-              <td><input class="colorfondo" size="50" type="text" id="contrN{{i}}" name="contrN{{i}}" readonly="readonly"></td>
+              <td><input class="colorfondo" size="100" type="text" id="contrN{{i}}" name="contrN{{i}}" readonly="readonly"></td>
             </tr>
             {% endfor %}
           </tbody>

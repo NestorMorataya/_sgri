@@ -30,6 +30,7 @@
             <tr>
               
                 <td>{{ plan_Tratamiento.descripcion }}</td>
+
                 <td>
                     {% if plan_Tratamiento.categoria_plan is not null %}
                         {{ plan_Tratamiento.categoria_plan }}
@@ -84,8 +85,10 @@
                 </td>
             </tr>
         {% endfor %}
+
         </tbody>
     </table>
+    <a href="{{ path('activo_ver_riesgo', { 'id': rie.activo }) }}">Regresar</a>
     </div>
     </center>
     </div>

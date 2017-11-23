@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<br>
-<br> 
+ <div class="container" style="margin-top:100px; margin-bottom:150px">
+    <div class="row well">
+
 <br>
 <div class="col-xs-8">
        <div class="panel panel-success">
@@ -33,11 +34,13 @@
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Eliminar">
+                <input class="btn" type="submit" value="Eliminar">
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    </div>
 
+</div>
 </div>
 </div>
 </div>

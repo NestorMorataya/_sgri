@@ -37,15 +37,19 @@ class Plan_TratamientoController extends Controller
      * @Route("/planes_riesgo/{id}", name="planes_ries")
      * @Method("GET")
      */
-    public function indexActionPlanRi(Riesgo $riesgo)
+    public function indexActionPlanRi(Riesgo $rie)
     {
         $em = $this->getDoctrine()->getManager();
-        $plan_Tratamientos = $em->getRepository('PlanTratamientoBundle:Plan_Tratamiento')->findBy(array('riesgo'=>$riesgo->getId()));
+        $plan_Tratamientos = $em->getRepository('PlanTratamientoBundle:Plan_Tratamiento')->findBy(array('riesgo'=>$rie->getId()));
+
         $riesgo=$em->getRepository('RiesgoBundle:Riesgo')->findAll();
+
+      
+
         $activo=$em->getRepository('ActivoBundle:activo')->findAll();
         $amenaza=$em->getRepository('AmenazaBundle:Amenaza')->findAll();
         return $this->render('plan_tratamiento/indexRiesgo.html.twig', array(
-            'plan_Tratamientos' => $plan_Tratamientos, 'riesgo'=> $riesgo, 'activo'=> $activo, 'amenaza' => $amenaza
+            'plan_Tratamientos' => $plan_Tratamientos, 'riesgo'=> $riesgo, 'activo'=> $activo, 'amenaza' => $amenaza, 'rie'=> $rie, 
         ));
     }
     /**
@@ -71,7 +75,7 @@ if($todosplanes == null){
             $em = $this->getDoctrine()->getManager();
             $em->persist($plan_Tratamiento);
             $em->flush();
-            return $this->redirectToRoute('user_homepage');
+            return $this->redirectToRoute('planes_ries', array('id'=>$riesgo->getId()));
             //return $this->redirectToRoute('plan_tratamiento_show', array('id' => $plan_Tratamiento->getId()));
         }
         

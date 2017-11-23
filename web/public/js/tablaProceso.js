@@ -21,7 +21,7 @@
         ries[ries.length]= rie.trim();
         riesCalc[riesCalc.length]= rieC.trim();
         contr[contr.length]= control.substring(0,1).trim();
-        contrName[contrName.length]= control.substring(1,30).trim();
+        contrName[contrName.length]= control.substring(1,150).trim();
         actualizarTabla(); 
     }
 
